@@ -64,7 +64,9 @@ export function SummaryStep({
               )}
               {userData.filterType && (
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Método de filtrado:</span>
+                  <span className="text-muted-foreground">
+                    Método de filtrado:
+                  </span>
                   <span className="font-medium text-foreground capitalize">
                     {userData.filterType.replace("-", " ")}
                   </span>
@@ -82,7 +84,7 @@ export function SummaryStep({
           <Button
             onClick={goBack}
             variant="outline"
-            className="w-full rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10"
+            className="w-full rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Modificar pedido

@@ -57,6 +57,47 @@ export default function DonSalazarWizard() {
   };
 
   const goBack = () => {
+    if (currentStep === "recommendations") {
+      setCurrentStep("name");
+      return;
+    }
+
+    // Handle specific back navigation logic based on current step
+    if (currentStep === "size") {
+      // From size, go back to the actual previous step based on coffee selection
+      const selectedCoffee = coffeeOptions.find(
+        (coffee) => coffee.id === userData.coffeeType
+      );
+
+      if (selectedCoffee?.requiresFilter) {
+        setCurrentStep("filterType");
+        return;
+      }
+      if (selectedCoffee?.requiresMilk) {
+        setCurrentStep("milkType");
+        return;
+      }
+      // If no special requirements, go back to coffeeType
+      setCurrentStep("coffeeType");
+      return;
+    }
+
+    if (currentStep === "filterType") {
+      setCurrentStep("coffeeType");
+      return;
+    }
+
+    if (currentStep === "milkType") {
+      setCurrentStep("coffeeType");
+      return;
+    }
+
+    if (currentStep === "summary") {
+      setCurrentStep("size");
+      return;
+    }
+
+    // Default navigation for other steps
     const stepOrder: Step[] = [
       "name",
       "options",
@@ -68,25 +109,19 @@ export default function DonSalazarWizard() {
     ];
     const currentIndex = stepOrder.indexOf(currentStep);
     if (currentIndex > 0) {
-      if (currentStep === "size" && userData.coffeeType) {
-        const selectedCoffee = coffeeOptions.find(
-          (coffee) => coffee.id === userData.coffeeType
-        );
-        if (selectedCoffee?.requiresFilter) {
-          setCurrentStep("filterType");
-          return;
-        }
-        if (selectedCoffee?.requiresMilk) {
-          setCurrentStep("milkType");
-          return;
-        }
-      }
       setCurrentStep(stepOrder[currentIndex - 1]);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 relative  ">
+      <Image
+        src="/fondo.jpg"
+        alt="Logo"
+        width={1000}
+        height={1000}
+        className="absolute top-0 left-0 w-screen h-screen object-cover -z-10 blur-md opacity-20 md:opacity-30 motion-safe:animate-[pulse_8s_ease-in-out_infinite]"
+      />
       <div className="w-full max-w-2xl">
         <motion.div
           className="text-center mb-8"

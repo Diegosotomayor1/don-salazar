@@ -139,10 +139,7 @@
 
 /* Updated luxury card styling for black background */
 .luxury-card {
-  @apply bg-card border-2 border-border rounded-3xl shadow-2xl;
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.95));
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(176, 156, 96, 0.3), inset 0 1px 0 rgba(176, 156, 96, 0.1);
+  @apply border-2 border-border rounded-3xl bg-transparent backdrop-blur-md;
 }
 
 .luxury-button {
@@ -168,4 +165,83 @@
 /* Added subtle dark green accent class for very secondary details only */
 .dark-green-accent {
   color: rgba(16, 49, 43, 0.6);
+}
+
+/* Golden Gradient Button Styles */
+.luxury-button {
+  background: linear-gradient(
+    135deg,
+    #d6a657 0%,
+    #b18630 25%,
+    #b18e4e 50%,
+    #d3aa64 75%,
+    #daba75 100%
+  );
+  background-size: 200% 200%;
+  animation: golden-shimmer 8s ease-in-out infinite;
+  border: 2px solid rgba(200, 168, 118, 0.3);
+  box-shadow: 0 4px 15px rgba(200, 168, 118, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luxury-button:hover {
+  background: linear-gradient(
+    135deg,
+    #cfa25e 0%,
+    #c2963e 25%,
+    #c4a17e 50%,
+    #d8a244 75%,
+    #dfb554 100%
+  );
+  box-shadow: 0 6px 20px rgba(207, 161, 87, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  border-color: rgba(206, 159, 83, 0.45);
+}
+
+.luxury-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(221, 171, 90, 0.336),
+    inset 0 1px 0 rgba(255, 255, 255, 0.164);
+  transition: all 0.15s ease-out;
+}
+
+.luxury-button:disabled {
+  background: linear-gradient(
+    135deg,
+    #8b7355 0%,
+    #a0926b 25%,
+    #6b5d47 50%,
+    #7d6f56 75%,
+    #9a8c6f 100%
+  );
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@keyframes golden-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 25%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 75%;
+  }
+}
+
+/* Updated Gold Border Utility */
+.gold-border {
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3), 0 8px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 215, 0, 0.2);
 }

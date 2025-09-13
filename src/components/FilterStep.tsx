@@ -55,7 +55,7 @@ export function FilterStep({
                   className={`cursor-pointer transition-all duration-300 rounded-2xl h-full ${
                     userData.filterType === filter.id
                       ? "gold-border bg-primary/5"
-                      : "border-2 border-border/30 hover:border-primary/50 bg-card/50"
+                      : "border-2 border-border/30 hover:border-primary/50 bg-transparent"
                   }`}
                   onClick={() => handleFilterSelect(filter.id)}
                 >
