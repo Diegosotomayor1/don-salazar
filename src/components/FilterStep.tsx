@@ -37,10 +37,10 @@ export function FilterStep({
       <Card className="luxury-card">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl text-foreground">
-            ¿Qué método de filtrado prefieres?
+            Bienvenido a nuestro recomendador de café
           </CardTitle>
           <CardDescription className="text-muted-foreground">
-            Elige tu método de preparación favorito
+            Elige tu método de filtrado favorito:
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -95,7 +95,7 @@ export function FilterStep({
               disabled={!userData.filterType}
               className="luxury-button flex-1 cursor-pointer"
             >
-              Elegir tamaño
+              Elegir sabor
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

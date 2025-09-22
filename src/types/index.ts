@@ -1,18 +1,61 @@
 export type Step =
   | "name"
+  | "preparation"
   | "options"
   | "coffeeType"
-  | "milkType"
-  | "filterType"
-  | "size"
+  | "brewingMethod"
+  | "cupType"
   | "summary"
-  | "recommendations";
+  | "recommendations"
+  | "quiz"
+  | "finalRecommendation";
 
 export interface UserData {
   name: string;
-  selectedOption: "choose" | "recommendations" | null;
+  preparationType: "barista" | "self" | null;
+  selectedOption: "choose" | "recommendations" | "quiz" | null;
   coffeeType: string;
-  milkType: string;
-  filterType: string;
-  coffeeSize: string;
+  brewingMethod: string;
+  cupType: string;
+  quizAnswers?: QuizAnswer[];
+  finalRecommendation?: FinalRecommendation;
+}
+
+// Nuevos tipos para el sistema de recomendación
+export interface QuizAnswer {
+  questionIndex: number;
+  selectedOption: RecommendationOption;
+}
+
+export interface RecommendationOption {
+  texto: string;
+  recomienda: {
+    tipo: "granos" | "metodos" | "tazas";
+    clave: string;
+  };
+}
+
+export interface QuizQuestion {
+  pregunta: string;
+  opciones: RecommendationOption[];
+}
+
+export interface CatalogItem {
+  nombre: string;
+  descripcion: string;
+}
+
+export interface FinalRecommendation {
+  grano: CatalogItem;
+  metodo: CatalogItem;
+  taza: CatalogItem;
+}
+
+export interface SistemaRecomendacion {
+  catalogo: {
+    granos: Record<string, CatalogItem>;
+    metodos: Record<string, CatalogItem>;
+    tazas: Record<string, CatalogItem>;
+  };
+  cuestionario: QuizQuestion[];
 }

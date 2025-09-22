@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Coffee } from "lucide-react";
+import {
+  ArrowLeft,
+  Coffee,
+  HandCoins,
+  MessageCircleQuestionMark,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -16,20 +21,26 @@ export function OptionsStep({
   setUserData,
   nextStep,
   goToRecommendations,
+  goToQuiz,
   goBack,
 }: {
   userData: UserData;
   setUserData: Dispatch<SetStateAction<UserData>>;
   nextStep: () => void;
   goToRecommendations: () => void;
+  goToQuiz: () => void;
   goBack: () => void;
 }) {
-  const handleOptionSelect = (option: "choose" | "recommendations") => {
+  const handleOptionSelect = (
+    option: "choose" | "recommendations" | "quiz"
+  ) => {
     setUserData({ ...userData, selectedOption: option });
     if (option === "choose") {
       nextStep();
-    } else {
+    } else if (option === "recommendations") {
       goToRecommendations();
+    } else if (option === "quiz") {
+      goToQuiz();
     }
   };
 
@@ -62,11 +73,12 @@ export function OptionsStep({
 
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
-              onClick={() => handleOptionSelect("recommendations")}
+              onClick={() => handleOptionSelect("quiz")}
               variant="outline"
               className="w-full p-6 text-lg rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300"
             >
-              Ver recomendaciones
+              <MessageCircleQuestionMark className="mr-3 h-6 w-6" />
+              Cuestionario de recomendación
             </Button>
           </motion.div>
 

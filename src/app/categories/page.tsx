@@ -1,0 +1,391 @@
+"use client";
+
+import { coffeeCategories } from "@/constants";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { useState, useRef } from "react";
+import { ArrowRight, Coffee, Play, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+export default function Categories() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  const handleCategorySelect = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    router.push(`/categories/${categoryId}`);
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+      scale: 0.8,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const floatingAnimation = {
+    y: [-10, 10, -10],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut" as const,
+    },
+  };
+
+  return (
+    <div
+      className="min-h-screen h-full bg-white relative overflow-hidden"
+      ref={containerRef}
+    >
+      {/* Elementos decorativos de fondo - Íconos de café flotantes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-10 text-6xl text-accent/20"
+          animate={{
+            y: [-15, 15, -15],
+            rotate: [-5, 5, -5],
+            transition: {
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut" as const,
+            },
+          }}
+        >
+          ☕
+        </motion.div>
+        <motion.div
+          className="absolute top-40 right-20 text-5xl text-accent/15"
+          animate={{
+            y: [-12, 12, -12],
+            rotate: [5, -5, 5],
+            transition: {
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut" as const,
+              delay: 2,
+            },
+          }}
+        >
+          🫘
+        </motion.div>
+        <motion.div
+          className="absolute bottom-32 left-1/4 text-4xl text-accent/25"
+          animate={{
+            y: [-10, 10, -10],
+            rotate: [-3, 3, -3],
+            transition: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut" as const,
+              delay: 4,
+            },
+          }}
+        >
+          ☕
+        </motion.div>
+        <motion.div
+          className="absolute bottom-20 right-1/3 text-3xl text-accent/10"
+          animate={{
+            y: [-8, 8, -8],
+            rotate: [3, -3, 3],
+            transition: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut" as const,
+              delay: 1,
+            },
+          }}
+        >
+          🫘
+        </motion.div>
+        <motion.div
+          className="absolute top-1/2 left-5 text-4xl text-accent/12"
+          animate={{
+            y: [-12, 12, -12],
+            rotate: [-4, 4, -4],
+            transition: {
+              duration: 9,
+              repeat: Infinity,
+              ease: "easeInOut" as const,
+              delay: 3,
+            },
+          }}
+        >
+          ☕
+        </motion.div>
+        <motion.div
+          className="absolute top-3/4 right-10 text-5xl text-accent/18"
+          animate={{
+            y: [-14, 14, -14],
+            rotate: [6, -6, 6],
+            transition: {
+              duration: 7.5,
+              repeat: Infinity,
+              ease: "easeInOut" as const,
+              delay: 5,
+            },
+          }}
+        >
+          🫘
+        </motion.div>
+      </div>
+
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
+        <motion.div style={{ y, opacity }} className="w-full max-w-6xl">
+          {/* Header Section */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.div
+              className="flex items-center justify-center gap-4 mb-8"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                delay: 0.2,
+              }}
+            >
+              <div className="relative">
+                <Image
+                  src="/logo-don-salazar-variant.png"
+                  alt="Don Salazar Logo"
+                  width={140}
+                  height={140}
+                  className="drop-shadow-lg"
+                />
+                <motion.div
+                  className="absolute -top-2 -right-2"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
+                  <Sparkles className="w-6 h-6 text-accent" />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              className="text-2xl md:text-5xl font-bold mb-6 text-accent"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Categorías
+            </motion.h1>
+
+            <motion.div
+              className="flex items-center justify-center gap-2 mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <Coffee className="w-6 h-6 text-accent" />
+              <p className="text-gray-600 text-xl font-medium">
+                Descubre nuestras categorías de café especializadas
+              </p>
+              <Coffee className="w-6 h-6 text-accent" />
+            </motion.div>
+
+            <motion.div
+              className="w-24 h-1 bg-accent mx-auto rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: 96 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            />
+          </motion.div>
+
+          {/* Categories Grid */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {coffeeCategories.map((category, index) => (
+              <motion.div
+                key={category.id}
+                variants={itemVariants}
+                className="group relative"
+                onHoverStart={() => setHoveredCategory(category.id)}
+                onHoverEnd={() => setHoveredCategory(null)}
+                onClick={() => handleCategorySelect(category.id)}
+                whileHover={{
+                  y: -8,
+                  transition: { type: "spring", stiffness: 300, damping: 20 },
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-accent/30">
+                  {/* Gradient overlay on hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    initial={false}
+                  />
+
+                  {/* Animated border */}
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl border-2 border-transparent"
+                    animate={{
+                      borderColor:
+                        hoveredCategory === category.id
+                          ? [
+                              "hsl(var(--accent))",
+                              "hsl(var(--accent) / 0.7)",
+                              "hsl(var(--accent) / 0.5)",
+                              "hsl(var(--accent))",
+                            ]
+                          : "transparent",
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+
+                  <div className="relative z-10">
+                    {/* Icon Section */}
+                    <motion.div
+                      className="mb-8 flex justify-center"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <div className="relative">
+                        <div className="w-20 h-20 rounded-2xl bg-accent/10 flex items-center justify-center shadow-lg border border-accent/20">
+                          <span className="text-4xl font-bold text-accent">
+                            {category.icon}
+                          </span>
+                        </div>
+                        <motion.div
+                          className="absolute -inset-2 rounded-2xl bg-accent opacity-0 group-hover:opacity-20 blur-lg"
+                          transition={{ duration: 0.3 }}
+                        />
+                      </div>
+                    </motion.div>
+
+                    {/* Content */}
+                    <motion.h3
+                      className="text-2xl font-bold mb-4 text-gray-800 text-center group-hover:text-accent transition-colors duration-300"
+                      layout
+                    >
+                      {category.name}
+                    </motion.h3>
+
+                    <motion.p
+                      className="text-gray-600 mb-6 text-center leading-relaxed"
+                      layout
+                    >
+                      {category.description}
+                    </motion.p>
+
+                    {/* Characteristics Tags */}
+                    <motion.div
+                      className="flex-wrap gap-2 justify-center mb-6 hidden group-hover:flex"
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      layout
+                    >
+                      {category.characteristics.map(
+                        (characteristic, charIndex) => (
+                          <motion.span
+                            key={charIndex}
+                            className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20 shadow-sm hover:bg-accent/15 hover:border-accent/30 transition-colors duration-200"
+                            whileHover={{ scale: 1.05 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.1 * charIndex }}
+                          >
+                            {characteristic}
+                          </motion.span>
+                        )
+                      )}
+                    </motion.div>
+
+                    <motion.div
+                      className="flex items-center justify-center gap-2 font-medium transition-all duration-300"
+                      initial={{ y: 10 }}
+                      whileHover={{ y: 0 }}
+                    >
+                      <Play className="w-10 h-10 fill-accent" />
+                      <Image
+                        src="/qr.svg"
+                        className="w-[calc(100%-4rem)] h-full"
+                        alt="QR"
+                        width={100}
+                        height={100}
+                      />
+                    </motion.div>
+
+                    {/* Action Button */}
+                    <motion.div
+                      className="flex items-center justify-center gap-2 text-accent font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      initial={{ y: 10 }}
+                      whileHover={{ y: 0 }}
+                    >
+                      <span>Explorar categoría</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Footer Section */}
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-accent/5 rounded-full border border-accent/20 shadow-sm hover:bg-accent/10 hover:border-accent/30 transition-all duration-300">
+              <Coffee className="w-5 h-5 text-accent" />
+              <p className="text-gray-700 font-medium">
+                Selecciona una categoría para explorar nuestros cafés
+                especializados
+              </p>
+              <Coffee className="w-5 h-5 text-accent" />
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}

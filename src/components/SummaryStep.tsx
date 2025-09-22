@@ -6,9 +6,10 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle, Coffee } from "lucide-react";
 import { Button } from "./ui/button";
 import { UserData } from "@/types";
+import { coffeeTypes, brewingMethods, cupTypes } from "@/constants";
 
 export function SummaryStep({
   userData,
@@ -17,6 +18,21 @@ export function SummaryStep({
   userData: UserData;
   goBack: () => void;
 }) {
+  const selectedCoffeeType = coffeeTypes.find(
+    (c) => c.id === userData.coffeeType
+  );
+  const selectedBrewingMethod = brewingMethods.find(
+    (m) => m.id === userData.brewingMethod
+  );
+  const selectedCupType = cupTypes.find(
+    (c) => c.id === userData.cupType
+  );
+
+  // Calcular precios
+  const basePrice = selectedCoffeeType?.price || 0;
+  const extraCost = selectedBrewingMethod?.extraCost || 0;
+  const totalPrice = basePrice + extraCost;
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
@@ -32,51 +48,125 @@ export function SummaryStep({
             transition={{ delay: 0.2, type: "spring" }}
           >
             <div className="p-4 rounded-full gold-border bg-primary/10 w-fit mx-auto mb-4">
-              <CheckCircle className="h-16 w-16 text-primary" />
+              <Coffee className="h-16 w-16 text-primary" />
             </div>
           </motion.div>
           <CardTitle className="text-2xl text-foreground">
-            ¡Pedido Confirmado!
+            ¡Resumen del pedido!
           </CardTitle>
           <CardDescription className="text-muted-foreground">
-            Resumen de tu selección
+            Tu café perfecto según tus preferencias
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="gold-border bg-card/30 p-6 rounded-2xl">
             <h3 className="font-semibold text-foreground mb-4">
-              Detalles del pedido para {userData.name}:
+              Pedido para {userData.name}:
             </h3>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Tipo de café:</span>
-                <span className="font-medium text-foreground capitalize">
-                  {userData.coffeeType?.replace("-", " ")}
-                </span>
+            <div className="space-y-4">
+              {/* Tipo de Café */}
+              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
+                <span className="text-2xl">{selectedCoffeeType?.icon}</span>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground">Tipo de Café:</p>
+                  <p className="text-sm text-muted-foreground">
+                    {selectedCoffeeType?.name}
+                  </p>
+                </div>
+                <div className="text-primary font-medium text-sm">
+                  S/ {basePrice}
+                </div>
               </div>
-              {userData.milkType && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Tipo de leche:</span>
-                  <span className="font-medium text-foreground capitalize">
-                    {userData.milkType}
-                  </span>
+
+              {/* Método de Preparación */}
+              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
+                <span className="text-2xl">{selectedBrewingMethod?.icon}</span>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground">
+                    Método de Preparación:
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {selectedBrewingMethod?.name}
+                  </p>
+                  <p className="text-xs text-primary font-medium capitalize">
+                    {selectedBrewingMethod?.type}
+                  </p>
                 </div>
-              )}
-              {userData.filterType && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">
-                    Método de filtrado:
-                  </span>
-                  <span className="font-medium text-foreground capitalize">
-                    {userData.filterType.replace("-", " ")}
-                  </span>
+                {extraCost > 0 && (
+                  <div className="text-primary font-medium text-sm">
+                    +S/ {extraCost}
+                  </div>
+                )}
+              </div>
+
+              {/* Tipo de Taza */}
+              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
+                <span className="text-2xl">{selectedCupType?.icon}</span>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground">Tipo de Taza:</p>
+                  <p className="text-sm text-muted-foreground">
+                    {selectedCupType?.name}
+                  </p>
                 </div>
-              )}
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Tamaño:</span>
-                <span className="font-medium text-foreground capitalize">
-                  {userData.coffeeSize}
+              </div>
+
+              {/* Tipo de Preparación */}
+              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
+                <span className="text-2xl">
+                  {userData.preparationType === "barista" ? "👨‍🍳" : "👤"}
                 </span>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground">Preparación:</p>
+                  <p className="text-sm text-muted-foreground">
+                    {userData.preparationType === "barista" 
+                      ? "Preparado por el barista" 
+                      : "Hazlo tú mismo"}
+                  </p>
+                </div>
+                {userData.preparationType === "self" && (
+                  <div className="text-primary font-medium text-sm">
+                    + Costo adicional
+                  </div>
+                )}
+              </div>
+
+              {/* Resumen Final */}
+              <div className="mt-4 p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border border-primary/20">
+                <h4 className="font-semibold text-foreground mb-2">
+                  ✨ Tu pedido personalizado:
+                </h4>
+                <p className="text-foreground">
+                  <strong>{selectedCoffeeType?.name}</strong> preparado con{" "}
+                  <strong>{selectedBrewingMethod?.name}</strong> servido en{" "}
+                  <strong>{selectedCupType?.name}</strong>
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  {selectedCoffeeType?.description}
+                </p>
+                {extraCost > 0 && (
+                  <p className="text-sm text-primary font-medium mt-2">
+                    Costo adicional por método especial: +S/ {extraCost}
+                  </p>
+                )}
+              </div>
+
+              {/* Total */}
+              <div className="mt-4 p-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl border-2 border-primary/30">
+                <div className="flex justify-between items-center">
+                  <h4 className="font-bold text-foreground text-lg">
+                    💰 Total:
+                  </h4>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-primary">
+                      S/ {totalPrice}
+                    </p>
+                    {extraCost > 0 && (
+                      <p className="text-xs text-muted-foreground">
+                        (Base: S/ {basePrice} + Extra: S/ {extraCost})
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -87,7 +177,7 @@ export function SummaryStep({
             className="w-full rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Modificar pedido
+            Cambiar selección
           </Button>
         </CardContent>
       </Card>

@@ -1,14 +1,16 @@
 "use client";
 
-import { CoffeeTypeStep } from "@/components/CoffeTypeStep";
-import { FilterStep } from "@/components/FilterStep";
-import { MilkTypeStep } from "@/components/MilkTypeStep";
 import { NameStep } from "@/components/NameStep";
+import { PreparationStep } from "@/components/PreparationStep";
 import { OptionsStep } from "@/components/OptionsStep";
+import { CoffeeTypeStep } from "@/components/CoffeeTypeStep";
+import { BrewingMethodStep } from "@/components/BrewingMethodStep";
+import { CupTypeStep } from "@/components/CupTypeStep";
 import { RecommendationsStep } from "@/components/RecommendationsStep";
-import { SizeStep } from "@/components/SizeStep";
 import { SummaryStep } from "@/components/SummaryStep";
-import { coffeeOptions } from "@/constants";
+import { CoffeeQuizStep } from "@/components/CoffeeQuizStep";
+import { FinalRecommendationStep } from "@/components/FinalRecommendationStep";
+import { coffeeProfiles } from "@/constants";
 import { Step, UserData } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -18,30 +20,25 @@ export default function DonSalazarWizard() {
   const [currentStep, setCurrentStep] = useState<Step>("name");
   const [userData, setUserData] = useState<UserData>({
     name: "",
+    preparationType: null,
     selectedOption: null,
     coffeeType: "",
-    milkType: "",
-    filterType: "",
-    coffeeSize: "",
+    brewingMethod: "",
+    cupType: "",
   });
 
   const getNextStep = (currentStep: Step): Step => {
-    if (currentStep === "coffeeType") {
-      const selectedCoffee = coffeeOptions.find(
-        (coffee) => coffee.id === userData.coffeeType
-      );
-      return selectedCoffee?.nextStep || "size";
-    }
-
     const stepFlow: Record<Step, Step> = {
-      name: "options",
+      name: "preparation",
+      preparation: "options",
       options: "coffeeType",
-      coffeeType: "size", // Default, overridden above
-      milkType: "size",
-      filterType: "size",
-      size: "summary",
+      coffeeType: "brewingMethod",
+      brewingMethod: "cupType",
+      cupType: "summary",
       summary: "summary",
       recommendations: "recommendations",
+      quiz: "quiz",
+      finalRecommendation: "finalRecommendation",
     };
 
     return stepFlow[currentStep];
@@ -56,60 +53,52 @@ export default function DonSalazarWizard() {
     setCurrentStep("recommendations");
   };
 
+  const goToQuiz = () => {
+    setCurrentStep("quiz");
+  };
+
+  const goToFinalRecommendation = () => {
+    setCurrentStep("finalRecommendation");
+  };
+
   const goBack = () => {
-    if (currentStep === "recommendations") {
-      setCurrentStep("name");
-      return;
-    }
-
-    // Handle specific back navigation logic based on current step
-    if (currentStep === "size") {
-      // From size, go back to the actual previous step based on coffee selection
-      const selectedCoffee = coffeeOptions.find(
-        (coffee) => coffee.id === userData.coffeeType
-      );
-
-      if (selectedCoffee?.requiresFilter) {
-        setCurrentStep("filterType");
-        return;
-      }
-      if (selectedCoffee?.requiresMilk) {
-        setCurrentStep("milkType");
-        return;
-      }
-      // If no special requirements, go back to coffeeType
-      setCurrentStep("coffeeType");
-      return;
-    }
-
-    if (currentStep === "filterType") {
-      setCurrentStep("coffeeType");
-      return;
-    }
-
-    if (currentStep === "milkType") {
-      setCurrentStep("coffeeType");
+    if (
+      currentStep === "recommendations" ||
+      currentStep === "quiz" ||
+      currentStep === "finalRecommendation"
+    ) {
+      setCurrentStep("options");
       return;
     }
 
     if (currentStep === "summary") {
-      setCurrentStep("size");
+      setCurrentStep("cupType");
       return;
     }
 
-    // Default navigation for other steps
-    const stepOrder: Step[] = [
-      "name",
-      "options",
-      "coffeeType",
-      "milkType",
-      "filterType",
-      "size",
-      "summary",
-    ];
-    const currentIndex = stepOrder.indexOf(currentStep);
-    if (currentIndex > 0) {
-      setCurrentStep(stepOrder[currentIndex - 1]);
+    if (currentStep === "cupType") {
+      setCurrentStep("brewingMethod");
+      return;
+    }
+
+    if (currentStep === "brewingMethod") {
+      setCurrentStep("coffeeType");
+      return;
+    }
+
+    if (currentStep === "coffeeType") {
+      setCurrentStep("options");
+      return;
+    }
+
+    if (currentStep === "options") {
+      setCurrentStep("preparation");
+      return;
+    }
+
+    if (currentStep === "preparation") {
+      setCurrentStep("name");
+      return;
     }
   };
 
@@ -122,7 +111,7 @@ export default function DonSalazarWizard() {
         height={1000}
         className="absolute top-0 left-0 w-screen h-screen object-cover -z-10 blur-md opacity-20 md:opacity-30 motion-safe:animate-[pulse_8s_ease-in-out_infinite]"
       />
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-3xl">
         <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -152,6 +141,16 @@ export default function DonSalazarWizard() {
             />
           )}
 
+          {currentStep === "preparation" && (
+            <PreparationStep
+              key="preparation"
+              userData={userData}
+              setUserData={setUserData}
+              nextStep={nextStep}
+              goBack={goBack}
+            />
+          )}
+
           {currentStep === "options" && (
             <OptionsStep
               key="options"
@@ -159,6 +158,7 @@ export default function DonSalazarWizard() {
               setUserData={setUserData}
               nextStep={nextStep}
               goToRecommendations={goToRecommendations}
+              goToQuiz={goToQuiz}
               goBack={goBack}
             />
           )}
@@ -173,9 +173,9 @@ export default function DonSalazarWizard() {
             />
           )}
 
-          {currentStep === "milkType" && (
-            <MilkTypeStep
-              key="milkType"
+          {currentStep === "brewingMethod" && (
+            <BrewingMethodStep
+              key="brewingMethod"
               userData={userData}
               setUserData={setUserData}
               nextStep={nextStep}
@@ -183,19 +183,9 @@ export default function DonSalazarWizard() {
             />
           )}
 
-          {currentStep === "filterType" && (
-            <FilterStep
-              key="filterType"
-              userData={userData}
-              setUserData={setUserData}
-              nextStep={nextStep}
-              goBack={goBack}
-            />
-          )}
-
-          {currentStep === "size" && (
-            <SizeStep
-              key="size"
+          {currentStep === "cupType" && (
+            <CupTypeStep
+              key="cupType"
               userData={userData}
               setUserData={setUserData}
               nextStep={nextStep}
@@ -210,6 +200,24 @@ export default function DonSalazarWizard() {
           {currentStep === "recommendations" && (
             <RecommendationsStep
               key="recommendations"
+              userData={userData}
+              goBack={goBack}
+            />
+          )}
+
+          {currentStep === "quiz" && (
+            <CoffeeQuizStep
+              key="quiz"
+              userData={userData}
+              setUserData={setUserData}
+              goToFinalRecommendation={goToFinalRecommendation}
+              goBack={goBack}
+            />
+          )}
+
+          {currentStep === "finalRecommendation" && (
+            <FinalRecommendationStep
+              key="finalRecommendation"
               userData={userData}
               goBack={goBack}
             />
