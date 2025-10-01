@@ -22,7 +22,7 @@ export default function Categories() {
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
-    router.push(`/categories/${categoryId}`);
+    router.push(`/categorias/${categoryId}`);
   };
 
   const containerVariants = {
