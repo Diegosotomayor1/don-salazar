@@ -2,10 +2,10 @@
 
 import { coffeeCategories } from "@/constants";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
-import { useState, useRef } from "react";
 import { ArrowRight, Coffee, Play, Sparkles } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 
 export default function Categories() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);

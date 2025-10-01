@@ -10,7 +10,6 @@ import { RecommendationsStep } from "@/components/RecommendationsStep";
 import { SummaryStep } from "@/components/SummaryStep";
 import { CoffeeQuizStep } from "@/components/CoffeeQuizStep";
 import { FinalRecommendationStep } from "@/components/FinalRecommendationStep";
-import { coffeeProfiles } from "@/constants";
 import { Step, UserData } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";

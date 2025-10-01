@@ -114,7 +114,9 @@ export function RecommendationsStep({
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
+                  onClick={() =>
+                    setActiveTab(tab.id as "methods" | "types" | "sizes")
+                  }
                   className={`flex-1 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300 ${
                     activeTab === tab.id
                       ? "luxury-button text-background"
