@@ -1,151 +1,13 @@
-import { Step, SistemaRecomendacion } from "@/types";
+import { Category, SistemaRecomendacion } from "@/types";
 
-export const coffeeProfiles = [
-  {
-    id: "premium-frutal-molienda-media",
-    name: "Café Premium Frutal - Molienda Media",
-    description: "Notas cítricas, frutos rojos, acidez jugosa",
-    icon: "🍓",
-    origin: "Selección Premium",
-    nextStep: "summary" as Step,
-  },
-  {
-    id: "premium-balanceado-molienda-media",
-    name: "Café Premium Balanceado - Molienda Media",
-    description: "Equilibrio perfecto entre dulzor y acidez",
-    icon: "⚖️",
-    origin: "Selección Premium",
-    nextStep: "summary" as Step,
-  },
-  {
-    id: "premium-sabor-balanceado-250gr",
-    name: "Café Premium - Sabor Balanceado 250gr",
-    description: "Taza equilibrada con notas suaves y armoniosas",
-    icon: "🍫",
-    origin: "Selección Premium",
-    nextStep: "summary" as Step,
-  },
-  {
-    id: "premium-sabor-frutal-250gr",
-    name: "Café Premium - Sabor Frutal 250gr",
-    description: "Intensas notas frutales y acidez vibrante",
-    icon: "🍊",
-    origin: "Selección Premium",
-    nextStep: "summary" as Step,
-  },
-  {
-    id: "premium-favorito-noel",
-    name: "Café Premium - El Favorito de Noel",
-    description: "Mezcla especial con carácter único y distintivo",
-    icon: "⭐",
-    origin: "Selección Especial",
-    nextStep: "summary" as Step,
-  },
-];
-
-export const milkOptions = [
-  {
-    id: "entera",
-    name: "Leche Entera",
-    description: "Cremosa y tradicional",
-    icon: "🥛",
-  },
-  {
-    id: "deslactosada",
-    name: "Deslactosada",
-    description: "Sin lactosa, mismo sabor",
-    icon: "🥛",
-  },
-  {
-    id: "avena",
-    name: "Leche de Avena",
-    description: "Vegetal, cremosa y dulce",
-    icon: "🌾",
-  },
-  {
-    id: "almendra",
-    name: "Leche de Almendra",
-    description: "Ligera y con sabor a nuez",
-    icon: "🌰",
-  },
-  {
-    id: "coco",
-    name: "Leche de Coco",
-    description: "Tropical y cremosa",
-    icon: "🥥",
-  },
-  {
-    id: "sin-leche",
-    name: "Sin Leche",
-    description: "Solo café, intenso",
-    icon: "☕",
-  },
-];
-
-export const sizeOptions = [
-  {
-    id: "pequeño",
-    name: "Pequeño",
-    description: "8 oz (240 ml)",
-    price: "S/ 8.00",
-    icon: "🥃",
-  },
-  {
-    id: "mediano",
-    name: "Mediano",
-    description: "12 oz (360 ml)",
-    price: "S/ 12.00",
-    icon: "☕",
-  },
-  {
-    id: "grande",
-    name: "Grande",
-    description: "16 oz (480 ml)",
-    price: "S/ 16.00",
-    icon: "🫖",
-  },
-];
-
-export const filterOptions = [
-  {
-    id: "coffeego-silver",
-    name: "CoffeeGo Silver",
-    description: "Filtro portátil y versátil para café en cualquier lugar",
-    icon: "🥈",
-  },
-  {
-    id: "v60-white",
-    name: "V60 White",
-    description: "Clásico dripper para tazas complejas y brillantes",
-    icon: "⚪",
-  },
-  {
-    id: "cappubox",
-    name: "Cappubox",
-    description: "Sistema completo para preparaciones profesionales",
-    icon: "📦",
-  },
-  {
-    id: "v60-black",
-    name: "V60 Black",
-    description: "Elegante dripper para extracciones precisas",
-    icon: "⚫",
-  },
-  {
-    id: "kit-coffeego-deluxe",
-    name: "Kit CoffeeGo - Deluxe",
-    description: "Kit completo con accesorios premium",
-    icon: "✨",
-  },
-];
-
-export const coffeeCategories = [
+export const coffeeCategories: Category[] = [
   {
     id: "cafes-de-siempre",
     name: "Los Cafés de Siempre",
     description: "Clásicos espressos, lattes y cappuccinos",
     icon: "☕",
     characteristics: ["Clásico", "Tradicional", "Espresso"],
+    qrId: "1",
   },
   {
     id: "bebidas-frias-cafe",
@@ -153,6 +15,7 @@ export const coffeeCategories = [
     description: "Refrescantes combinaciones con café",
     icon: "🧊",
     characteristics: ["Refrescante", "Frío", "Innovador"],
+    qrId: "2",
   },
   {
     id: "bebidas-sin-cafe",
@@ -160,6 +23,7 @@ export const coffeeCategories = [
     description: "Tés, chocolates y jugos naturales",
     icon: "🫖",
     characteristics: ["Sin Cafeína", "Natural", "Variado"],
+    qrId: "3",
   },
   {
     id: "cocteles",
@@ -167,6 +31,7 @@ export const coffeeCategories = [
     description: "Mezclas únicas con y sin alcohol",
     icon: "🍸",
     characteristics: ["Premium", "Único", "Sofisticado"],
+    qrId: "4",
   },
   {
     id: "salados",
@@ -174,6 +39,7 @@ export const coffeeCategories = [
     description: "Empanadas, sándwiches y croissants",
     icon: "🥪",
     characteristics: ["Fresco", "Artesanal", "Sabroso"],
+    qrId: "5",
   },
   {
     id: "dulces",
@@ -181,6 +47,7 @@ export const coffeeCategories = [
     description: "Postres, tortas y galletas caseras",
     icon: "🍰",
     characteristics: ["Dulce", "Casero", "Irresistible"],
+    qrId: "6",
   },
 ];
 
@@ -724,7 +591,7 @@ export const brewingMethods = [
     name: "Sifón Japonés",
     description:
       "Más que un método, es un espectáculo. Usando vacío y presión de vapor, se crea la taza más aromática y compleja de todas, con una claridad excepcional. Es una experiencia única.",
-    type: "filtrado",
+    type: "inmersion",
     icon: "🔬",
     extraCost: 10,
   },

@@ -59,3 +59,12 @@ export interface SistemaRecomendacion {
   };
   cuestionario: QuizQuestion[];
 }
+
+export type Category = {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  characteristics: string[];
+  qrId: string;
+};
