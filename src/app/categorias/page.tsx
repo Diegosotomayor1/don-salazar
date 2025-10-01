@@ -338,21 +338,6 @@ export default function Categories() {
                       )}
                     </motion.div>
 
-                    <motion.div
-                      className="flex items-center justify-center gap-2 font-medium transition-all duration-300"
-                      initial={{ y: 10 }}
-                      whileHover={{ y: 0 }}
-                    >
-                      <Play className="w-10 h-10 fill-accent" />
-                      <Image
-                        src="/qr.svg"
-                        className="w-[calc(100%-4rem)] h-full"
-                        alt="QR"
-                        width={100}
-                        height={100}
-                      />
-                    </motion.div>
-
                     {/* Action Button */}
                     <motion.div
                       className="flex items-center justify-center gap-2 text-accent font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
