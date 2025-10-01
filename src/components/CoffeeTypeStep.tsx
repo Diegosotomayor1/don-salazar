@@ -62,10 +62,12 @@ export function CoffeeTypeStep({
                 onClick={() => handleCoffeeTypeSelect(coffee.id)}
                 className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer relative"
               >
-                <div className="absolute top-3 right-3 text-lg font-bold text-primary">
-                  S/ {coffee.price}
-                </div>
-                <div className="flex items-center gap-4 pr-16">
+                {coffee.price > 0 && (
+                  <div className="absolute top-2 right-2 flex items-center text-sm text-primary font-medium z-10 bg-accent/20 rounded-full px-2 py-1">
+                    S/ {coffee.price}
+                  </div>
+                )}
+                <div className="flex items-center gap-4">
                   <motion.div
                     animate={{ rotate: [0, 12, 0] }}
                     transition={{
@@ -89,7 +91,7 @@ export function CoffeeTypeStep({
                     <h3 className="font-semibold text-lg text-foreground mb-2">
                       {coffee.name}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                       {coffee.description}
                     </p>
                   </div>

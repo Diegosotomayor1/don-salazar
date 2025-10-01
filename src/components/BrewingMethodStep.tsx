@@ -75,12 +75,8 @@ export function BrewingMethodStep({
                     onClick={() => handleMethodSelect(method.id)}
                     className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
                   >
-                    <div className="flex items-start justify-between">
-                      <div
-                        className={`flex items-start gap-3 ${
-                          method.extraCost > 0 ? "w-[calc(100%-4rem)]" : ""
-                        }`}
-                      >
+                    <div className="relative flex items-start justify-between">
+                      <div className={`flex items-center gap-3`}>
                         {/* <div className="text-2xl">{method.icon}</div> */}
                         <motion.div
                           animate={{ rotate: [0, 12, 0] }}
@@ -104,13 +100,13 @@ export function BrewingMethodStep({
                           <h4 className="font-semibold text-base text-foreground mb-1">
                             {method.name}
                           </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                             {method.description}
                           </p>
                         </div>
                       </div>
                       {method.extraCost > 0 && (
-                        <div className="flex items-center text-sm text-primary font-medium">
+                        <div className="absolute top-2 right-2 flex items-center text-sm text-primary font-medium z-10 bg-accent/20 rounded-full px-2 py-1">
                           +S/ {method.extraCost}
                         </div>
                       )}
@@ -141,9 +137,9 @@ export function BrewingMethodStep({
                 >
                   <div
                     onClick={() => handleMethodSelect(method.id)}
-                    className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
+                    className="relative w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-center gap-3">
                       {/* <div className="text-2xl">{method.icon}</div> */}
                       <motion.div
                         animate={{ rotate: [0, 12, 0] }}
@@ -166,9 +162,14 @@ export function BrewingMethodStep({
                         <h4 className="font-semibold text-base text-foreground mb-1">
                           {method.name}
                         </h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                           {method.description}
                         </p>
+                        {method.extraCost > 0 && (
+                          <div className="absolute top-2 right-2 flex items-center text-sm text-primary font-medium z-10 bg-accent/20 rounded-full px-2 py-1">
+                            +S/ {method.extraCost}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -68,7 +68,7 @@ export default function Categories() {
   return (
     <div
       className="min-h-screen h-full relative overflow-hidden"
-      style={{ backgroundColor: '#ece6cc' }}
+      style={{ backgroundColor: "#ece6cc" }}
       ref={containerRef}
     >
       <BackgorundElementsDecoration />
@@ -120,7 +120,7 @@ export default function Categories() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Categorías
+              La experiencia Don Salazar
             </motion.h1>
 
             <motion.div
@@ -166,7 +166,6 @@ export default function Categories() {
                 whileTap={{ scale: 0.95 }}
               >
                 <div className="relative bg-accent rounded-3xl p-8 shadow-lg border border-accent/30 cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-accent hover:bg-accent/90">
-
                   {/* Animated border */}
                   <motion.div
                     className="absolute inset-0 rounded-3xl border-2 border-transparent"
@@ -192,7 +191,7 @@ export default function Categories() {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <div className="relative">
-                        <div className="w-20 h-20 rounded-2xl bg-accent/10 flex items-center justify-center shadow-lg border border-accent/20">
+                        <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center shadow-lg border border-accent/20">
                           <span className="text-4xl font-bold text-accent">
                             {category.icon}
                           </span>

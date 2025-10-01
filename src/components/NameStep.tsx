@@ -54,7 +54,7 @@ export function NameStep({
               onChange={(e) =>
                 setUserData({ ...userData, name: e.target.value })
               }
-              className="text-lg p-4 rounded-2xl gold-border bg-input text-foreground placeholder:text-muted-foreground"
+              className="text-sm bg-transparent p-4 rounded-2xl gold-border text-foreground placeholder:text-muted-foreground"
               autoFocus
             />
             <Button

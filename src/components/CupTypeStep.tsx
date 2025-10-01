@@ -62,7 +62,7 @@ export function CupTypeStep({
                 onClick={() => handleCupTypeSelect(cup.id)}
                 className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
               >
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   {!cup.img && <div className="text-3xl">{cup.icon}</div>}
                   {cup.img && (
                     <motion.div
@@ -89,7 +89,7 @@ export function CupTypeStep({
                     <h3 className="font-semibold text-lg text-foreground mb-2">
                       {cup.name}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                       {cup.description}
                     </p>
                   </div>
