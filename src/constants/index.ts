@@ -1,4 +1,4 @@
-import { Category, SistemaRecomendacion } from "@/types";
+import { Category, CoffeeType, SistemaRecomendacion } from "@/types";
 
 export const coffeeCategories: Category[] = [
   {
@@ -530,13 +530,14 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
 };
 
 // Nuevas constantes para el flujo de selección de café
-export const coffeeTypes = [
+export const coffeeTypes: CoffeeType[] = [
   {
     id: "el_obata",
     name: "El obatá",
     description:
       "Un café de sabor reconfortante y familiar, con notas claras a chocolate con leche, nueces tostadas y un dulzor a caramelo. Es bajo en acidez y tiene un cuerpo cremoso.",
     icon: "☕",
+    img: "/experiences/obata.png",
     price: 19,
   },
   {
@@ -545,6 +546,7 @@ export const coffeeTypes = [
     description:
       "La taza perfecta para quienes buscan equilibrio. Combina la dulzura del chocolate con un toque frutal muy sutil, resultando en una bebida amable y fácil de tomar.",
     icon: "⚖️",
+    img: "/experiences/balanceado.png",
     price: 17,
   },
   {
@@ -553,6 +555,7 @@ export const coffeeTypes = [
     description:
       "Una experiencia vibrante y refrescante. Este café explota con sabores a frutos rojos y cítricos como la mandarina, con una acidez brillante que lo hace muy jugoso en boca.",
     icon: "🍊",
+    img: "/experiences/tupi.png",
     price: 20,
   },
 ];
@@ -566,6 +569,7 @@ export const brewingMethods = [
       "Es un método de filtrado que produce una bebida increíblemente limpia, delicada y ligera, muy parecida a un té, donde podemos apreciar las notas más sutiles y la acidez de tu café.",
     type: "filtrado",
     icon: "⚪",
+    img: "/experiences/v60.png",
     extraCost: 0,
   },
   {
@@ -575,6 +579,7 @@ export const brewingMethods = [
       "Método de filtrado que produce una taza muy limpia y brillante, con cuerpo medio y excelente claridad de sabores.",
     type: "filtrado",
     icon: "🧪",
+    img: "/experiences/chemex.png",
     extraCost: 0,
   },
   {
@@ -584,6 +589,7 @@ export const brewingMethods = [
       "Dripper versátil que permite diferentes técnicas de extracción, produciendo tazas complejas y balanceadas.",
     type: "filtrado",
     icon: "📐",
+    img: "/experiences/origami.png",
     extraCost: 0,
   },
   {
@@ -593,6 +599,7 @@ export const brewingMethods = [
       "Más que un método, es un espectáculo. Usando vacío y presión de vapor, se crea la taza más aromática y compleja de todas, con una claridad excepcional. Es una experiencia única.",
     type: "inmersion",
     icon: "🔬",
+    img: "/experiences/sifon_japones.png",
     extraCost: 10,
   },
   // Métodos de Inmersión
@@ -603,6 +610,7 @@ export const brewingMethods = [
       "Este método combina inmersión y presión. Logra una taza redonda, sedosa y muy rica en sabor, pero sin amargura ni sedimentos, ideal si buscas más cuerpo.",
     type: "inmersion",
     icon: "🔄",
+    img: "/experiences/aeropress.png",
     extraCost: 0,
   },
   {
@@ -612,6 +620,7 @@ export const brewingMethods = [
       "Método de inmersión portátil que produce una taza con cuerpo completo y sabores concentrados, perfecto para llevar.",
     type: "inmersion",
     icon: "🚀",
+    img: "/experiences/press2go.png",
     extraCost: 0,
   },
 ];
@@ -623,6 +632,7 @@ export const cupTypes = [
     description:
       "La taza clásica y cómoda. Su boca ancha permite que el café se enfríe un poco más rápido, ideal para beber de forma más casual y sin complicaciones.",
     icon: "☕",
+    img: "/experiences/abierto.png",
   },
   {
     id: "taza_cerrada",
@@ -630,6 +640,7 @@ export const cupTypes = [
     description:
       "Su diseño con una boca más estrecha está pensado para capturar y concentrar todos los aromas. Es perfecta para una experiencia aromática completa y mantiene tu bebida caliente.",
     icon: "🫖",
+    img: "/experiences/cerrado.png",
   },
   {
     id: "copa",

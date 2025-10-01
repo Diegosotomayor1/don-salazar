@@ -11,6 +11,7 @@ import {
 import { UserData } from "@/types";
 import { coffeeTypes } from "@/constants";
 import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
 
 export function CoffeeTypeStep({
   userData,
@@ -64,8 +65,26 @@ export function CoffeeTypeStep({
                 <div className="absolute top-3 right-3 text-lg font-bold text-primary">
                   S/ {coffee.price}
                 </div>
-                <div className="flex items-start gap-4 pr-16">
-                  <div className="text-3xl">{coffee.icon}</div>
+                <div className="flex items-center gap-4 pr-16">
+                  <motion.div
+                    animate={{ rotate: [0, 12, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.5,
+                    }}
+                    className="relative flex items-center justify-center"
+                  >
+                    <Image
+                      src={coffee.img}
+                      alt={coffee.name}
+                      width={50}
+                      height={50}
+                    />
+                    <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
+                  </motion.div>
+                  {/*  <div className="text-3xl">{coffee.icon}</div> */}
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg text-foreground mb-2">
                       {coffee.name}

@@ -68,3 +68,12 @@ export type Category = {
   characteristics: string[];
   qrId: string;
 };
+
+export type CoffeeType = {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  img: string;
+  price: number;
+};
