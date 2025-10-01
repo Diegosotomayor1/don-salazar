@@ -67,7 +67,8 @@ export default function Categories() {
 
   return (
     <div
-      className="min-h-screen h-full bg-white relative overflow-hidden"
+      className="min-h-screen h-full relative overflow-hidden"
+      style={{ backgroundColor: '#ece6cc' }}
       ref={containerRef}
     >
       <BackgorundElementsDecoration />
@@ -114,7 +115,7 @@ export default function Categories() {
             </motion.div>
 
             <motion.h1
-              className="text-2xl md:text-5xl font-bold mb-6 text-accent"
+              className="text-2xl md:text-5xl font-bold mb-6 text-black"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -129,7 +130,7 @@ export default function Categories() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <Coffee className="w-6 h-6 text-accent" />
-              <p className="text-gray-600 text-xl font-medium">
+              <p className="text-black text-xl font-medium">
                 Descubre nuestras categorías de café especializadas
               </p>
               <Coffee className="w-6 h-6 text-accent" />
@@ -164,12 +165,7 @@ export default function Categories() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-accent/30">
-                  {/* Gradient overlay on hover */}
-                  <motion.div
-                    className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    initial={false}
-                  />
+                <div className="relative bg-accent rounded-3xl p-8 shadow-lg border border-accent/30 cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-accent hover:bg-accent/90">
 
                   {/* Animated border */}
                   <motion.div
@@ -210,14 +206,14 @@ export default function Categories() {
 
                     {/* Content */}
                     <motion.h3
-                      className="text-2xl font-bold mb-4 text-gray-800 text-center group-hover:text-accent transition-colors duration-300"
+                      className="text-2xl font-bold mb-4 text-white text-center transition-colors duration-300"
                       layout
                     >
                       {category.name}
                     </motion.h3>
 
                     <motion.p
-                      className="text-gray-600 mb-6 text-center leading-relaxed"
+                      className="text-white/90 mb-6 text-center leading-relaxed"
                       layout
                     >
                       {category.description}
@@ -235,7 +231,7 @@ export default function Categories() {
                         (characteristic, charIndex) => (
                           <motion.span
                             key={charIndex}
-                            className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20 shadow-sm hover:bg-accent/15 hover:border-accent/30 transition-colors duration-200"
+                            className="px-4 py-2 bg-black/20 text-white rounded-full text-sm font-medium border border-black/30 shadow-sm hover:bg-black/30 hover:border-black/50 transition-colors duration-200"
                             whileHover={{ scale: 1.05 }}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -249,7 +245,7 @@ export default function Categories() {
 
                     {/* Action Button */}
                     <motion.div
-                      className="flex items-center justify-center gap-2 text-accent font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      className="flex items-center justify-center gap-2 text-white font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
                       initial={{ y: 10 }}
                       whileHover={{ y: 0 }}
                     >
@@ -269,9 +265,9 @@ export default function Categories() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-accent/5 rounded-full border border-accent/20 shadow-sm hover:bg-accent/10 hover:border-accent/30 transition-all duration-300">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-black/20 rounded-full border border-black/30 shadow-sm hover:bg-black/30 hover:border-accent/30 transition-all duration-300">
               <Coffee className="w-5 h-5 text-accent" />
-              <p className="text-gray-700 font-medium">
+              <p className="text-black font-medium">
                 Selecciona una categoría para explorar nuestros cafés
                 especializados
               </p>

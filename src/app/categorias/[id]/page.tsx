@@ -8,6 +8,8 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
+import ProductModal from "@/components/ProductModal";
 
 const itemVariants = {
   hidden: {
@@ -31,9 +33,11 @@ const itemVariants = {
 const ProductItem = ({
   index,
   product,
+  onProductClick,
 }: {
   index: number;
   product: (typeof menuProducts)["cafes-de-siempre"][number];
+  onProductClick: (product: (typeof menuProducts)["cafes-de-siempre"][number]) => void;
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -61,7 +65,7 @@ const ProductItem = ({
       }}
       onMouseEnter={() => setIsPlaying(true)}
       onMouseLeave={() => setIsPlaying(false)}
-      onClick={() => setIsPlaying(!isPlaying)}
+      onClick={() => onProductClick(product)}
     >
       <video
         ref={videoRef}
@@ -84,8 +88,10 @@ const ProductItem = ({
 
         {/* Contenido */}
         <div className="flex-1 pr-16">
-          <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-accent transition-colors duration-300">
-            <span className="bg-white p-2 rounded-sm">{product.name}</span>
+          <h3 className="text-lg font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+            <span className="bg-accent text-white p-2 rounded-sm">
+              {product.name}
+            </span>
           </h3>
 
           {/* <p className="text-gray-600 text-sm leading-relaxed mb-4">
@@ -99,7 +105,7 @@ const ProductItem = ({
             {product.tags.map((tag, tagIndex) => (
               <span
                 key={tagIndex}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-accent/10 text-accent text-xs rounded-full border border-accent/20"
+                className="inline-flex items-center gap-1 px-2 py-1 bg-black/20 text-white text-xs rounded-full border border-black/30"
               >
                 {tag === "Recomendación del barista" && (
                   <Star className="w-3 h-3" />
@@ -120,19 +126,34 @@ export default function CategoryProducts() {
   const params = useParams();
   const router = useRouter();
   const categoryId = params.id as string;
+  const [selectedProduct, setSelectedProduct] = useState<(typeof menuProducts)["cafes-de-siempre"][number] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const category = coffeeCategories.find((c) => c.id === categoryId);
   const products = menuProducts[categoryId as keyof typeof menuProducts] || [];
 
+  const handleProductClick = (product: (typeof menuProducts)["cafes-de-siempre"][number]) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
   if (!category) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div
+        className="min-h-screen flex items-center justify-center"
+        style={{ backgroundColor: "#ece6cc" }}
+      >
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl font-bold text-black mb-4">
             Categoría no encontrada
           </h1>
           <Button
-            onClick={() => router.push("/categories")}
+            onClick={() => router.push("/categorias")}
             className="bg-accent text-white"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -155,99 +176,11 @@ export default function CategoryProducts() {
   };
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Elementos decorativos de fondo - Íconos de café flotantes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-20 left-10 text-6xl text-accent/20"
-          animate={{
-            y: [-15, 15, -15],
-            rotate: [-5, 5, -5],
-            transition: {
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut" as const,
-            },
-          }}
-        >
-          ☕
-        </motion.div>
-        <motion.div
-          className="absolute top-40 right-20 text-5xl text-accent/15"
-          animate={{
-            y: [-12, 12, -12],
-            rotate: [5, -5, 5],
-            transition: {
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut" as const,
-              delay: 2,
-            },
-          }}
-        >
-          🫘
-        </motion.div>
-        <motion.div
-          className="absolute bottom-32 left-1/4 text-4xl text-accent/25"
-          animate={{
-            y: [-10, 10, -10],
-            rotate: [-3, 3, -3],
-            transition: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut" as const,
-              delay: 4,
-            },
-          }}
-        >
-          ☕
-        </motion.div>
-        <motion.div
-          className="absolute bottom-20 right-1/3 text-3xl text-accent/10"
-          animate={{
-            y: [-8, 8, -8],
-            rotate: [3, -3, 3],
-            transition: {
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut" as const,
-              delay: 1,
-            },
-          }}
-        >
-          🫘
-        </motion.div>
-        <motion.div
-          className="absolute top-1/2 left-5 text-4xl text-accent/12"
-          animate={{
-            y: [-12, 12, -12],
-            rotate: [-4, 4, -4],
-            transition: {
-              duration: 9,
-              repeat: Infinity,
-              ease: "easeInOut" as const,
-              delay: 3,
-            },
-          }}
-        >
-          ☕
-        </motion.div>
-        <motion.div
-          className="absolute top-3/4 right-10 text-5xl text-accent/18"
-          animate={{
-            y: [-14, 14, -14],
-            rotate: [6, -6, 6],
-            transition: {
-              duration: 7.5,
-              repeat: Infinity,
-              ease: "easeInOut" as const,
-              delay: 5,
-            },
-          }}
-        >
-          🫘
-        </motion.div>
-      </div>
+    <div
+      className="min-h-screen relative overflow-hidden"
+      style={{ backgroundColor: "#ece6cc" }}
+    >
+      <BackgorundElementsDecoration />
 
       <div className="relative z-10 min-h-screen p-6">
         <div className="max-w-6xl mx-auto">
@@ -287,13 +220,13 @@ export default function CategoryProducts() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               {/* <span className="text-4xl">{category.icon}</span> */}
-              <h1 className="text-4xl md:text-5xl font-bold text-accent">
+              <h1 className="text-4xl md:text-5xl font-bold text-black">
                 {category.name}
               </h1>
             </motion.div>
 
             <motion.p
-              className="text-gray-600 text-xl font-medium mb-6"
+              className="text-black text-xl font-medium mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -323,11 +256,11 @@ export default function CategoryProducts() {
               transition={{ duration: 0.6, delay: 1 }}
             >
               <Button
-                onClick={() => router.push("/categories")}
+                onClick={() => router.push("/categorias")}
                 variant="outline"
-                className="mb-8 border-accent/30 text-accent bg-white hover:bg-accent/10"
+                className="mb-8 border-accent/30 text-[#ece6cc] bg-accent hover:bg-accent/90 hover:text-white"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
+                <ArrowLeft className="w-4 h-4 " />
                 Volver a categorías
               </Button>
             </motion.div>
@@ -341,7 +274,7 @@ export default function CategoryProducts() {
             animate="visible"
           >
             {products.map((product, index) => (
-              <ProductItem key={index} index={index} product={product} />
+              <ProductItem key={index} index={index} product={product} onProductClick={handleProductClick} />
             ))}
           </motion.div>
 
@@ -352,9 +285,9 @@ export default function CategoryProducts() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-accent/5 rounded-full border border-accent/20 shadow-sm">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-black/20 rounded-full border border-black/30 shadow-sm hover:bg-black/30 hover:border-accent/30 transition-all duration-300">
               <Coffee className="w-5 h-5 text-accent" />
-              <p className="text-gray-700 font-medium">
+              <p className="text-black font-medium">
                 {products.length} productos disponibles en {category.name}
               </p>
               <Coffee className="w-5 h-5 text-accent" />
@@ -362,6 +295,13 @@ export default function CategoryProducts() {
           </motion.div>
         </div>
       </div>
+
+      {/* Product Modal */}
+      <ProductModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        product={selectedProduct}
+      />
     </div>
   );
 }

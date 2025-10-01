@@ -5,7 +5,7 @@ export default function BackgorundElementsDecoration() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div
-        className="absolute top-20 left-10 text-6xl text-accent/20"
+        className="absolute top-20 left-10 text-6xl text-black/15"
         animate={{
           y: [-15, 15, -15],
           rotate: [-5, 5, -5],
@@ -19,7 +19,7 @@ export default function BackgorundElementsDecoration() {
         ☕
       </motion.div>
       <motion.div
-        className="absolute top-40 right-20 text-5xl text-accent/15"
+        className="absolute top-40 right-20 text-5xl text-black/10"
         animate={{
           y: [-12, 12, -12],
           rotate: [5, -5, 5],
@@ -34,7 +34,7 @@ export default function BackgorundElementsDecoration() {
         🫘
       </motion.div>
       <motion.div
-        className="absolute bottom-32 left-1/4 text-4xl text-accent/25"
+        className="absolute bottom-32 left-1/4 text-4xl text-black/20"
         animate={{
           y: [-10, 10, -10],
           rotate: [-3, 3, -3],
@@ -49,7 +49,7 @@ export default function BackgorundElementsDecoration() {
         ☕
       </motion.div>
       <motion.div
-        className="absolute bottom-20 right-1/3 text-3xl text-accent/10"
+        className="absolute bottom-20 right-1/3 text-3xl text-black/8"
         animate={{
           y: [-8, 8, -8],
           rotate: [3, -3, 3],
@@ -64,7 +64,7 @@ export default function BackgorundElementsDecoration() {
         🫘
       </motion.div>
       <motion.div
-        className="absolute top-1/2 left-5 text-4xl text-accent/12"
+        className="absolute top-1/2 left-5 text-4xl text-black/12"
         animate={{
           y: [-12, 12, -12],
           rotate: [-4, 4, -4],
@@ -79,7 +79,7 @@ export default function BackgorundElementsDecoration() {
         ☕
       </motion.div>
       <motion.div
-        className="absolute top-3/4 right-10 text-5xl text-accent/18"
+        className="absolute top-3/4 right-10 text-5xl text-black/15"
         animate={{
           y: [-14, 14, -14],
           rotate: [6, -6, 6],
