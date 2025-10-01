@@ -11,13 +11,7 @@ import {
 import { Button } from "./ui/button";
 import { UserData } from "@/types";
 
-export function RecommendationsStep({
-  userData,
-  goBack,
-}: {
-  userData: UserData;
-  goBack: () => void;
-}) {
+export function RecommendationsStep({ goBack }: { goBack: () => void }) {
   const [activeTab, setActiveTab] = useState<"methods" | "types" | "sizes">(
     "methods"
   );

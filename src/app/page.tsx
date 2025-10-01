@@ -197,11 +197,7 @@ export default function DonSalazarWizard() {
           )}
 
           {currentStep === "recommendations" && (
-            <RecommendationsStep
-              key="recommendations"
-              userData={userData}
-              goBack={goBack}
-            />
+            <RecommendationsStep key="recommendations" goBack={goBack} />
           )}
 
           {currentStep === "quiz" && (
