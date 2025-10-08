@@ -1,6 +1,7 @@
 export type Step =
   | "name"
   | "preparation"
+  | "comingSoon"
   | "options"
   | "coffeeType"
   | "brewingMethod"
@@ -76,4 +77,11 @@ export type CoffeeType = {
   icon: string;
   img: string;
   price: number;
+};
+
+export type MenuProducts = {
+  name: string;
+  price: number;
+  description: string;
+  tags: string[];
 };

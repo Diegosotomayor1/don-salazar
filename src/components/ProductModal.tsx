@@ -17,7 +17,11 @@ interface ProductModalProps {
   product: Product | null;
 }
 
-export default function ProductModal({ isOpen, onClose, product }: ProductModalProps) {
+export default function ProductModal({
+  isOpen,
+  onClose,
+  product,
+}: ProductModalProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -62,6 +66,9 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
+          <div className="absolute bottom-2 right-2 z-20 p-2 rounded-full bg-white text-black text-xs px-4">
+            Te gustó el producto? Pídelo con nuestro barista
+          </div>
 
           {/* Modal Content - TikTok Style */}
           <motion.div
@@ -121,10 +128,8 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
               {/* Product Info */}
               <div className="text-white">
                 {/* Product Name */}
-                <h2 className="text-xl font-bold mb-2">
-                  {product.name}
-                </h2>
-                
+                <h2 className="text-xl font-bold mb-2">{product.name}</h2>
+
                 {/* Description */}
                 <p className="text-white/90 text-sm leading-relaxed mb-3 line-clamp-3">
                   {product.description}
@@ -144,7 +149,9 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
                         {tag === "Recomendación del barista" && (
                           <Star className="w-3 h-3" />
                         )}
-                        {tag === "Alto en cafeína" && <Coffee className="w-3 h-3" />}
+                        {tag === "Alto en cafeína" && (
+                          <Coffee className="w-3 h-3" />
+                        )}
                         <Tag className="w-3 h-3" />
                         {tag}
                       </motion.span>

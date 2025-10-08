@@ -1,33 +1,38 @@
-import { Category, CoffeeType, SistemaRecomendacion } from "@/types";
+import {
+  Category,
+  CoffeeType,
+  MenuProducts,
+  SistemaRecomendacion,
+} from "@/types";
 
 export const coffeeCategories: Category[] = [
   {
     id: "cafes-de-siempre",
-    name: "Los Cafés de Siempre",
-    description: "Clásicos espressos, lattes y cappuccinos",
+    name: "El calor del grano",
+    description: "Bebidas calientes: Clásicos espressos, lattes y cappuccinos",
     icon: "☕",
     characteristics: ["Clásico", "Tradicional", "Espresso"],
     qrId: "1",
   },
   {
     id: "bebidas-frias-cafe",
-    name: "Bebidas Frías con Café",
-    description: "Refrescantes combinaciones con café",
+    name: "La frescura del grano",
+    description: "Bebidas frias: Refrescantes combinaciones con café",
     icon: "🧊",
     characteristics: ["Refrescante", "Frío", "Innovador"],
     qrId: "2",
   },
   {
     id: "bebidas-sin-cafe",
-    name: "Bebidas sin Café",
-    description: "Tés, chocolates y jugos naturales",
+    name: "Más allá del grano",
+    description: "Bebidas sin café: Tés, chocolates y jugos naturales",
     icon: "🫖",
     characteristics: ["Sin Cafeína", "Natural", "Variado"],
     qrId: "3",
   },
   {
     id: "cocteles",
-    name: "Cócteles",
+    name: "Cócteles con historia",
     description: "Mezclas únicas con y sin alcohol",
     icon: "🍸",
     characteristics: ["Premium", "Único", "Sofisticado"],
@@ -35,133 +40,179 @@ export const coffeeCategories: Category[] = [
   },
   {
     id: "salados",
-    name: "Salados",
-    description: "Empanadas, sándwiches y croissants",
+    name: "Acompañamienots Salazar",
+    description: "Salados: Empanadas, sándwiches y croissants",
     icon: "🥪",
     characteristics: ["Fresco", "Artesanal", "Sabroso"],
     qrId: "5",
   },
   {
     id: "dulces",
-    name: "Dulces",
-    description: "Postres, tortas y galletas caseras",
+    name: "Manajares Salazar",
+    description: "Dulces: Postres, tortas y galletas caseras",
     icon: "🍰",
     characteristics: ["Dulce", "Casero", "Irresistible"],
     qrId: "6",
   },
+  {
+    id: "piqueos",
+    name: "Piqueos Salazar",
+    description: "Piqueos: Empanadas, sándwiches y croissants",
+    icon: "🥪",
+    characteristics: ["Compartir", "Variado"],
+    qrId: "7",
+  },
 ];
 
 // Productos por categoría
-export const menuProducts = {
+export const menuProducts: Record<string, MenuProducts[]> = {
   "cafes-de-siempre": [
     {
       name: "Espresso",
       price: 8,
-      description: "Doble shot de sabor intenso y aroma envolvente.",
+      description: "Un shot de sabor intenso y aroma envolvente. ",
       tags: ["Alto en cafeína"],
     },
     {
       name: "Espresso Doble",
       price: 12,
-      description: "Doble intensidad para los amantes del café puro.",
-      tags: ["Alto en cafeína"],
-    },
-    {
-      name: "Ristretto",
-      price: 8,
-      description: "Espresso concentrado con máxima intensidad.",
+      description: "Doble shot de sabor intenso y aroma envolvente. ",
       tags: ["Alto en cafeína"],
     },
     {
       name: "Americano",
       price: 11,
-      description: "Espresso alargado con agua caliente.",
+      description: "Suave y deliciosa mezcla de espresso y agua caliente. ",
       tags: [],
     },
     {
       name: "Macchiato",
       price: 11,
-      description: "Espresso intenso con un toque de leche líquida.",
+      description:
+        'Macchiato o "Manchado" es un espresso intenso con un toque de espuma de leche. ',
       tags: [],
     },
     {
       name: "Cortado",
       price: 11,
-      description: "Equilibrio perfecto entre espresso y leche.",
+      description: "Espresso intenso con un toque de leche liquida. ",
       tags: [],
     },
     {
       name: "Cappuccino",
       price: 13,
-      description: "Espresso con leche vaporizada y espuma cremosa.",
+      description:
+        "Mezcla de espresso, leche vaporizada y una densa capa de espuma. ",
       tags: [],
     },
     {
       name: "Latte",
       price: 13,
-      description: "Espresso suave con abundante leche vaporizada.",
-      tags: [],
-    },
-    {
-      name: "Vainilla Latte",
-      price: 16,
-      description:
-        "Espresso intenso con leche vaporizada y sabor irresistible a vainilla.",
-      tags: [],
-    },
-    {
-      name: "Pink Latte",
-      price: 16,
-      description:
-        "Espresso intenso con leche vaporizada y sabor exquisito a fresa.",
+      description: "Espresso suave con abundante leche vaporizada. ",
       tags: [],
     },
     {
       name: "Mocaccino",
       price: 15,
-      description: "Deliciosa combinación de espresso, chocolate y leche.",
+      description:
+        "Combinación perfecta de espresso, leche vaporizada y chocolate. ",
       tags: [],
     },
     {
       name: "Flat White",
       price: 14,
-      description: "Espresso doble con microespuma de leche.",
+      description: "Espresso intenso y microespuma suave. ",
       tags: [],
     },
     {
       name: "Stumpy",
-      price: 15,
-      description: "Especialidad de la casa con carácter único.",
-      tags: ["Recomendación del barista"],
+      price: 14,
+      description: "Espresso doble, leche vaporizada y microespuma suave. ",
+      tags: [],
+    },
+    {
+      name: "White Cappuccino",
+      price: 16,
+      description:
+        "Espresso intenso con leche vaporizada y sabor irresistible a vainilla. ",
+      tags: [],
+    },
+    {
+      name: "Pink Cappuccino",
+      description:
+        "Espresso intenso con leche vaporizada y sabor exquisito a fresa. ",
+      price: 16,
+      tags: [],
+    },
+    {
+      name: "Green Cappuccino",
+      description:
+        "Espresso intenso con leche vaporizada con un toque de menta. ",
+      price: 16,
+      tags: [],
+    },
+    {
+      name: "Black Cappuccino ★",
+      description:
+        "Espresso intenso con leche vaporizada y con un toque caramel con carbón activado. ",
+      price: 17,
+      tags: [],
     },
   ],
   "bebidas-frias-cafe": [
-    {
-      name: "Sparkling Coffee Clásico",
-      price: 17,
-      description:
-        "Combinación perfecta de café y cítricos en una bebida refrescante. Limón y jarabe de goma como base, relleno de un mix entre agua gasificada y Ginger Ale para una experiencia burbujeante y toque final de cold brew.",
-      tags: [],
-    },
-    {
-      name: "Sparkling Coffee Maracumango",
-      price: 19,
-      description:
-        "Deliciosa mezcla de maracuyá y mango, junto con un toque cítrico de limón y relleno de Ginger Ale burbujeante. Complementado finalmente con la energía del cold brew.",
-      tags: [],
-    },
-    {
-      name: "Sparkling Dragon Coffee",
-      price: 20,
-      description:
-        "Bebida burbujeante que combina la dulzura de los frutos rojos con el toque cítrico de limón, creando una explosión de sabores frutales. Complementado finalmente con Ginger Ale burbujeante y cold brew.",
-      tags: [],
-    },
     {
       name: "Americano Frío",
       price: 12,
       description: "El clásico americano en una versión refrescante con hielo.",
       tags: [],
+    },
+    {
+      name: "Orange Coffee",
+      price: 16,
+      description:
+        "Refrescante jugo de naranja natural con doble shot de cold brew.",
+      tags: [],
+    },
+    {
+      name: "Iced Cappuccino",
+      price: 17,
+      description: "Shot de espresso con leche y abundante hielo.",
+      tags: [],
+    },
+    {
+      name: "Iced White Cappuccino",
+      price: 18,
+      description:
+        "Shot de espresso con leche fresca, esencia de vainilla y abundante hielo.",
+      tags: [],
+    },
+    {
+      name: "Iced Pink Cappuccino",
+      price: 18,
+      description:
+        "Shot de espresso con leche fresca, sabor a fresa y abundante hielo.",
+      tags: [],
+    },
+    {
+      name: "Iced Green Cappuccino",
+      price: 18,
+      description:
+        "Shot de espresso con leche fresca, con un toque de menta y abundante hielo.",
+      tags: [],
+    },
+    {
+      name: "Iced Black Cappuccino",
+      price: 19,
+      description:
+        "Shot de espresso con leche fresca, con un toque caramel con carbón activado y abundante hielo.",
+      tags: [],
+    },
+    {
+      name: "Cold Brew",
+      price: 17,
+      description:
+        "Café filtrado en frío durante 24 horas en la majestuosa torre Yamacold.",
+      tags: ["Alto en cafeína"],
     },
     {
       name: "Frappe Don Salazar",
@@ -176,59 +227,72 @@ export const menuProducts = {
       tags: [],
     },
     {
-      name: "Iced Latte",
-      price: 16,
-      description: "Shot de espresso con leche fresca y abundante hielo.",
-      tags: [],
-    },
-    {
-      name: "Iced Vainilla Latte",
-      price: 16,
-      description:
-        "Shot de espresso con leche fresca, esencia de vainilla y abundante hielo.",
-      tags: [],
-    },
-    {
-      name: "Iced Pink Latte",
-      price: 16,
-      description:
-        "Shot de espresso con leche fresca, fresas y abundante hielo.",
-      tags: [],
-    },
-    {
-      name: "Orange Coffee",
-      price: 16,
-      description:
-        "Refrescante jugo de naranja natural con doble shot de cold brew.",
-      tags: [],
-    },
-    {
-      name: "Cold Brew",
+      name: "Sparkling Coffee Clásico",
       price: 17,
       description:
-        "Café filtrado en frío durante 24 horas en la majestuosa torre Yamacold.",
-      tags: ["Recomendación del barista", "Alto en cafeína"],
+        "Café con limón, jarabe de goma, Ginger Ale y un toque burbujeante de cold brew.",
+      tags: [],
+    },
+    {
+      name: "Sparkling Coffee Maracumango",
+      price: 19,
+      description:
+        "Mix de maracuyá, mango y limón, con Ginger Ale burbujeante y un toque de cold brew.",
+      tags: [],
+    },
+    {
+      name: "Sparkling Dragon Coffee",
+      price: 20,
+      description:
+        "Burbujeante mezcla de frutos rojos y limón, con Ginger Ale y un toque de cold brew.",
+      tags: [],
     },
   ],
   "bebidas-sin-cafe": [
     {
-      name: "Chocolate Caliente",
-      price: 14,
-      description:
-        "El tradicional chocolate caliente, elaborado con chocolate derretido y leche cremosa.",
-      tags: [],
-    },
-    {
-      name: "Té Artesanal de Frutos Rojos",
-      price: 14,
-      description:
-        "Deliciosa infusión artesanal de fresa, arándanos y un toque final de menta.",
-      tags: [],
-    },
-    {
       name: "Jugo de Naranja",
       price: 12,
       description: "El clásico jugo de naranja natural exprimido al momento.",
+      tags: [],
+    },
+    {
+      name: "Chocolate Caliente",
+      price: 14,
+      description:
+        "Caliente, elaborado con chocolate derretido y leche cremosa. ",
+      tags: [],
+    },
+    {
+      name: "Orange Fizz",
+      price: 15,
+      description:
+        "Bebida burbujeante de naranja con un toque cítrico y dulce.",
+      tags: [],
+    },
+    {
+      name: "Tropical Fizz",
+      price: 15,
+      description: "Refresco con gas, mezcla de sabores tropicales frutales.",
+      tags: [],
+    },
+    {
+      name: "Alivio Don Salazar",
+      price: 14,
+      description: "Infusión natural con hierbas que ayudan a la digestión.",
+      tags: [],
+    },
+    {
+      name: "Amor de Jamaica",
+      price: 14,
+      description:
+        "Infusión caliente de flor de jamaica, con sabor refrescante y ligeramente ácido.",
+      tags: [],
+    },
+    {
+      name: "Cerveza Don Salazar",
+      price: 25,
+      description:
+        "Cerveza artesanal de la casa elaborada con nuestro café de especialidad, sabor único, equilibrado y refrescante.",
       tags: [],
     },
     {
@@ -244,48 +308,32 @@ export const menuProducts = {
       tags: [],
     },
   ],
-  cocteles: [
+  piqueos: [
     {
-      name: "La Chica del Bikini Azul",
-      price: 28,
-      description:
-        "Refrescante y vibrante, a base de pisco, curacao azul, jugo de naranja, Ginger Ale, limón, jarabe de goma y un toque de cold brew.",
-      tags: [],
-    },
-    {
-      name: "La Incondicional",
-      price: 28,
-      description:
-        "Mezcla de pisco, maracumango, limón y menta fresca, con un toque de Ginger Ale y la suavidad del cold brew.",
-      tags: [],
-    },
-    {
-      name: "Sex on the Farm",
-      price: 28,
-      description:
-        "Combinación de pisco, jarabe de frutos rojos, fresa y cold brew, realzada con menta fresca y un toque chispeante de Ginger Ale.",
-      tags: [],
-    },
-    {
-      name: "Don Espresso Martini",
-      price: 38,
-      description:
-        "Una elegante y cremosa mezcla de vodka, licor de café, jarabe de caramelo y el café de la casa.",
-      tags: [],
-    },
-    {
-      name: "Pisco Sour Tradicional",
-      price: 28,
-      description:
-        "Pisco aromático, limón, jarabe de goma y clara de huevo, con un toque de angostura. ¡Un clásico irresistible!",
-      tags: [],
-    },
-    {
-      name: "Don Kofi Sour",
+      name: "Bowl Delicia del Sol",
       price: 32,
+      description: "Bowl fresco con frutas, yogurt y granola artesanal.",
+      tags: ["Selección de la Casa"],
+    },
+    {
+      name: "Pizza del Don",
+      price: 25,
       description:
-        "El tradicional pisco sour al estilo Don Salazar: con licor de café, Amaretto y el café de la casa.",
-      tags: [],
+        "Base de croissant hojaldrado con queso fundido, pollo, tomate, albahaca y salsa de yogurt para un toque cremoso y equilibrado.",
+      tags: ["Selección de la Casa"],
+    },
+    {
+      name: "5 Mini Churros con Queso y Jamón",
+      price: 18,
+      description: "",
+      tags: ["Selección de la Casa"],
+    },
+    {
+      name: "Tabla de Quesos",
+      price: 35,
+      description:
+        "Cubos de queso con hierbas, jamón pizzero, salame y frutos rojos en almibar.",
+      tags: ["Selección de la Casa"],
     },
   ],
   salados: [
@@ -297,17 +345,10 @@ export const menuProducts = {
       tags: [],
     },
     {
-      name: "Croissant Mixto",
-      price: 17,
+      name: "Croissant de Pollo",
+      price: 20,
       description:
-        "Delicioso croissant de mantequilla relleno de generosas porciones de jamón de pierna y queso cajamarquino.",
-      tags: [],
-    },
-    {
-      name: "Empanada Napolitana",
-      price: 12,
-      description:
-        "Explosión de sabor mediterráneo, con un relleno de tomate fresco, mozzarella derretida, jamón jugoso y albahaca aromática.",
+        "Croissant de mantequilla y hojaldrado, relleno de pollo desmenuzado con mayonesa casera.",
       tags: [],
     },
     {
@@ -318,102 +359,186 @@ export const menuProducts = {
       tags: [],
     },
     {
-      name: "Sándwich de Pollo",
-      price: 15,
+      name: "Tostón con Palta y Pollo",
+      price: 24,
       description:
-        "Deliciosa y tradicional pechuga de pollo desmenuzada, tierna y jugosa. Bañada en una exquisita mayonesa casera.",
+        "Pan campesino con palta y mantequilla bañado en aceite de oliva.",
       tags: [],
     },
     {
-      name: "Sándwich Capresse",
-      price: 19,
+      name: "Empanada Napolitana",
+      price: 12,
       description:
-        "Crujiente pan campesino dorado con exquisita mantequilla cajamarquina, relleno de finas láminas de tomate jugoso, mozzarella cremosa, hojas de albahaca y bañado en aceite de oliva.",
+        "Relleno mediterráneo de tomate, mozzarella, jamón y albahaca.",
       tags: [],
     },
     {
-      name: "Sándwich Ahumado",
+      name: "Maison QhiChé",
       price: 25,
       description:
-        "Crujiente pan campesino dorado con exquisita mantequilla cajamarquina, relleno de una combinación deliciosa de tocino crujiente, láminas de lomo ahumado, mozzarella cremosa y bañado con la salsa especial de la casa.",
-      tags: ["Recomendación del barista"],
+        "Tarta salada con base crujiente, rellena de vegetales y queso.",
+      tags: [],
     },
     {
-      name: "Croissant de Pollo",
+      name: "Empanada Cheese Burger",
+      price: 14,
+      description:
+        "Empanada rellena de carne, queso y sabor estilo hamburguesa.",
+      tags: [],
+    },
+    {
+      name: "Focaccia Capresse",
       price: 19,
       description:
-        "Clásico croissant de mantequilla ligero y hojaldrado, relleno de pollo desmenuzado con mayonesa casera.",
+        "Pan focaccia con mantequilla cajamarquina, tomate, mozzarella, albahaca y aceite de oliva.",
+      tags: [],
+    },
+    {
+      name: "Sandwich de Pollo",
+      price: 15,
+      description: "Pechuga de pollo desmenuzada con cremosa mayonesa casera.",
+      tags: [],
+    },
+    {
+      name: "Croissant Mixto",
+      price: 17,
+      description:
+        "Croissant de mantequilla relleno de jamón de pierna y queso cajamarquino.",
+      tags: [],
+    },
+    {
+      name: "Focaccia Ahumado",
+      price: 25,
+      description:
+        "Pan focaccia con mantequilla cajamarquina, tocino, lomo ahumado, mozzarella y salsa especial.",
       tags: [],
     },
   ],
   dulces: [
     {
-      name: "Galleta de Chispas de Chocolate",
+      name: "Galletas Chocochip",
       price: 7,
       description:
-        "Galleta grande, suave y esponjosa, rellena de abundantes chispas de chocolate. Con una textura crujiente y sabrosa.",
-      tags: [],
-    },
-    {
-      name: "Galletón de Nutella",
-      price: 12,
-      description:
-        "Galleta grande, suave y esponjosa, rellena de abundante crema de Nutella. Con una textura ligeramente crujiente por fuera y cremosa por dentro.",
-      tags: [],
-    },
-    {
-      name: "Muffin Triple Chocolate",
-      price: 12,
-      description:
-        "Esponjoso muffin hecho con cacao intenso, trozos de chocolate bitter y chispas de chocolate.",
-      tags: [],
-    },
-    {
-      name: "Muffin de Queso y Arándanos",
-      price: 12,
-      description:
-        "Esponjoso muffin elaborado con queso crema y arándanos frescos que añaden un dulzor especial.",
+        "Galleta grande y suave con abundantes chispas de chocolate.",
       tags: [],
     },
     {
       name: "Brownie",
       price: 9,
       description:
-        "Postre irresistible, con textura densa y suave. Elaborado con chocolate intenso, toque de vainilla y nueces, finalmente bañado en delicioso fudge de la casa.",
+        "Brownie de chocolate intenso con vainilla, nueces y fudge casero.",
+      tags: [],
+    },
+    {
+      name: "Muffin Triple Chocolate",
+      price: 12,
+      description:
+        "Muffin esponjoso de cacao intenso con trozos y chispas de chocolate.",
+      tags: [],
+    },
+    {
+      name: "Muffin de Queso y Arándanos",
+      price: 12,
+      description: "Muffin esponjoso de queso crema con arándanos frescos.",
+      tags: [],
+    },
+    {
+      name: "Galletón de Nutella",
+      price: 12,
+      description: "Galleta grande y suave, rellena de cremosa Nutella.",
+      tags: [],
+    },
+    {
+      name: "Crumble Cookie Pistacho",
+      price: 12,
+      description: "Galleta suave con crumble crocante y trozos de pistacho.",
       tags: [],
     },
     {
       name: "Torta de Chocolate",
       price: 18,
-      description:
-        "Delicioso postre clásico con capas suaves y húmedas de bizcocho de chocolate. Bañado en abundante fudge de la casa.",
-      tags: [],
-    },
-    {
-      name: "Carrot Cake",
-      price: 18,
-      description:
-        "Pastel húmedo y esponjoso, elaborado con zanahoria rallada, nueces, relleno y cubierto exquisito queso crema.",
-      tags: [],
-    },
-    {
-      name: "Cheesecake Maracumango",
-      price: 18,
-      description:
-        "Postre exótico y cremoso, con una base de galleta crujiente, un relleno suave de queso francés y un topping tropical de maracuyá y mango.",
-      tags: [],
-    },
-    {
-      name: "Affogato",
-      price: 18,
-      description:
-        "Bola de helado natural de vainilla Madagascar, cubierto de un shot de espresso, creando un contraste delicioso entre lo frío y lo caliente.",
+      description: "Bizcocho de chocolate húmedo con abundante fudge casero.",
       tags: [],
     },
     {
       name: "Queque Artesanal",
       price: 12,
       description: "El clásico de clásicos. Consultar sabores disponibles.",
+      tags: [],
+    },
+    {
+      name: "Affogato",
+      price: 18,
+      description: "Helado de vainilla Madagascar con un shot de espresso.",
+      tags: [],
+    },
+    {
+      name: "Carrot Cake",
+      price: 18,
+      description: "Pastel de zanahoria con nueces y cremoso queso crema.",
+      tags: [],
+    },
+    {
+      name: "Cheesecake Maracumango",
+      price: 18,
+      description:
+        "Cheesecake cremoso con base crujiente y topping de maracuyá y mango.",
+      tags: [],
+    },
+    {
+      name: "Cheesecake Frutos Rojos",
+      price: 18,
+      description: "Cheesecake cremoso con cobertura de frutos rojos frescos.",
+      tags: [],
+    },
+    {
+      name: "Waffle",
+      price: 25,
+      description: "Waffles con arándanos y fresa bañados en miel.",
+      tags: [],
+    },
+  ],
+  cocteles: [
+    {
+      name: "La Chica del Bikini Azul",
+      price: 28,
+      description:
+        "Cóctel refrescante de pisco, curacao azul, naranja, limón, Ginger Ale y cold brew.",
+      tags: [],
+    },
+    {
+      name: "La Incondicional",
+      price: 28,
+      description:
+        "Mezcla de pisco, maracumango, limón y menta fresca, con un toque de Ginger Ale y cold brew.",
+      tags: [],
+    },
+    {
+      name: "Sex on the Farm",
+      price: 28,
+      description:
+        "Cóctel de pisco con frutos rojos, fresa, menta, Ginger Ale y cold brew.",
+      tags: [],
+    },
+    {
+      name: "Pisco Sour Tradicional",
+      price: 28,
+      description:
+        "Pisco aromático, limón, jarabe de goma y clara de huevo, con un toque de angostura.",
+      tags: [],
+    },
+    {
+      name: "Don Kofi Sour",
+      price: 32,
+      description:
+        "El tradicional pisco sour al estilo Don Salazar: con licor de café, Amaretto y el café de la casa.",
+      tags: [],
+    },
+    {
+      name: "Don Espresso Martini",
+      price: 38,
+      description:
+        "Una elegante y cremosa mezcla de vodka, licor de café, jarabe de caramelo y el café de la casa.",
       tags: [],
     },
   ],
@@ -538,7 +663,7 @@ export const coffeeTypes: CoffeeType[] = [
       "Un café de sabor reconfortante y familiar, con notas claras a chocolate con leche, nueces tostadas y un dulzor a caramelo. Es bajo en acidez y tiene un cuerpo cremoso.",
     icon: "☕",
     img: "/experiences/obata.png",
-    price: 19,
+    price: 20,
   },
   {
     id: "el_balanceado",
@@ -547,7 +672,7 @@ export const coffeeTypes: CoffeeType[] = [
       "La taza perfecta para quienes buscan equilibrio. Combina la dulzura del chocolate con un toque frutal muy sutil, resultando en una bebida amable y fácil de tomar.",
     icon: "⚖️",
     img: "/experiences/balanceado.png",
-    price: 17,
+    price: 20,
   },
   {
     id: "el_tupi",
@@ -648,6 +773,7 @@ export const cupTypes = [
     description:
       "Elegante copa de vidrio que permite apreciar visualmente el café y concentra los aromas para una experiencia sensorial completa.",
     icon: "🍷",
+    img: "/experiences/copa.png",
   },
   {
     id: "copa_hielo",
@@ -655,5 +781,99 @@ export const cupTypes = [
     description:
       "Ideal para una bebida refrescante. El vidrio no retiene sabores y la forma abierta permite disfrutar del café frío de forma rápida y directa.",
     icon: "🧊",
+    img: "/experiences/copa_con_hielo.png",
+  },
+];
+
+// Talleres Don Salazar
+export const workshops = [
+  {
+    id: "coffee-for-dummies",
+    name: "Coffee for Dummies",
+    subtitle: "El taller donde aprender de café es tan fácil como tomarlo.",
+    description:
+      "No necesitas saber nada. Solo necesitas las ganas de aprender, reírte y llevarte una experiencia que, créenos, vas a recordar cada vez que huelas café.",
+    icon: "☕",
+    characteristics: [
+      "Aprendes lo básico sin aburrirte",
+      "Toda la cadena de valor del café",
+      "Usas tus manos",
+      "Te llevas el dato",
+      "Lo disfrutas",
+    ],
+    benefits: [
+      "Qué es el café de especialidad, cómo se prepara, qué tipos existen",
+      "Desde la finca hasta la taza final",
+      "Tú preparas tu propia taza con métodos fáciles y pro",
+      "Molienda, tueste, ratio y más",
+      "Es en grupo, es relajado, es divertido",
+    ],
+    idealFor:
+      "Es ideal si estás empezando, si amas el café pero no sabes por qué, o si simplemente quieres vivir algo distinto con tu gente.",
+    pricing: {
+      single: 149,
+      double: 250,
+    },
+    duration: "2 horas",
+    type: "Teórico y práctico",
+    whatsappLink: "https://wa.link/mvt90k",
+  },
+  {
+    id: "arte-latte-for-dummies",
+    name: "Arte Latte para Dummies",
+    subtitle: "La espuma nunca fue tan divertida.",
+    description:
+      "Este taller es para quienes quieren ir más allá del café… y entrar al mundo donde la leche se convierte en arte. Sí, vas a dibujar con leche. Y lo vas a hacer tú mism@. 💫",
+    icon: "🎨",
+    characteristics: [
+      "Aprendes a texturizar leche como un pro",
+      "Practicas y juegas",
+      "Te ríes",
+      "Te llevas la experiencia completa",
+    ],
+    benefits: [
+      "Cremosa, sedosa, brillante… esa que hace que el café parezca de revista",
+      "Te enseñamos los trucos, los movimientos, y luego… ¡a crear corazones, tulipanes, espirales y mucho más!",
+      "Porque acá no importa si te sale un cisne o una nube amorfa. Lo importante es disfrutar el proceso",
+      "Tips de barista, técnica real, y mucho estilo para cuando quieras lucirte",
+    ],
+    idealFor:
+      "Es perfecto para los que aman el café con leche y quieren aprender a hacer dibujos en su taza",
+    pricing: {
+      single: 149,
+      double: 250,
+    },
+    duration: "2 horas",
+    type: "Teórico y práctico",
+    whatsappLink: "https://wa.link/wgjwng",
+  },
+  {
+    id: "extraccion-metodos-barista",
+    name: "Extracción de métodos de barista para Dummies",
+    subtitle: "El taller donde te enamoras (de verdad) del café.",
+    description:
+      "Si ya probaste café de especialidad y te sorprendió… espera a prepararlo tú mismo. Este taller es para los curiosos, los que quieren entender por qué un mismo café puede saber tan distinto… solo cambiando el método o la manera de prepararlo.",
+    icon: "⚗️",
+    characteristics: [
+      "Te presentamos los métodos top del mundo barista",
+      "Aprendes qué los hace únicos",
+      "Comparas, pruebas y alucinas",
+      "Te vas con el conocimiento y el paladar afinado",
+    ],
+    benefits: [
+      "V60, Chemex, Aeropress, Sifón Japonés… sí, esos que siempre ves en Instagram",
+      "Tiempo, temperatura, molienda, filtros… todo explicado fácil y sin complicaciones",
+      "Preparas el mismo café en diferentes métodos y descubres cómo cambia el sabor",
+      "Para que nunca más vuelvas a tomar café quemado",
+    ],
+    idealFor:
+      "Este taller es para quienes quieren dar el siguiente paso, para los que aman experimentar, o simplemente para vivir una experiencia sensorial diferente.",
+    pricing: {
+      single: 179,
+      double: 310,
+    },
+    duration: "2 horas",
+    type: "Teórico y práctico",
+    whatsappLink: "https://wa.link/3rh5dv",
   },
 ];

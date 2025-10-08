@@ -2,6 +2,7 @@
 
 import { NameStep } from "@/components/NameStep";
 import { PreparationStep } from "@/components/PreparationStep";
+import { ComingSoonStep } from "@/components/ComingSoonStep";
 import { OptionsStep } from "@/components/OptionsStep";
 import { CoffeeTypeStep } from "@/components/CoffeeTypeStep";
 import { BrewingMethodStep } from "@/components/BrewingMethodStep";
@@ -30,6 +31,7 @@ export default function DonSalazarWizard() {
     const stepFlow: Record<Step, Step> = {
       name: "preparation",
       preparation: "options",
+      comingSoon: "comingSoon",
       options: "coffeeType",
       coffeeType: "brewingMethod",
       brewingMethod: "cupType",
@@ -60,6 +62,10 @@ export default function DonSalazarWizard() {
     setCurrentStep("finalRecommendation");
   };
 
+  const goToComingSoon = () => {
+    setCurrentStep("comingSoon");
+  };
+
   const goBack = () => {
     if (
       currentStep === "recommendations" ||
@@ -67,6 +73,11 @@ export default function DonSalazarWizard() {
       currentStep === "finalRecommendation"
     ) {
       setCurrentStep("options");
+      return;
+    }
+
+    if (currentStep === "comingSoon") {
+      setCurrentStep("preparation");
       return;
     }
 
@@ -147,7 +158,12 @@ export default function DonSalazarWizard() {
               setUserData={setUserData}
               nextStep={nextStep}
               goBack={goBack}
+              goToComingSoon={goToComingSoon}
             />
+          )}
+
+          {currentStep === "comingSoon" && (
+            <ComingSoonStep key="comingSoon" goBack={goBack} />
           )}
 
           {currentStep === "options" && (

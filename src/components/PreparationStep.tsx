@@ -10,21 +10,30 @@ import {
 } from "./ui/card";
 import { UserData } from "@/types";
 import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
 
 export function PreparationStep({
   userData,
   setUserData,
   nextStep,
   goBack,
+  goToComingSoon,
 }: {
   userData: UserData;
   setUserData: Dispatch<SetStateAction<UserData>>;
   nextStep: () => void;
   goBack: () => void;
+  goToComingSoon: () => void;
 }) {
   const handlePreparationSelect = (preparationType: "barista" | "self") => {
     setUserData({ ...userData, preparationType });
-    nextStep();
+    
+    // Si selecciona "self", ir directamente a comingSoon
+    if (preparationType === "self") {
+      goToComingSoon();
+    } else {
+      nextStep();
+    }
   };
 
   return (
@@ -50,9 +59,15 @@ export function PreparationStep({
               onClick={() => handlePreparationSelect("barista")}
               className="luxury-button w-full p-2 text-lg cursor-pointer"
             >
-              <div className="flex items-center justify-between w-full p-2">
+              <div className="flex items-center justify-between w-full">
                 <div className="flex items-center">
-                  <ChefHat className="mr-3 h-6 w-6" />
+                  <Image
+                    src="/barista.svg"
+                    alt="Barista"
+                    width={48}
+                    height={48}
+                    className="mr-3"
+                  />
                   <div className="text-left">
                     <div className="font-semibold text-base">
                       Que lo haga el barista
@@ -62,7 +77,9 @@ export function PreparationStep({
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center text-sm">Precio normal</div>
+                <div className="flex items-center text-sm font-bold pr-2">
+                  S/. 20
+                </div>
               </div>
             </div>
           </motion.div>
@@ -85,8 +102,9 @@ export function PreparationStep({
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center text-sm text-primary">
-                  + Costo adicional
+                <div className="flex flex-col items-center text-sm text-primary">
+                  + Costo adicional{" "}
+                  <span className="text-[10px]">(Proximamente)</span>
                 </div>
               </div>
             </div>

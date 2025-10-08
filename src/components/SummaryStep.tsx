@@ -24,9 +24,7 @@ export function SummaryStep({
   const selectedBrewingMethod = brewingMethods.find(
     (m) => m.id === userData.brewingMethod
   );
-  const selectedCupType = cupTypes.find(
-    (c) => c.id === userData.cupType
-  );
+  const selectedCupType = cupTypes.find((c) => c.id === userData.cupType);
 
   // Calcular precios
   const basePrice = selectedCoffeeType?.price || 0;
@@ -51,8 +49,10 @@ export function SummaryStep({
               <Coffee className="h-16 w-16 text-primary" />
             </div>
           </motion.div>
-          <CardTitle className="text-2xl text-foreground">
-            ¡Resumen del pedido!
+          <CardTitle className="text-xl text-foreground">
+            <p>Esta es la experiencia</p>{" "}
+            <p className="text-2xl font-bold capitalize"> {userData.name} </p>{" "}
+            <p> by Don Salazar </p>
           </CardTitle>
           <CardDescription className="text-muted-foreground">
             Tu café perfecto según tus preferencias
@@ -61,7 +61,7 @@ export function SummaryStep({
         <CardContent className="space-y-6">
           <div className="gold-border bg-card/30 p-6 rounded-2xl">
             <h3 className="font-semibold text-foreground mb-4">
-              Pedido para {userData.name}:
+              Pedido para <span className="capitalize">{userData.name}</span>:
             </h3>
             <div className="space-y-4">
               {/* Tipo de Café */}
@@ -118,8 +118,8 @@ export function SummaryStep({
                 <div className="flex-1">
                   <p className="font-medium text-foreground">Preparación:</p>
                   <p className="text-sm text-muted-foreground">
-                    {userData.preparationType === "barista" 
-                      ? "Preparado por el barista" 
+                    {userData.preparationType === "barista"
+                      ? "Preparado por el barista"
                       : "Hazlo tú mismo"}
                   </p>
                 </div>
