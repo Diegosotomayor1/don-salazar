@@ -109,7 +109,7 @@ export default function Categories() {
                     ease: "linear",
                   }}
                 >
-                  <Sparkles className="w-6 h-6 text-accent" />
+                  <Sparkles className="w-6 h-6 text-black" />
                 </motion.div>
               </div>
             </motion.div>
@@ -132,15 +132,15 @@ export default function Categories() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Coffee className="w-6 h-6 text-accent" />
+              <Coffee className="w-6 h-6 text-black" />
               <p className="text-black text-xl font-medium">
                 Descubre nuestras categorías de café especializadas
               </p>
-              <Coffee className="w-6 h-6 text-accent" />
+              <Coffee className="w-6 h-6 text-black" />
             </motion.div>
 
             <motion.div
-              className="w-24 h-1 bg-accent mx-auto rounded-full"
+              className="w-24 h-1 bg-black mx-auto"
               initial={{ width: 0 }}
               animate={{ width: 96 }}
               transition={{ duration: 1, delay: 0.8 }}
@@ -168,54 +168,31 @@ export default function Categories() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="relative bg-accent rounded-3xl p-8 shadow-lg border border-accent/30 cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-accent hover:bg-accent/90">
-                  {/* Animated border */}
-                  <motion.div
-                    className="absolute inset-0 rounded-3xl border-2 border-transparent"
-                    animate={{
-                      borderColor:
-                        hoveredCategory === category.id
-                          ? [
-                              "hsl(var(--accent))",
-                              "hsl(var(--accent) / 0.7)",
-                              "hsl(var(--accent) / 0.5)",
-                              "hsl(var(--accent))",
-                            ]
-                          : "transparent",
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-
+                <div className="relative bg-transparent backdrop-blur-sm p-8 cursor-pointer overflow-hidden transition-all duration-300 border-2 border-black/70 hover:border-accent hover:shadow-2xl">
                   <div className="relative z-10">
                     {/* Icon Section */}
                     <motion.div
-                      className="mb-8 flex justify-center"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="mb-6 flex justify-center"
+                      whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className="relative">
-                        <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center shadow-lg border border-accent/20">
-                          <span className="text-4xl font-bold text-accent">
-                            {category.icon}
-                          </span>
-                        </div>
-                        <motion.div
-                          className="absolute -inset-2 rounded-2xl bg-accent opacity-0 group-hover:opacity-20 blur-lg"
-                          transition={{ duration: 0.3 }}
-                        />
+                      <div className="w-16 h-16 bg-accent/10 flex items-center justify-center border border-black/20">
+                        <span className="text-3xl font-bold">
+                          {category.icon}
+                        </span>
                       </div>
                     </motion.div>
 
                     {/* Content */}
                     <motion.h3
-                      className="text-2xl font-bold mb-4 text-white text-center transition-colors duration-300"
+                      className="text-2xl font-bold mb-3 text-black text-center transition-colors duration-300"
                       layout
                     >
                       {category.name}
                     </motion.h3>
 
                     <motion.p
-                      className="text-white/90 mb-6 text-center leading-relaxed"
+                      className="text-black/70 mb-6 text-center leading-relaxed text-sm"
                       layout
                     >
                       {category.description}
@@ -223,21 +200,18 @@ export default function Categories() {
 
                     {/* Characteristics Tags */}
                     <motion.div
-                      className="flex-wrap gap-2 justify-center mb-6 hidden group-hover:flex"
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
+                      className="flex-wrap gap-2 justify-center mb-4 flex"
                       layout
                     >
                       {category.characteristics.map(
                         (characteristic, charIndex) => (
                           <motion.span
                             key={charIndex}
-                            className="px-4 py-2 bg-black/20 text-white rounded-full text-sm font-medium border border-black/30 shadow-sm hover:bg-black/30 hover:border-black/50 transition-colors duration-200"
+                            className="px-3 py-1.5 border border-black/30 text-black text-xs font-medium hover:bg-accent/10 hover:border-accent transition-colors duration-200"
                             whileHover={{ scale: 1.05 }}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.1 * charIndex }}
+                            transition={{ delay: 0.05 * charIndex }}
                           >
                             {characteristic}
                           </motion.span>
@@ -247,11 +221,11 @@ export default function Categories() {
 
                     {/* Action Button */}
                     <motion.div
-                      className="flex items-center justify-center gap-2 text-white font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      className="flex items-center justify-center gap-2 text-black font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 mt-4"
                       initial={{ y: 10 }}
                       whileHover={{ y: 0 }}
                     >
-                      <span>Explorar categoría</span>
+                      <span className="text-sm">Ver productos</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </motion.div>
                   </div>
@@ -267,13 +241,13 @@ export default function Categories() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-black/20 rounded-full border border-black/30 shadow-sm hover:bg-black/30 hover:border-accent/30 transition-all duration-300">
-              <Coffee className="w-5 h-5 text-accent" />
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border-2 border-black shadow-sm hover:border-accent transition-all duration-300">
+              <Coffee className="w-5 h-5 text-black" />
               <p className="text-black font-medium">
                 Selecciona una categoría para explorar nuestros cafés
                 especializados
               </p>
-              <Coffee className="w-5 h-5 text-accent" />
+              <Coffee className="w-5 h-5 text-black" />
             </div>
           </motion.div>
         </motion.div>

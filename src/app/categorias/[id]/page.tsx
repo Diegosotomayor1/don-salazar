@@ -37,7 +37,9 @@ const ProductItem = ({
 }: {
   index: number;
   product: (typeof menuProducts)["cafes-de-siempre"][number];
-  onProductClick: (product: (typeof menuProducts)["cafes-de-siempre"][number]) => void;
+  onProductClick: (
+    product: (typeof menuProducts)["cafes-de-siempre"][number]
+  ) => void;
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -74,24 +76,22 @@ const ProductItem = ({
         loop
         playsInline
         preload="metadata"
-        className="rounded-2xl h-full object-cover"
+        className="h-full object-cover"
       />
       <div
         className={cn(
-          "rounded-b-2xl absolute w-full h-fit left-0 right-0 p-6 cursor-pointer flex flex-col"
+          "absolute w-full h-fit left-0 right-0 p-6 cursor-pointer flex flex-col"
         )}
       >
         {/* Precio */}
-        <div className="absolute bottom-5 right-4 bg-accent text-white px-3 py-1 rounded-full font-bold text-lg">
+        <div className="absolute bottom-5 right-4 bg-accent text-white px-3 py-1 font-bold text-lg">
           S/ {product.price}
         </div>
 
         {/* Contenido */}
         <div className="flex-1 pr-16">
           <h3 className="text-lg font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
-            <span className="bg-accent text-white p-2 rounded-sm">
-              {product.name}
-            </span>
+            <span className="bg-accent text-white p-2">{product.name}</span>
           </h3>
 
           {/* <p className="text-gray-600 text-sm leading-relaxed mb-4">
@@ -105,7 +105,7 @@ const ProductItem = ({
             {product.tags.map((tag, tagIndex) => (
               <span
                 key={tagIndex}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-black/20 text-white text-xs rounded-full border border-black/30"
+                className="inline-flex items-center gap-1 px-3 py-1.5 border-2 border-accent text-accent text-xs font-medium"
               >
                 {tag === "Recomendación del barista" && (
                   <Star className="w-3 h-3" />
@@ -126,13 +126,17 @@ export default function CategoryProducts() {
   const params = useParams();
   const router = useRouter();
   const categoryId = params.id as string;
-  const [selectedProduct, setSelectedProduct] = useState<(typeof menuProducts)["cafes-de-siempre"][number] | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<
+    (typeof menuProducts)["cafes-de-siempre"][number] | null
+  >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const category = coffeeCategories.find((c) => c.id === categoryId);
   const products = menuProducts[categoryId as keyof typeof menuProducts] || [];
 
-  const handleProductClick = (product: (typeof menuProducts)["cafes-de-siempre"][number]) => {
+  const handleProductClick = (
+    product: (typeof menuProducts)["cafes-de-siempre"][number]
+  ) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
@@ -154,7 +158,7 @@ export default function CategoryProducts() {
           </h1>
           <Button
             onClick={() => router.push("/categorias")}
-            className="bg-accent text-white"
+            className="bg-accent text-white rounded-none"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Volver a categorías
@@ -243,7 +247,7 @@ export default function CategoryProducts() {
               {category.characteristics.map((char, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20"
+                  className="px-4 py-2 border-2 border-black text-black text-sm font-medium hover:border-accent transition-colors duration-200"
                 >
                   {char}
                 </span>
@@ -258,7 +262,7 @@ export default function CategoryProducts() {
               <Button
                 onClick={() => router.push("/categorias")}
                 variant="outline"
-                className="mb-8 border-accent/30 text-[#ece6cc] bg-accent hover:bg-accent/90 hover:text-white"
+                className="mb-8 rounded-none border-2 border-black text-black bg-transparent hover:border-accent hover:bg-accent/10 transition-all duration-300"
               >
                 <ArrowLeft className="w-4 h-4 " />
                 Volver a categorías
@@ -274,7 +278,12 @@ export default function CategoryProducts() {
             animate="visible"
           >
             {products.map((product, index) => (
-              <ProductItem key={index} index={index} product={product} onProductClick={handleProductClick} />
+              <ProductItem
+                key={index}
+                index={index}
+                product={product}
+                onProductClick={handleProductClick}
+              />
             ))}
           </motion.div>
 
@@ -285,7 +294,7 @@ export default function CategoryProducts() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-black/20 rounded-full border border-black/30 shadow-sm hover:bg-black/30 hover:border-accent/30 transition-all duration-300">
+            <div className="inline-flex items-center gap-3 px-6 py-3  border-2 border-black shadow-sm hover:border-accent transition-all duration-300">
               <Coffee className="w-5 h-5 text-accent" />
               <p className="text-black font-medium">
                 {products.length} productos disponibles en {category.name}

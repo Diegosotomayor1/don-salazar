@@ -66,7 +66,7 @@ export default function ProductModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
-          <div className="absolute bottom-2 right-2 z-20 p-2 rounded-full bg-white text-black text-xs px-4">
+          <div className="absolute bottom-2 right-2 z-20 p-2 rounded-lg bg-white/95 border-2 border-black text-black text-xs px-4 font-medium">
             Te gustó el producto? Pídelo con nuestro barista
           </div>
 
@@ -141,7 +141,7 @@ export default function ProductModal({
                     {product.tags.slice(0, 3).map((tag, tagIndex) => (
                       <motion.span
                         key={tagIndex}
-                        className="inline-flex items-center gap-1 px-2 py-1 bg-accent/90 text-white text-xs font-medium rounded-full"
+                        className="inline-flex items-center gap-1 px-2 py-1 bg-white/95 border-2 border-black text-black text-xs font-medium rounded-md"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 * tagIndex }}
