@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Bean, Coffee, Cookie, CupSoda, HandPlatter } from "lucide-react";
 
 export default function BackgorundElementsDecoration() {
   return (
@@ -16,7 +17,7 @@ export default function BackgorundElementsDecoration() {
           },
         }}
       >
-        ☕
+        <Coffee className="w-10 h-10" />
       </motion.div>
       <motion.div
         className="absolute top-40 right-20 text-5xl text-black/10"
@@ -31,7 +32,7 @@ export default function BackgorundElementsDecoration() {
           },
         }}
       >
-        🫘
+        <CupSoda className="w-10 h-10" />
       </motion.div>
       <motion.div
         className="absolute bottom-32 left-1/4 text-4xl text-black/20"
@@ -46,7 +47,7 @@ export default function BackgorundElementsDecoration() {
           },
         }}
       >
-        ☕
+        <HandPlatter className="w-10 h-10" />
       </motion.div>
       <motion.div
         className="absolute bottom-20 right-1/3 text-3xl text-black/8"
@@ -61,7 +62,7 @@ export default function BackgorundElementsDecoration() {
           },
         }}
       >
-        🫘
+        <Coffee className="w-10 h-10" />
       </motion.div>
       <motion.div
         className="absolute top-1/2 left-5 text-4xl text-black/12"
@@ -76,7 +77,7 @@ export default function BackgorundElementsDecoration() {
           },
         }}
       >
-        ☕
+        <Cookie className="w-10 h-10" />
       </motion.div>
       <motion.div
         className="absolute top-3/4 right-10 text-5xl text-black/15"
@@ -91,7 +92,7 @@ export default function BackgorundElementsDecoration() {
           },
         }}
       >
-        🫘
+        <HandPlatter className="w-10 h-10" />
       </motion.div>
     </div>
   );

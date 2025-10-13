@@ -56,7 +56,7 @@ export const coffeeCategories: Category[] = [
   },
   {
     id: "piqueos",
-    name: "Piqueos Salazar",
+    name: "Selección de la casa",
     description: "Piqueos: Empanadas, sándwiches y croissants",
     icon: "🥪",
     characteristics: ["Compartir", "Variado"],

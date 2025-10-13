@@ -68,10 +68,10 @@ export function SummaryStep({
               <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
                 <span className="text-2xl">{selectedCoffeeType?.icon}</span>
                 <div className="flex-1">
-                  <p className="font-medium text-foreground">Tipo de Café:</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="font-medium  text-muted-foreground">
                     {selectedCoffeeType?.name}
                   </p>
+                  <p className="text-sm text-foreground">Tipo de Café:</p>
                 </div>
                 <div className="text-primary font-medium text-sm">
                   S/ {basePrice}
@@ -83,13 +83,13 @@ export function SummaryStep({
                 <span className="text-2xl">{selectedBrewingMethod?.icon}</span>
                 <div className="flex-1">
                   <p className="font-medium text-foreground">
-                    Método de Preparación:
-                  </p>
-                  <p className="text-sm text-muted-foreground">
                     {selectedBrewingMethod?.name}
                   </p>
-                  <p className="text-xs text-primary font-medium capitalize">
+                  <p className="text-sm text-muted-foreground">
                     {selectedBrewingMethod?.type}
+                  </p>
+                  <p className="text-xs text-primary font-medium capitalize">
+                    Método de Preparación
                   </p>
                 </div>
                 {extraCost > 0 && (
@@ -103,10 +103,10 @@ export function SummaryStep({
               <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
                 <span className="text-2xl">{selectedCupType?.icon}</span>
                 <div className="flex-1">
-                  <p className="font-medium text-foreground">Tipo de Taza:</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="font-medium text-foreground">
                     {selectedCupType?.name}
                   </p>
+                  <p className="text-sm text-muted-foreground">Tipo de Taza</p>
                 </div>
               </div>
 
@@ -116,12 +116,12 @@ export function SummaryStep({
                   {userData.preparationType === "barista" ? "👨‍🍳" : "👤"}
                 </span>
                 <div className="flex-1">
-                  <p className="font-medium text-foreground">Preparación:</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="font-medium text-foreground">
                     {userData.preparationType === "barista"
                       ? "Preparado por el barista"
                       : "Hazlo tú mismo"}
                   </p>
+                  <p className="text-sm text-muted-foreground">Preparación</p>
                 </div>
                 {userData.preparationType === "self" && (
                   <div className="text-primary font-medium text-sm">
