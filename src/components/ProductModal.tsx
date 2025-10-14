@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Star, Coffee, Tag } from "lucide-react";
+import { X, Star, Coffee, Tag, ThumbsUp, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
 interface Product {
@@ -23,6 +23,7 @@ export default function ProductModal({
   product,
 }: ProductModalProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -47,6 +48,10 @@ export default function ProductModal({
     setIsPlaying(!isPlaying);
   };
 
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
+
   if (!product) return null;
 
   return (
@@ -66,13 +71,14 @@ export default function ProductModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
-          <div className="absolute bottom-2 right-2 z-20 p-2 rounded-lg bg-white/95 border-2 border-black text-black text-xs px-4 font-medium">
-            Te gustó el producto? Pídelo con nuestro barista
+          <div className="flex items-center gap-2 absolute bottom-2 right-2 z-20 p-2 bg-white/95 border-2 border-black text-black text-xs px-4 font-medium">
+            <ThumbsUp className="w-4 h-4" /> Te gustó el producto? Pídelo con
+            nuestro barista
           </div>
 
           {/* Modal Content - TikTok Style */}
           <motion.div
-            className="relative w-full max-w-md h-[85vh] rounded-2xl overflow-hidden shadow-2xl bg-black"
+            className="relative w-full max-w-md h-[85vh] overflow-hidden shadow-2xl bg-black"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -83,7 +89,7 @@ export default function ProductModal({
             <video
               ref={videoRef}
               src="/cafe.mp4"
-              muted
+              muted={isMuted}
               loop
               playsInline
               preload="metadata"
@@ -97,6 +103,18 @@ export default function ProductModal({
               className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/40 backdrop-blur-sm hover:bg-black/60 transition-colors duration-200"
             >
               <X className="w-5 h-5 text-white" />
+            </button>
+
+            {/* Mute/Unmute Button */}
+            <button
+              onClick={toggleMute}
+              className="absolute top-4 left-4 z-20 p-2 rounded-full bg-black/40 backdrop-blur-sm hover:bg-black/60 transition-colors duration-200"
+            >
+              {isMuted ? (
+                <VolumeX className="w-5 h-5 text-white" />
+              ) : (
+                <Volume2 className="w-5 h-5 text-white" />
+              )}
             </button>
 
             {/* Play/Pause Overlay */}
@@ -121,7 +139,7 @@ export default function ProductModal({
             {/* Content Overlay - Bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
               {/* Price Badge - Top Right */}
-              <div className="absolute -top-16 right-4 bg-accent text-white px-3 py-1.5 rounded-full font-bold text-lg shadow-lg">
+              <div className="absolute -top-16 right-4 bg-accent text-white px-3 py-1.5 font-bold text-lg shadow-lg">
                 S/ {product.price}
               </div>
 
@@ -141,7 +159,7 @@ export default function ProductModal({
                     {product.tags.slice(0, 3).map((tag, tagIndex) => (
                       <motion.span
                         key={tagIndex}
-                        className="inline-flex items-center gap-1 px-2 py-1 bg-white/95 border-2 border-black text-black text-xs font-medium rounded-md"
+                        className="inline-flex items-center gap-1 px-2 py-1 bg-white/95 border-2 border-black text-black text-xs font-medium"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 * tagIndex }}

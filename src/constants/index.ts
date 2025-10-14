@@ -26,7 +26,7 @@ export const coffeeCategories: Category[] = [
     id: "bebidas-sin-cafe",
     name: "Más allá del grano",
     description: "Bebidas sin café: Tés, chocolates y jugos naturales",
-    icon: "🫖",
+    icon: "🍵",
     characteristics: ["Sin Cafeína", "Natural", "Variado"],
     qrId: "3",
   },
