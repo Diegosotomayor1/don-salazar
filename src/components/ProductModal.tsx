@@ -9,6 +9,7 @@ interface Product {
   price: number;
   description: string;
   tags: string[];
+  video?: string;
 }
 
 interface ProductModalProps {
@@ -88,12 +89,12 @@ export default function ProductModal({
             {/* Full Screen Video */}
             <video
               ref={videoRef}
-              src="/cafe.mp4"
+              src={product.video || "/cafe.mp4"}
               muted={isMuted}
               loop
               playsInline
               preload="metadata"
-              className="w-full h-full object-cover cursor-pointer"
+              className="w-full h-full object-cover cursor-pointer object-center"
               onClick={togglePlay}
             />
 

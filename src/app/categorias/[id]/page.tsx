@@ -71,27 +71,29 @@ const ProductItem = ({
     >
       <video
         ref={videoRef}
-        src="/cafe.mp4"
+        src={product.video || "/cafe.mp4"}
         muted
         loop
         playsInline
         preload="metadata"
-        className="h-full object-cover"
+        className="h-full object-cover w-full object-center"
       />
       <div
         className={cn(
-          "absolute w-full h-fit left-0 right-0 p-6 cursor-pointer flex flex-col"
+          "absolute w-full h-fit left-0 right-0 p-4 cursor-pointer flex flex-col"
         )}
       >
         {/* Precio */}
-        <div className="absolute bottom-5 right-4 bg-accent text-white px-3 py-1 font-bold text-lg">
+        <div className="absolute bottom-3 right-4 bg-black border border-white text-white px-3 py-1 font-bold text-lg">
           S/ {product.price}
         </div>
 
         {/* Contenido */}
-        <div className="flex-1 pr-16">
-          <h3 className="text-lg font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
-            <span className="bg-accent text-white p-2">{product.name}</span>
+        <div className="flex flex-col gap-2 pr-16">
+          <h3 className="text-lg font-bold text-white group-hover:text-accent transition-colors duration-300">
+            <span className="bg-black border border-white text-white p-2">
+              {product.name}
+            </span>
           </h3>
 
           {/* <p className="text-gray-600 text-sm leading-relaxed mb-4">
@@ -105,7 +107,7 @@ const ProductItem = ({
             {product.tags.map((tag, tagIndex) => (
               <span
                 key={tagIndex}
-                className="inline-flex items-center gap-1 px-3 py-1.5 border-2 border-accent text-accent text-xs font-medium"
+                className="inline-flex items-center gap-1 px-3 py-1.5 border-2 border-white bg-black/50 text-white text-xs font-medium"
               >
                 {tag === "Recomendación del barista" && (
                   <Star className="w-3 h-3" />

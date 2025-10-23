@@ -84,4 +84,5 @@ export type MenuProducts = {
   price: number;
   description: string;
   tags: string[];
+  video?: string;
 };

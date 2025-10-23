@@ -62,6 +62,15 @@ export const coffeeCategories: Category[] = [
     characteristics: ["Compartir", "Variado"],
     qrId: "7",
   },
+  {
+    id: "talleres",
+    name: "Barista por un día",
+    description:
+      "Aprende el arte del café con nuestros talleres especializados",
+    icon: "🎓",
+    characteristics: ["Educativo", "Práctico", "Experiencial"],
+    qrId: "8",
+  },
 ];
 
 // Productos por categoría
@@ -72,18 +81,22 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       price: 8,
       description: "Un shot de sabor intenso y aroma envolvente. ",
       tags: ["Alto en cafeína"],
+      video: "/carta/el calor del grano/espresso_comprimido.mp4",
     },
     {
       name: "Espresso Doble",
       price: 12,
       description: "Doble shot de sabor intenso y aroma envolvente. ",
       tags: ["Alto en cafeína"],
+      video:
+        "/carta/el calor del grano/Espresso_Doble_Nueva_Carta_comprimido.mp4",
     },
     {
       name: "Americano",
       price: 11,
       description: "Suave y deliciosa mezcla de espresso y agua caliente. ",
       tags: [],
+      video: "/carta/el calor del grano/Americano_nueva_carta_comprimido.mp4",
     },
     {
       name: "Macchiato",
@@ -91,12 +104,14 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         'Macchiato o "Manchado" es un espresso intenso con un toque de espuma de leche. ',
       tags: [],
+      video: "/carta/el calor del grano/macchiato_nueva_carta_comprimido.mp4",
     },
     {
       name: "Cortado",
       price: 11,
       description: "Espresso intenso con un toque de leche liquida. ",
       tags: [],
+      video: "/carta/el calor del grano/Cortado_nueva_carta_comprimido.mp4",
     },
     {
       name: "Cappuccino",
@@ -104,12 +119,14 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Mezcla de espresso, leche vaporizada y una densa capa de espuma. ",
       tags: [],
+      video: "/carta/el calor del grano/Cappuccino_nueva_carta_comprimido.mp4",
     },
     {
       name: "Latte",
       price: 13,
       description: "Espresso suave con abundante leche vaporizada. ",
       tags: [],
+      video: "/carta/el calor del grano/Latte_nueva_carta_comprimido.mp4",
     },
     {
       name: "Mocaccino",
@@ -117,18 +134,21 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Combinación perfecta de espresso, leche vaporizada y chocolate. ",
       tags: [],
+      video: "/carta/el calor del grano/mocaccino_comprimido.mp4",
     },
     {
       name: "Flat White",
       price: 14,
       description: "Espresso intenso y microespuma suave. ",
       tags: [],
+      video: "/carta/el calor del grano/Flat_white_nueva_carta_comprimido.mp4",
     },
     {
       name: "Stumpy",
       price: 14,
       description: "Espresso doble, leche vaporizada y microespuma suave. ",
       tags: [],
+      video: "/carta/el calor del grano/Stumpy_Nueva_Carta_comprimido.mp4",
     },
     {
       name: "White Cappuccino",
@@ -136,6 +156,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Espresso intenso con leche vaporizada y sabor irresistible a vainilla. ",
       tags: [],
+      video:
+        "/carta/el calor del grano/White_Cappuccino_Nueva_Carta_comprimido.mp4",
     },
     {
       name: "Pink Cappuccino",
@@ -143,6 +165,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Espresso intenso con leche vaporizada y sabor exquisito a fresa. ",
       price: 16,
       tags: [],
+      video:
+        "/carta/el calor del grano/Pink_Cappuccino_nueva_carta_comprimido.mp4",
     },
     {
       name: "Green Cappuccino",
@@ -150,6 +174,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Espresso intenso con leche vaporizada con un toque de menta. ",
       price: 16,
       tags: [],
+      video: "/carta/el calor del grano/Green_cappuccino_comprimido.mp4",
     },
     {
       name: "Black Cappuccino ★",
@@ -157,6 +182,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Espresso intenso con leche vaporizada y con un toque caramel con carbón activado. ",
       price: 17,
       tags: [],
+      video: "/carta/el calor del grano/Black_Cappuccino_comprimido.mp4",
     },
   ],
   "bebidas-frias-cafe": [
@@ -165,6 +191,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       price: 12,
       description: "El clásico americano en una versión refrescante con hielo.",
       tags: [],
+      video: "/carta/la frescura del grano/Americano_Frio_comprimido.mp4",
     },
     {
       name: "Orange Coffee",
@@ -172,12 +199,14 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Refrescante jugo de naranja natural con doble shot de cold brew.",
       tags: [],
+      video: "/carta/la frescura del grano/Orange_Coffee_comprimido.mp4",
     },
     {
       name: "Iced Cappuccino",
       price: 17,
       description: "Shot de espresso con leche y abundante hielo.",
       tags: [],
+      video: "/carta/la frescura del grano/Iced_Cappuccino_comprimido.mp4",
     },
     {
       name: "Iced White Cappuccino",
@@ -185,6 +214,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Shot de espresso con leche fresca, esencia de vainilla y abundante hielo.",
       tags: [],
+      video:
+        "/carta/la frescura del grano/Iced_White_Cappuccino_comprimido.mp4",
     },
     {
       name: "Iced Pink Cappuccino",
@@ -192,6 +223,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Shot de espresso con leche fresca, sabor a fresa y abundante hielo.",
       tags: [],
+      video: "/carta/la frescura del grano/Iced_Pink_Cappuccino_comprimido.mp4",
     },
     {
       name: "Iced Green Cappuccino",
@@ -199,6 +231,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Shot de espresso con leche fresca, con un toque de menta y abundante hielo.",
       tags: [],
+      video:
+        "/carta/la frescura del grano/Iced_Green_Cappuccino_comprimido.mp4",
     },
     {
       name: "Iced Black Cappuccino",
@@ -206,6 +240,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Shot de espresso con leche fresca, con un toque caramel con carbón activado y abundante hielo.",
       tags: [],
+      video:
+        "/carta/la frescura del grano/Iced_Black_Cappuccino_comprimido.mp4",
     },
     {
       name: "Cold Brew",
@@ -213,18 +249,21 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Café filtrado en frío durante 24 horas en la majestuosa torre Yamacold.",
       tags: ["Alto en cafeína"],
+      video: "/carta/la frescura del grano/Cold_Brew_comprimido.mp4",
     },
     {
       name: "Frappe Don Salazar",
       price: 17,
       description: "Un frappe, pero de especialidad.",
       tags: [],
+      video: "/carta/la frescura del grano/Frappe_Don_Salazar_comprimido.mp4",
     },
     {
       name: "Frappe de Oreo",
       price: 18,
       description: "Un frappe de Oreo, pero de especialidad.",
       tags: [],
+      video: "/carta/la frescura del grano/Frappe_de_Oreo_comprimido.mp4",
     },
     {
       name: "Sparkling Coffee Clásico",
@@ -232,6 +271,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Café con limón, jarabe de goma, Ginger Ale y un toque burbujeante de cold brew.",
       tags: [],
+      video:
+        "/carta/la frescura del grano/Sparkling_Coffee_Clasico_comprimido.mp4",
     },
     {
       name: "Sparkling Coffee Maracumango",
@@ -239,6 +280,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Mix de maracuyá, mango y limón, con Ginger Ale burbujeante y un toque de cold brew.",
       tags: [],
+      video:
+        "/carta/la frescura del grano/Sparkling_Maracumango_comprimido.mp4",
     },
     {
       name: "Sparkling Dragon Coffee",
@@ -246,6 +289,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Burbujeante mezcla de frutos rojos y limón, con Ginger Ale y un toque de cold brew.",
       tags: [],
+      video:
+        "/carta/la frescura del grano/Sparkling_Dragon_Coffee_comprimido.mp4",
     },
   ],
   "bebidas-sin-cafe": [
@@ -254,6 +299,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       price: 12,
       description: "El clásico jugo de naranja natural exprimido al momento.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Chocolate Caliente",
@@ -261,6 +307,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Caliente, elaborado con chocolate derretido y leche cremosa. ",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Orange Fizz",
@@ -268,18 +315,21 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Bebida burbujeante de naranja con un toque cítrico y dulce.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Tropical Fizz",
       price: 15,
       description: "Refresco con gas, mezcla de sabores tropicales frutales.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Alivio Don Salazar",
       price: 14,
       description: "Infusión natural con hierbas que ayudan a la digestión.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Amor de Jamaica",
@@ -287,6 +337,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Infusión caliente de flor de jamaica, con sabor refrescante y ligeramente ácido.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Cerveza Don Salazar",
@@ -294,18 +345,21 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Cerveza artesanal de la casa elaborada con nuestro café de especialidad, sabor único, equilibrado y refrescante.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Agua Evian con Gas",
       price: 13,
       description: "Agua de 330 ml de manantial con gas.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Agua Evian sin Gas",
       price: 13,
       description: "Agua de 500 ml de manantial sin gas.",
       tags: [],
+      video: "/cafe.mp4",
     },
   ],
   piqueos: [
@@ -314,6 +368,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       price: 32,
       description: "Bowl fresco con frutas, yogurt y granola artesanal.",
       tags: ["Selección de la Casa"],
+      video: "/cafe.mp4",
     },
     {
       name: "Pizza del Don",
@@ -321,12 +376,14 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Base de croissant hojaldrado con queso fundido, pollo, tomate, albahaca y salsa de yogurt para un toque cremoso y equilibrado.",
       tags: ["Selección de la Casa"],
+      video: "/cafe.mp4",
     },
     {
       name: "5 Mini Churros con Queso y Jamón",
       price: 18,
       description: "",
       tags: ["Selección de la Casa"],
+      video: "/cafe.mp4",
     },
     {
       name: "Tabla de Quesos",
@@ -334,6 +391,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Cubos de queso con hierbas, jamón pizzero, salame y frutos rojos en almibar.",
       tags: ["Selección de la Casa"],
+      video: "/cafe.mp4",
     },
   ],
   salados: [
@@ -343,6 +401,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "El clásico irresistible, relleno de abundante carne jugosa de res.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Croissant de Pollo",
@@ -350,6 +409,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Croissant de mantequilla y hojaldrado, relleno de pollo desmenuzado con mayonesa casera.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Empanada Bechamel",
@@ -357,6 +417,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Rellena de jugoso pollo, champiñones frescos y una suave salsa bechamel.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Tostón con Palta y Pollo",
@@ -364,6 +425,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Pan campesino con palta y mantequilla bañado en aceite de oliva.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Empanada Napolitana",
@@ -371,6 +433,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Relleno mediterráneo de tomate, mozzarella, jamón y albahaca.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Maison QhiChé",
@@ -378,6 +441,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Tarta salada con base crujiente, rellena de vegetales y queso.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Empanada Cheese Burger",
@@ -385,6 +449,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Empanada rellena de carne, queso y sabor estilo hamburguesa.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Focaccia Capresse",
@@ -392,12 +457,14 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Pan focaccia con mantequilla cajamarquina, tomate, mozzarella, albahaca y aceite de oliva.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Sandwich de Pollo",
       price: 15,
       description: "Pechuga de pollo desmenuzada con cremosa mayonesa casera.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Croissant Mixto",
@@ -405,6 +472,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Croissant de mantequilla relleno de jamón de pierna y queso cajamarquino.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Focaccia Ahumado",
@@ -412,6 +480,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Pan focaccia con mantequilla cajamarquina, tocino, lomo ahumado, mozzarella y salsa especial.",
       tags: [],
+      video: "/cafe.mp4",
     },
   ],
   dulces: [
@@ -421,6 +490,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Galleta grande y suave con abundantes chispas de chocolate.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Brownie",
@@ -428,6 +498,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Brownie de chocolate intenso con vainilla, nueces y fudge casero.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Muffin Triple Chocolate",
@@ -435,48 +506,56 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Muffin esponjoso de cacao intenso con trozos y chispas de chocolate.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Muffin de Queso y Arándanos",
       price: 12,
       description: "Muffin esponjoso de queso crema con arándanos frescos.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Galletón de Nutella",
       price: 12,
       description: "Galleta grande y suave, rellena de cremosa Nutella.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Crumble Cookie Pistacho",
       price: 12,
       description: "Galleta suave con crumble crocante y trozos de pistacho.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Torta de Chocolate",
       price: 18,
       description: "Bizcocho de chocolate húmedo con abundante fudge casero.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Queque Artesanal",
       price: 12,
       description: "El clásico de clásicos. Consultar sabores disponibles.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Affogato",
       price: 18,
       description: "Helado de vainilla Madagascar con un shot de espresso.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Carrot Cake",
       price: 18,
       description: "Pastel de zanahoria con nueces y cremoso queso crema.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Cheesecake Maracumango",
@@ -484,18 +563,21 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Cheesecake cremoso con base crujiente y topping de maracuyá y mango.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Cheesecake Frutos Rojos",
       price: 18,
       description: "Cheesecake cremoso con cobertura de frutos rojos frescos.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Waffle",
       price: 25,
       description: "Waffles con arándanos y fresa bañados en miel.",
       tags: [],
+      video: "/cafe.mp4",
     },
   ],
   cocteles: [
@@ -505,6 +587,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Cóctel refrescante de pisco, curacao azul, naranja, limón, Ginger Ale y cold brew.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "La Incondicional",
@@ -512,6 +595,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Mezcla de pisco, maracumango, limón y menta fresca, con un toque de Ginger Ale y cold brew.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Sex on the Farm",
@@ -519,6 +603,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Cóctel de pisco con frutos rojos, fresa, menta, Ginger Ale y cold brew.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Pisco Sour Tradicional",
@@ -526,6 +611,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Pisco aromático, limón, jarabe de goma y clara de huevo, con un toque de angostura.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Don Kofi Sour",
@@ -533,6 +619,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "El tradicional pisco sour al estilo Don Salazar: con licor de café, Amaretto y el café de la casa.",
       tags: [],
+      video: "/cafe.mp4",
     },
     {
       name: "Don Espresso Martini",
@@ -540,6 +627,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Una elegante y cremosa mezcla de vodka, licor de café, jarabe de caramelo y el café de la casa.",
       tags: [],
+      video: "/cafe.mp4",
     },
   ],
 };
