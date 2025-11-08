@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Coffee, Award, Sparkles } from "lucide-react";
 import {
@@ -34,6 +35,20 @@ export function FinalRecommendationStep({
   }
 
   const { grano, metodo, taza } = finalRecommendation;
+  const [expanded, setExpanded] = useState<
+    Record<"grano" | "metodo" | "taza", boolean>
+  >({
+    grano: false,
+    metodo: false,
+    taza: false,
+  });
+
+  const toggleExpanded = (section: "grano" | "metodo" | "taza") => {
+    setExpanded((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
 
   return (
     <motion.div
@@ -109,8 +124,17 @@ export function FinalRecommendationStep({
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  {grano.descripcion}
+                  {expanded.grano
+                    ? grano.description_complete
+                    : grano.descripcion}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => toggleExpanded("grano")}
+                  className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  {expanded.grano ? "Ver menos" : "Ver más"}
+                </button>
               </CardContent>
             </Card>
           </motion.div>
@@ -139,8 +163,17 @@ export function FinalRecommendationStep({
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  {metodo.descripcion}
+                  {expanded.metodo
+                    ? metodo.description_complete
+                    : metodo.descripcion}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => toggleExpanded("metodo")}
+                  className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  {expanded.metodo ? "Ver menos" : "Ver más"}
+                </button>
               </CardContent>
             </Card>
           </motion.div>
@@ -169,8 +202,15 @@ export function FinalRecommendationStep({
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  {taza.descripcion}
+                  {expanded.taza ? taza.description_complete : taza.descripcion}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => toggleExpanded("taza")}
+                  className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  {expanded.taza ? "Ver menos" : "Ver más"}
+                </button>
               </CardContent>
             </Card>
           </motion.div>

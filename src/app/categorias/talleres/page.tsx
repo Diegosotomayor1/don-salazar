@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, Coffee, ExternalLink, MessageCircle } from "lucide-react";
+import { ArrowLeft, Coffee } from "lucide-react";
 import { workshops } from "@/constants";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
 import WorkshopModal from "@/components/WorkshopModal";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const itemVariants = {
   hidden: {
@@ -52,10 +53,12 @@ const WorkshopItem = ({
   index,
   workshop,
   onWorkshopClick,
+  getWorkshopTranslations,
 }: {
   index: number;
   workshop: Workshop;
   onWorkshopClick: (workshop: Workshop) => void;
+  getWorkshopTranslations: (workshopId: string) => any;
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -82,7 +85,7 @@ const WorkshopItem = ({
     <motion.div
       key={index}
       variants={itemVariants}
-      className={cn("flex items-end relative h-96")}
+      className={cn("flex items-end relative md:h-96 h-64 cursor-pointer")}
       whileHover={{
         y: -5,
         transition: { type: "spring", stiffness: 300, damping: 20 },
@@ -98,22 +101,23 @@ const WorkshopItem = ({
         loop
         playsInline
         preload="metadata"
-        className="h-full object-cover"
+        className="h-full w-full object-cover object-center"
       />
       <div
         className={cn(
-          "absolute w-full h-fit left-0 right-0 bottom-0 p-6 flex flex-col bg-gradient-to-t from-black/90 via-black/70 to-transparent"
+          "absolute w-full h-full left-0 right-0 cursor-pointer flex flex-col"
         )}
       >
         {/* Precio Badge */}
-        <div className="absolute top-4 right-4 bg-accent text-white px-3 py-1.5 font-bold text-sm">
+        <div className="absolute top-0 right-0 bg-black border text-white px-3 py-1 font-bold text-sm md:text-lg">
           S/ {workshop.pricing.single}
         </div>
 
         {/* Contenido */}
-        <div className="flex-1 pr-16">
-          <h3 className="text-xl font-bold text-white mb-2">{workshop.name}</h3>
-          <p className="text-white/90 text-sm italic">{workshop.subtitle}</p>
+        <div className="flex flex-col gap-2 absolute bottom-0">
+          <h3 className="text-lg md:text-xl font-bold group-hover:text-accent transition-colors duration-300 py-1 px-2 bg-black border text-white ">
+            <span className="">{getWorkshopTranslations(workshop.id).name}</span>
+          </h3>
         </div>
       </div>
     </motion.div>
@@ -126,6 +130,7 @@ export default function TalleresCategory() {
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { tUI, getWorkshopTranslations } = useTranslations();
 
   const handleWorkshopClick = (workshop: Workshop) => {
     setSelectedWorkshop(workshop);
@@ -159,7 +164,7 @@ export default function TalleresCategory() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-10"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -193,34 +198,8 @@ export default function TalleresCategory() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-black">
-                Barista por un día
+                {tUI("workshops.barista-for-day")}
               </h1>
-            </motion.div>
-
-            <motion.p
-              className="text-black text-lg font-medium mb-6 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              Explora nuestros talleres y descubre el arte del café
-            </motion.p>
-
-            <motion.div
-              className="flex flex-wrap justify-center gap-2 mb-8"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <span className="px-4 py-2 border-2 border-black text-black text-sm font-medium hover:border-accent transition-colors duration-200">
-                Educativo
-              </span>
-              <span className="px-4 py-2 border-2 border-black text-black text-sm font-medium hover:border-accent transition-colors duration-200">
-                Práctico
-              </span>
-              <span className="px-4 py-2 border-2 border-black text-black text-sm font-medium hover:border-accent transition-colors duration-200">
-                Experiencial
-              </span>
             </motion.div>
 
             <motion.div
@@ -231,39 +210,17 @@ export default function TalleresCategory() {
               <Button
                 onClick={() => router.push("/categorias")}
                 variant="outline"
-                className="mb-8 rounded-none border-2 border-black text-black bg-transparent hover:border-accent hover:bg-accent/10 transition-all duration-300"
+                className="rounded-none border-2 border-black text-black bg-transparent hover:border-accent hover:bg-accent/10 transition-all duration-300"
               >
                 <ArrowLeft className="w-4 h-4 " />
-                Volver a categorías
+                {tUI("navigation.back-to-categories")}
               </Button>
-            </motion.div>
-
-            <motion.div
-              className="text-center space-y-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              <div className="max-w-2xl mx-auto">
-                <motion.a
-                  href="https://wa.me/51960350938"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 transition-all duration-300 text-lg shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <MessageCircle className="w-6 h-6" />
-                  <span>Inscríbete por WhatsApp</span>
-                  <ExternalLink className="w-5 h-5" />
-                </motion.a>
-              </div>
             </motion.div>
           </motion.div>
 
           {/* Workshops Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -274,6 +231,7 @@ export default function TalleresCategory() {
                 index={index}
                 workshop={workshop}
                 onWorkshopClick={handleWorkshopClick}
+                getWorkshopTranslations={getWorkshopTranslations}
               />
             ))}
           </motion.div>

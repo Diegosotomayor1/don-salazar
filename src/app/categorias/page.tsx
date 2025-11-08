@@ -2,7 +2,8 @@
 
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
 import { coffeeCategories } from "@/constants";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "@/hooks/useTranslations";
+import { motion } from "framer-motion";
 import { ArrowRight, Coffee, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -13,13 +14,7 @@ export default function Categories() {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const { tCategory, tUI } = useTranslations();
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
@@ -56,15 +51,6 @@ export default function Categories() {
     },
   };
 
-  const floatingAnimation = {
-    y: [-10, 10, -10],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut" as const,
-    },
-  };
-
   return (
     <div
       className="min-h-screen h-full relative overflow-hidden"
@@ -73,7 +59,7 @@ export default function Categories() {
     >
       <BackgorundElementsDecoration />
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
-        <motion.div style={{ y, opacity }} className="w-full max-w-6xl">
+        <motion.div className="w-full max-w-6xl">
           {/* Header Section */}
           <motion.div
             className="text-center mb-16"
@@ -120,24 +106,11 @@ export default function Categories() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Don Salazar
+              {tUI("brand.name")}
               <p className="text-black text-lg font-medium">
-                Speciality Coffee
+                {tUI("brand.subtitle")}
               </p>
             </motion.h1>
-
-            <motion.div
-              className="flex items-center justify-center gap-2 mb-4"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <Coffee className="w-6 h-6 text-black" />
-              <p className="text-black text-xl font-medium">
-                Descubre nuestras categorías de café especializadas
-              </p>
-              <Coffee className="w-6 h-6 text-black" />
-            </motion.div>
 
             <motion.div
               className="w-24 h-1 bg-black mx-auto"
@@ -149,7 +122,7 @@ export default function Categories() {
 
           {/* Categories Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -168,11 +141,11 @@ export default function Categories() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="relative bg-transparent backdrop-blur-sm p-8 cursor-pointer overflow-hidden transition-all duration-300 border-2 border-black/70 hover:border-accent hover:shadow-2xl">
-                  <div className="relative z-10">
+                <div className="relative bg-transparent backdrop-blur-sm md:p-4 xl:p-8 p-2 cursor-pointer overflow-hidden transition-all duration-300 border-2 border-black/70 hover:border-accent hover:shadow-2xl h-full">
+                  <div className="relative z-10 flex flex-col items-center gap-2 md:gap-4 xl:gap-6 h-full">
                     {/* Icon Section */}
                     <motion.div
-                      className="mb-6 flex justify-center"
+                      className="flex justify-center "
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -185,47 +158,22 @@ export default function Categories() {
 
                     {/* Content */}
                     <motion.h3
-                      className="text-2xl font-bold mb-3 text-black text-center transition-colors duration-300"
+                      className="text-lg md:text-xl xl:text-2xl font-bold text-black text-center transition-colors duration-300 leading-[1.25rem] md:leading-[1.5rem] xl:leading-[2rem]"
                       layout
                     >
-                      {category.name}
+                      {tCategory(category.nameKey)}
                     </motion.h3>
-
-                    <motion.p
-                      className="text-black/70 mb-6 text-center leading-relaxed text-sm"
-                      layout
-                    >
-                      {category.description}
-                    </motion.p>
-
-                    {/* Characteristics Tags */}
-                    <motion.div
-                      className="flex-wrap gap-2 justify-center mb-4 flex"
-                      layout
-                    >
-                      {category.characteristics.map(
-                        (characteristic, charIndex) => (
-                          <motion.span
-                            key={charIndex}
-                            className="px-3 py-1.5 border border-black/30 text-black text-xs font-medium hover:bg-accent/10 hover:border-accent transition-colors duration-200"
-                            whileHover={{ scale: 1.05 }}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.05 * charIndex }}
-                          >
-                            {characteristic}
-                          </motion.span>
-                        )
-                      )}
-                    </motion.div>
 
                     {/* Action Button */}
                     <motion.div
-                      className="flex items-center justify-center gap-2 text-black font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 mt-4"
+                      className="flex items-center justify-center text-black font-medium opacity-100 group-hover:opacity-100 transition-all duration-300"
                       initial={{ y: 10 }}
-                      whileHover={{ y: 0 }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                      <span className="text-sm">Ver productos</span>
+                      <span className="text-sm">
+                        {tUI("navigation.view-products")}
+                      </span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </motion.div>
                   </div>
@@ -244,8 +192,7 @@ export default function Categories() {
             <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border-2 border-black shadow-sm hover:border-accent transition-all duration-300">
               <Coffee className="w-5 h-5 text-black" />
               <p className="text-black font-medium">
-                Selecciona una categoría para explorar nuestros cafés
-                especializados
+                {tUI("navigation.select-category")}
               </p>
               <Coffee className="w-5 h-5 text-black" />
             </div>

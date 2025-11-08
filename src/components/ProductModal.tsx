@@ -155,7 +155,7 @@ export default function ProductModal({
                 </p>
 
                 {/* Tags */}
-                {product.tags.length > 0 && (
+                {/* {product.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5">
                     {product.tags.slice(0, 3).map((tag, tagIndex) => (
                       <motion.span
@@ -176,7 +176,7 @@ export default function ProductModal({
                       </motion.span>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </motion.div>

@@ -44,6 +44,7 @@ export interface QuizQuestion {
 export interface CatalogItem {
   nombre: string;
   descripcion: string;
+  description_complete: string;
 }
 
 export interface FinalRecommendation {
@@ -63,10 +64,10 @@ export interface SistemaRecomendacion {
 
 export type Category = {
   id: string;
-  name: string;
-  description: string;
+  nameKey: string;
+  descriptionKey: string;
   icon: string;
-  characteristics: string[];
+  characteristicsKeys: string[];
   qrId: string;
 };
 
@@ -80,9 +81,11 @@ export type CoffeeType = {
 };
 
 export type MenuProducts = {
+  id?: string; // Para identificar el producto en traducciones
   name: string;
   price: number;
   description: string;
   tags: string[];
   video?: string;
+  img?: string;
 };

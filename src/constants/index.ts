@@ -8,67 +8,66 @@ import {
 export const coffeeCategories: Category[] = [
   {
     id: "cafes-de-siempre",
-    name: "El calor del grano",
-    description: "Bebidas calientes: Clásicos espressos, lattes y cappuccinos",
+    nameKey: "cafes-de-siempre.name",
+    descriptionKey: "cafes-de-siempre.description",
     icon: "☕",
-    characteristics: ["Clásico", "Tradicional", "Espresso"],
+    characteristicsKeys: ["classic", "traditional", "espresso"],
     qrId: "1",
   },
   {
     id: "bebidas-frias-cafe",
-    name: "La frescura del grano",
-    description: "Bebidas frias: Refrescantes combinaciones con café",
+    nameKey: "bebidas-frias-cafe.name",
+    descriptionKey: "bebidas-frias-cafe.description",
     icon: "🧊",
-    characteristics: ["Refrescante", "Frío", "Innovador"],
+    characteristicsKeys: ["refreshing", "cold", "innovative"],
     qrId: "2",
   },
   {
     id: "bebidas-sin-cafe",
-    name: "Más allá del grano",
-    description: "Bebidas sin café: Tés, chocolates y jugos naturales",
+    nameKey: "bebidas-sin-cafe.name",
+    descriptionKey: "bebidas-sin-cafe.description",
     icon: "🍵",
-    characteristics: ["Sin Cafeína", "Natural", "Variado"],
+    characteristicsKeys: ["no-caffeine", "natural", "varied"],
     qrId: "3",
   },
   {
     id: "cocteles",
-    name: "Cócteles con historia",
-    description: "Mezclas únicas con y sin alcohol",
+    nameKey: "cocteles.name",
+    descriptionKey: "cocteles.description",
     icon: "🍸",
-    characteristics: ["Premium", "Único", "Sofisticado"],
+    characteristicsKeys: ["premium", "unique", "sophisticated"],
     qrId: "4",
   },
   {
     id: "salados",
-    name: "Acompañamientos Salazar",
-    description: "Salados: Empanadas, sándwichs...",
+    nameKey: "salados.name",
+    descriptionKey: "salados.description",
     icon: "🥪",
-    characteristics: ["Fresco", "Artesanal", "Sabroso"],
+    characteristicsKeys: ["fresh", "artisan", "delicious"],
     qrId: "5",
   },
   {
     id: "dulces",
-    name: "Manajares Salazar",
-    description: "Dulces: Postres, tortas y galletas caseras",
+    nameKey: "dulces.name",
+    descriptionKey: "dulces.description",
     icon: "🍰",
-    characteristics: ["Dulce", "Casero", "Irresistible"],
+    characteristicsKeys: ["sweet", "homemade", "irresistible"],
     qrId: "6",
   },
   {
     id: "piqueos",
-    name: "Selección de la casa",
-    description: "Piqueos: Empanadas, sándwiches y croissants",
+    nameKey: "piqueos.name",
+    descriptionKey: "piqueos.description",
     icon: "🥘",
-    characteristics: ["Compartir", "Variado"],
+    characteristicsKeys: ["sharing", "varied"],
     qrId: "7",
   },
   {
     id: "talleres",
-    name: "Barista por un día",
-    description:
-      "Aprende el arte del café con nuestros talleres especializados",
+    nameKey: "talleres.name",
+    descriptionKey: "talleres.description",
     icon: "🎓",
-    characteristics: ["Educativo", "Práctico", "Experiencial"],
+    characteristicsKeys: ["educational", "practical", "experiential"],
     qrId: "8",
   },
 ];
@@ -77,19 +76,23 @@ export const coffeeCategories: Category[] = [
 export const menuProducts: Record<string, MenuProducts[]> = {
   "cafes-de-siempre": [
     {
+      id: "espresso",
       name: "Espresso",
       price: 8,
       description: "Un shot de sabor intenso y aroma envolvente. ",
       tags: ["Alto en cafeína"],
       video: "/carta/el calor del grano/espresso_comprimido.mp4",
+      img: "/carta/el calor del grano/espresso simple.png",
     },
     {
+      id: "espresso-doble",
       name: "Espresso Doble",
       price: 12,
       description: "Doble shot de sabor intenso y aroma envolvente. ",
       tags: ["Alto en cafeína"],
       video:
         "/carta/el calor del grano/Espresso_Doble_Nueva_Carta_comprimido.mp4",
+      img: "/carta/el calor del grano/espresso doble.png",
     },
     {
       name: "Americano",
@@ -97,6 +100,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Suave y deliciosa mezcla de espresso y agua caliente. ",
       tags: [],
       video: "/carta/el calor del grano/Americano_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/americano.png",
     },
     {
       name: "Macchiato",
@@ -105,6 +109,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         'Macchiato o "Manchado" es un espresso intenso con un toque de espuma de leche. ',
       tags: [],
       video: "/carta/el calor del grano/macchiato_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/macchiato.png",
     },
     {
       name: "Cortado",
@@ -112,6 +117,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Espresso intenso con un toque de leche liquida. ",
       tags: [],
       video: "/carta/el calor del grano/Cortado_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/cortado.png",
     },
     {
       name: "Cappuccino",
@@ -120,6 +126,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Mezcla de espresso, leche vaporizada y una densa capa de espuma. ",
       tags: [],
       video: "/carta/el calor del grano/Cappuccino_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/capuccino.png",
     },
     {
       name: "Latte",
@@ -127,6 +134,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Espresso suave con abundante leche vaporizada. ",
       tags: [],
       video: "/carta/el calor del grano/Latte_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/Latte.png",
     },
     {
       name: "Mocaccino",
@@ -135,6 +143,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Combinación perfecta de espresso, leche vaporizada y chocolate. ",
       tags: [],
       video: "/carta/el calor del grano/mocaccino_comprimido.mp4",
+      img: "/carta/el calor del grano/mocaccino.png",
     },
     {
       name: "Flat White",
@@ -142,6 +151,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Espresso intenso y microespuma suave. ",
       tags: [],
       video: "/carta/el calor del grano/Flat_white_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/flat_white.png",
     },
     {
       name: "Stumpy",
@@ -149,6 +159,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Espresso doble, leche vaporizada y microespuma suave. ",
       tags: [],
       video: "/carta/el calor del grano/Stumpy_Nueva_Carta_comprimido.mp4",
+      img: "/carta/el calor del grano/stumpy.png",
     },
     {
       name: "White Cappuccino",
@@ -158,6 +169,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/el calor del grano/White_Cappuccino_Nueva_Carta_comprimido.mp4",
+      img: "/carta/el calor del grano/White Cappuccino.jpg",
     },
     {
       name: "Pink Cappuccino",
@@ -167,6 +179,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/el calor del grano/Pink_Cappuccino_nueva_carta_comprimido.mp4",
+      img: "/carta/el calor del grano/pink cappuccino.png",
     },
     {
       name: "Green Cappuccino",
@@ -175,6 +188,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       price: 16,
       tags: [],
       video: "/carta/el calor del grano/Green_cappuccino_comprimido.mp4",
+      img: "/carta/el calor del grano/green cappuccino.png",
     },
     {
       name: "Black Cappuccino ★",
@@ -183,6 +197,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       price: 17,
       tags: [],
       video: "/carta/el calor del grano/Black_Cappuccino_comprimido.mp4",
+      img: "/carta/el calor del grano/black_cappuccino.png",
     },
   ],
   "bebidas-frias-cafe": [
@@ -192,6 +207,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "El clásico americano en una versión refrescante con hielo.",
       tags: [],
       video: "/carta/la frescura del grano/Americano_Frio_comprimido.mp4",
+      img: "/carta/la frescura del grano/americano frio_1.png",
     },
     {
       name: "Orange Coffee",
@@ -200,6 +216,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Refrescante jugo de naranja natural con doble shot de cold brew.",
       tags: [],
       video: "/carta/la frescura del grano/Orange_Coffee_comprimido.mp4",
+      img: "/carta/la frescura del grano/orange coffee.png",
     },
     {
       name: "Iced Cappuccino",
@@ -207,6 +224,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Shot de espresso con leche y abundante hielo.",
       tags: [],
       video: "/carta/la frescura del grano/Iced_Cappuccino_comprimido.mp4",
+      img: "/carta/la frescura del grano/iced cappuccino.png",
     },
     {
       name: "Iced White Cappuccino",
@@ -216,6 +234,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/la frescura del grano/Iced_White_Cappuccino_comprimido.mp4",
+      img: "/carta/la frescura del grano/iced white cappuccino.png",
     },
     {
       name: "Iced Pink Cappuccino",
@@ -224,6 +243,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Shot de espresso con leche fresca, sabor a fresa y abundante hielo.",
       tags: [],
       video: "/carta/la frescura del grano/Iced_Pink_Cappuccino_comprimido.mp4",
+      img: "/carta/la frescura del grano/iced pink cappuccino.png",
     },
     {
       name: "Iced Green Cappuccino",
@@ -233,6 +253,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/la frescura del grano/Iced_Green_Cappuccino_comprimido.mp4",
+      img: "/carta/la frescura del grano/iced green cappuccino.png",
     },
     {
       name: "Iced Black Cappuccino",
@@ -242,6 +263,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/la frescura del grano/Iced_Black_Cappuccino_comprimido.mp4",
+      img: "/carta/la frescura del grano/iced black cappuccino.png",
     },
     {
       name: "Cold Brew",
@@ -250,6 +272,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Café filtrado en frío durante 24 horas en la majestuosa torre Yamacold.",
       tags: ["Alto en cafeína"],
       video: "/carta/la frescura del grano/Cold_Brew_comprimido.mp4",
+      img: "/carta/la frescura del grano/cold brew.png",
     },
     {
       name: "Frappe Don Salazar",
@@ -257,6 +280,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Un frappe, pero de especialidad.",
       tags: [],
       video: "/carta/la frescura del grano/Frappe_Don_Salazar_comprimido.mp4",
+      img: "/carta/la frescura del grano/frappe don salazar.png",
     },
     {
       name: "Frappe de Oreo",
@@ -264,6 +288,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Un frappe de Oreo, pero de especialidad.",
       tags: [],
       video: "/carta/la frescura del grano/Frappe_de_Oreo_comprimido.mp4",
+      img: "/carta/la frescura del grano/frappe de oreo.png",
     },
     {
       name: "Sparkling Coffee Clásico",
@@ -273,6 +298,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/la frescura del grano/Sparkling_Coffee_Clasico_comprimido.mp4",
+      img: "/carta/la frescura del grano/sparkling clásico.png",
     },
     {
       name: "Sparkling Coffee Maracumango",
@@ -282,6 +308,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/la frescura del grano/Sparkling_Maracumango_comprimido.mp4",
+      img: "/carta/la frescura del grano/sparkling coffee maracumango.png",
     },
     {
       name: "Sparkling Dragon Coffee",
@@ -291,6 +318,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video:
         "/carta/la frescura del grano/Sparkling_Dragon_Coffee_comprimido.mp4",
+      img: "/carta/la frescura del grano/sparkling dragon coffee .png",
     },
   ],
   "bebidas-sin-cafe": [
@@ -300,6 +328,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "El clásico jugo de naranja natural exprimido al momento.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/jugo de naranja.png",
     },
     {
       name: "Chocolate Caliente",
@@ -308,6 +337,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Caliente, elaborado con chocolate derretido y leche cremosa. ",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/chocolate caliente.png",
     },
     {
       name: "Orange Fizz",
@@ -316,6 +346,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Bebida burbujeante de naranja con un toque cítrico y dulce.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/orange fizz.png",
     },
     {
       name: "Tropical Fizz",
@@ -323,6 +354,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Refresco con gas, mezcla de sabores tropicales frutales.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/tropical fizz.png",
     },
     {
       name: "Alivio Don Salazar",
@@ -330,6 +362,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Infusión natural con hierbas que ayudan a la digestión.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/alivio don salazar.png",
     },
     {
       name: "Amor de Jamaica",
@@ -338,6 +371,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Infusión caliente de flor de jamaica, con sabor refrescante y ligeramente ácido.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/amor de jamaica.png",
     },
     {
       name: "Cerveza Don Salazar",
@@ -353,6 +387,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Agua de 330 ml de manantial con gas.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/evián con gas_1.png",
     },
     {
       name: "Agua Evian sin Gas",
@@ -360,6 +395,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Agua de 500 ml de manantial sin gas.",
       tags: [],
       video: "/cafe.mp4",
+      img: "/carta/mas alla del grano/agua evian sin gas_1.png",
     },
   ],
   piqueos: [
@@ -369,6 +405,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Bowl fresco con frutas, yogurt y granola artesanal.",
       tags: ["Selección de la Casa"],
       video: "/cafe.mp4",
+      img: "/carta/seleccion de la casa/bowl doña.png",
     },
     {
       name: "Pizza del Don",
@@ -377,6 +414,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Base de croissant hojaldrado con queso fundido, pollo, tomate, albahaca y salsa de yogurt para un toque cremoso y equilibrado.",
       tags: ["Selección de la Casa"],
       video: "/cafe.mp4",
+      img: "/carta/seleccion de la casa/pizza del don.png",
     },
     {
       name: "5 Mini Churros con Queso y Jamón",
@@ -384,6 +422,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "",
       tags: ["Selección de la Casa"],
       video: "/cafe.mp4",
+      img: "/carta/seleccion de la casa/5 mini churros.png",
     },
     {
       name: "Tabla de Quesos",
@@ -392,6 +431,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Cubos de queso con hierbas, jamón pizzero, salame y frutos rojos en almibar.",
       tags: ["Selección de la Casa"],
       video: "/cafe.mp4",
+      img: "/carta/seleccion de la casa/tabla de quesos.png",
     },
   ],
   salados: [
@@ -638,16 +678,22 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
       el_obata: {
         nombre: "El obatá",
         descripcion:
+          "Chocolate con leche, nueces tostadas, caramelo, baja acidez, cuerpo cremoso",
+        description_complete:
           "Un café de sabor reconfortante y familiar, con notas claras a chocolate con leche, nueces tostadas y un dulzor a caramelo. Es bajo en acidez y tiene un cuerpo cremoso.",
       },
       el_balanceado: {
         nombre: "El balanceado",
         descripcion:
+          "Chocolate, dulzor equilibrado, toque frutal, taza amable, fácil de tomar",
+        description_complete:
           "La taza perfecta para quienes buscan equilibrio. Combina la dulzura del chocolate con un toque frutal muy sutil, resultando en una bebida amable y fácil de tomar.",
       },
       el_tupi: {
         nombre: "El tupí",
         descripcion:
+          "Frutos rojos, mandarina, cítricos brillantes, acidez viva, jugoso",
+        description_complete:
           "Una experiencia vibrante y refrescante. Este café explota con sabores a frutos rojos y cítricos como la mandarina, con una acidez brillante que lo hace muy jugoso en boca.",
       },
     },
@@ -655,16 +701,22 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
       v60: {
         nombre: "V60",
         descripcion:
+          "Filtrado limpio, delicado, ligero, acidez brillante, notas sutiles",
+        description_complete:
           "Es un método de filtrado que produce una bebida increíblemente limpia, delicada y ligera, muy parecida a un té, donde podemos apreciar las notas más sutiles y la acidez de tu café.",
       },
       aeropress: {
         nombre: "Aeropress",
         descripcion:
+          "Inmersión, presión, taza redonda, cuerpo sedoso, sin amargor",
+        description_complete:
           "Este método combina inmersión y presión. Logra una taza redonda, sedosa y muy rica en sabor, pero sin amargura ni sedimentos, ideal si buscas más cuerpo.",
       },
       sifon_japones: {
         nombre: "Sifón Japonés",
         descripcion:
+          "Vacío, presión de vapor, aromático, complejo, claridad excepcional",
+        description_complete:
           "Más que un método, es un espectáculo. Usando vacío y presión de vapor, se crea la taza más aromática y compleja de todas, con una claridad excepcional. Es una experiencia única.",
       },
     },
@@ -672,16 +724,22 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
       taza_cerrada: {
         nombre: "Taza cerrada",
         descripcion:
+          "Boca estrecha, aromas concentrados, experiencia aromática, mantiene calor",
+        description_complete:
           "Su diseño con una boca más estrecha está pensado para capturar y concentrar todos los aromas. Es perfecta para una experiencia aromática completa y mantiene tu bebida caliente.",
       },
       copa_hielo: {
         nombre: "Copa con Hielo",
         descripcion:
+          "Bebida refrescante, vidrio neutro, forma abierta, café frío",
+        description_complete:
           "Ideal para una bebida refrescante. El vidrio no retiene sabores y la forma abierta permite disfrutar del café frío de forma rápida y directa.",
       },
       taza_abierta: {
         nombre: "Taza abierta",
         descripcion:
+          "Boca ancha, enfriamiento rápido, uso casual, sin complicaciones",
+        description_complete:
           "La taza clásica y cómoda. Su boca ancha permite que el café se enfríe un poco más rápido, ideal para beber de forma más casual y sin complicaciones.",
       },
     },
@@ -692,15 +750,15 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
         "Cuando piensas en tu momento ideal con un café, ¿qué sabores te atraen más?",
       opciones: [
         {
-          texto: "Frutas y notas cítricas. Busco algo vibrante y refrescante.",
+          texto: "Frutas y notas cítricas",
           recomienda: { tipo: "granos", clave: "el_tupi" },
         },
         {
-          texto: "Chocolate, nueces y caramelo. Prefiero un sabor más clásico.",
+          texto: "Chocolate, nueces y caramelo",
           recomienda: { tipo: "granos", clave: "el_obata" },
         },
         {
-          texto: "Un poco de todo. Busco un equilibrio perfecto, sin extremos.",
+          texto: "Un poco de todo",
           recomienda: { tipo: "granos", clave: "el_balanceado" },
         },
       ],
@@ -709,15 +767,15 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
       pregunta: "¿Cómo describirías la sensación que buscas en tu taza?",
       opciones: [
         {
-          texto: "Ligera y delicada, casi como un té, muy limpia.",
+          texto: "Ligera y delicada",
           recomienda: { tipo: "metodos", clave: "v60" },
         },
         {
-          texto: "Con cuerpo y una textura sedosa, que se sienta presente.",
+          texto: "Con cuerpo y una textura sedosa",
           recomienda: { tipo: "metodos", clave: "aeropress" },
         },
         {
-          texto: "Intensa y memorable. Una experiencia fuera de lo común.",
+          texto: "Intensa y memorable",
           recomienda: { tipo: "metodos", clave: "sifon_japones" },
         },
       ],
@@ -726,15 +784,15 @@ export const sistemaRecomendacion: SistemaRecomendacion = {
       pregunta: "Finalmente, ¿cómo quieres disfrutar tu café en este momento?",
       opciones: [
         {
-          texto: "Caliente y muy aromático, para disfrutar con calma.",
+          texto: "Caliente y muy aromático",
           recomienda: { tipo: "tazas", clave: "taza_cerrada" },
         },
         {
-          texto: "Refrescante y frío, para un día caluroso.",
+          texto: "Refrescante y frío",
           recomienda: { tipo: "tazas", clave: "copa_hielo" },
         },
         {
-          texto: "Caliente y práctico, una taza clásica y cómoda.",
+          texto: "Caliente y práctico",
           recomienda: { tipo: "tazas", clave: "taza_abierta" },
         },
       ],
@@ -873,7 +931,6 @@ export const cupTypes = [
   },
 ];
 
-// Talleres Don Salazar
 export const workshops = [
   {
     id: "coffee-for-dummies",
