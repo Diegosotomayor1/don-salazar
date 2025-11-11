@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Filter, Droplets, DollarSign } from "lucide-react";
+import { ArrowLeft, Filter, Droplets } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,

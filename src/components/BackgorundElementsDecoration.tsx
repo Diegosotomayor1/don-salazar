@@ -1,6 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Bean, Coffee, Cookie, CupSoda, HandPlatter } from "lucide-react";
+import { Coffee, Cookie, CupSoda, HandPlatter } from "lucide-react";
 
 export default function BackgorundElementsDecoration() {
   return (

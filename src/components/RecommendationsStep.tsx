@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { UserData } from "@/types";
 
 export function RecommendationsStep({ goBack }: { goBack: () => void }) {
   const [activeTab, setActiveTab] = useState<"methods" | "types" | "sizes">(

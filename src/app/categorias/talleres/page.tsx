@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, Coffee } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { workshops } from "@/constants";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,17 @@ const itemVariants = {
   },
 };
 
+interface WorkshopTranslation {
+  name: Record<string, string>;
+  subtitle: Record<string, string>;
+  description: Record<string, string>;
+  characteristics: Record<string, Record<string, string>>;
+  benefits: Record<string, Record<string, string>>;
+  idealFor: Record<string, string>;
+  duration: Record<string, string>;
+  type: Record<string, string>;
+}
+
 interface Workshop {
   id: string;
   name: string;
@@ -58,7 +69,9 @@ const WorkshopItem = ({
   index: number;
   workshop: Workshop;
   onWorkshopClick: (workshop: Workshop) => void;
-  getWorkshopTranslations: (workshopId: string) => any;
+  getWorkshopTranslations: (
+    workshopId: string
+  ) => Record<string, unknown> | undefined;
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -75,11 +88,6 @@ const WorkshopItem = ({
       setIsPlaying(false);
     }
   }, [isPlaying]);
-
-  const handleWhatsAppClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    window.open(workshop.whatsappLink, "_blank");
-  };
 
   return (
     <motion.div
@@ -116,7 +124,13 @@ const WorkshopItem = ({
         {/* Contenido */}
         <div className="flex flex-col gap-2 absolute bottom-0">
           <h3 className="text-lg md:text-xl font-bold group-hover:text-accent transition-colors duration-300 py-1 px-2 bg-black border text-white ">
-            <span className="">{getWorkshopTranslations(workshop.id).name}</span>
+            <span className="">
+              {(
+                getWorkshopTranslations(
+                  workshop.id
+                ) as unknown as WorkshopTranslation
+              )?.name.es || workshop.name}
+            </span>
           </h3>
         </div>
       </div>

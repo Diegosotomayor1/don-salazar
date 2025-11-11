@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Coffee, CheckCircle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import {
   Card,

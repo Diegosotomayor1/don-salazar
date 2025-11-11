@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, Coffee, Play, Star, Tag } from "lucide-react";
+import { ArrowLeft, Coffee, Play } from "lucide-react";
 import { coffeeCategories, menuProducts } from "@/constants";
 import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";

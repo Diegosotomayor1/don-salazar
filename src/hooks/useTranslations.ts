@@ -8,12 +8,12 @@ import { uiTranslations } from "@/translations/ui";
 import { LANGUAGE } from "@/types/dictionary";
 
 // Tipos para las traducciones
-type TranslationObject = Record<string, any>;
+type TranslationObject = Record<string, unknown>;
 type TranslationKey = string;
 
 export const useTranslations = () => {
   const { language } = useLanguage();
-  let languageDefault = LANGUAGE.ES;
+  const languageDefault = LANGUAGE.ES;
 
   /**
    * Función principal para obtener traducciones
@@ -23,12 +23,12 @@ export const useTranslations = () => {
    */
   const t = (key: TranslationKey, translations: TranslationObject): string => {
     const keys = key.split(".");
-    let value: any = translations;
+    let value: unknown = translations;
 
     // Navegar por la estructura anidada
     for (const k of keys) {
       if (value && typeof value === "object" && k in value) {
-        value = value[k];
+        value = (value as Record<string, unknown>)[k];
       } else {
         return key; // Retornar la clave si no se encuentra
       }
@@ -36,7 +36,7 @@ export const useTranslations = () => {
 
     // Si el valor es un objeto con idiomas, retornar el del idioma actual
     if (value && typeof value === "object" && language! in value) {
-      return value[language ?? languageDefault];
+      return (value as Record<string, string>)[language ?? languageDefault];
     }
 
     // Si es un string directo, retornarlo

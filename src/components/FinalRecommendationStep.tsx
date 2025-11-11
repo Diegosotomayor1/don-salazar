@@ -20,6 +20,14 @@ export function FinalRecommendationStep({
 }) {
   const { finalRecommendation } = userData;
 
+  const [expanded, setExpanded] = useState<
+    Record<"grano" | "metodo" | "taza", boolean>
+  >({
+    grano: false,
+    metodo: false,
+    taza: false,
+  });
+
   if (!finalRecommendation) {
     return (
       <motion.div
@@ -35,13 +43,6 @@ export function FinalRecommendationStep({
   }
 
   const { grano, metodo, taza } = finalRecommendation;
-  const [expanded, setExpanded] = useState<
-    Record<"grano" | "metodo" | "taza", boolean>
-  >({
-    grano: false,
-    metodo: false,
-    taza: false,
-  });
 
   const toggleExpanded = (section: "grano" | "metodo" | "taza") => {
     setExpanded((prev) => ({

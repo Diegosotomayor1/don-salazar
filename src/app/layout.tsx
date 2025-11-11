@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import { LanguageSelector } from "@/components/LanguageSelector";
 import { Provider } from "jotai";
 
 const raleway = Raleway({

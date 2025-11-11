@@ -5,7 +5,6 @@ import { LANGUAGE } from "@/types/dictionary";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
 
 export const LanguageSelector = () => {
   const { language, changeLanguage } = useLanguage();

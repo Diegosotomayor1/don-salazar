@@ -10,14 +10,11 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 export default function Categories() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { tCategory, tUI } = useTranslations();
 
   const handleCategorySelect = (categoryId: string) => {
-    setSelectedCategory(categoryId);
     router.push(`/categorias/${categoryId}`);
   };
 
@@ -127,13 +124,11 @@ export default function Categories() {
             initial="hidden"
             animate="visible"
           >
-            {coffeeCategories.map((category, index) => (
+            {coffeeCategories.map((category) => (
               <motion.div
                 key={category.id}
                 variants={itemVariants}
                 className="group relative"
-                onHoverStart={() => setHoveredCategory(category.id)}
-                onHoverEnd={() => setHoveredCategory(null)}
                 onClick={() => handleCategorySelect(category.id)}
                 whileHover={{
                   y: -8,

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Star, Coffee, Tag, ThumbsUp, Volume2, VolumeX } from "lucide-react";
+import { X, ThumbsUp, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
 interface Product {

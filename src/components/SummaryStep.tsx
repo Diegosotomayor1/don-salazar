@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { ArrowLeft, CheckCircle, Coffee } from "lucide-react";
+import { ArrowLeft, Coffee } from "lucide-react";
 import { Button } from "./ui/button";
 import { UserData } from "@/types";
 import { coffeeTypes, brewingMethods, cupTypes } from "@/constants";

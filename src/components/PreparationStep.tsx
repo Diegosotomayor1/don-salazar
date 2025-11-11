@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, User, ChefHat, DollarSign } from "lucide-react";
+import { ArrowLeft, User } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,

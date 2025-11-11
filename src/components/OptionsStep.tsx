@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Coffee,
-  HandCoins,
   MessageCircleQuestionMark,
 } from "lucide-react";
 import { Button } from "./ui/button";

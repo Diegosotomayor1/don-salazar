@@ -6,8 +6,3 @@ export enum LANGUAGE {
 export type Dictionary = {
   [key in LANGUAGE]: string;
 };
-
-const exampleDictionary: Dictionary = {
-  en: "English",
-  es: "Español",
-};
