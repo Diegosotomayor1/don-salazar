@@ -5,189 +5,189 @@ export const categoriesTranslations = {
   "cafes-de-siempre": {
     name: {
       [LANGUAGE.ES]: "El calor del grano",
-      [LANGUAGE.EN]: "The warmth of the grain"
+      [LANGUAGE.EN]: "The warmth of the grain",
     },
     description: {
-      [LANGUAGE.ES]: "Bebidas calientes: Clásicos espressos, lattes y cappuccinos",
-      [LANGUAGE.EN]: "Hot beverages: Classic espressos, lattes and cappuccinos"
+      [LANGUAGE.ES]: "Bebidas calientes",
+      [LANGUAGE.EN]: "Hot beverages",
     },
     characteristics: {
-      "classic": {
+      classic: {
         [LANGUAGE.ES]: "Clásico",
-        [LANGUAGE.EN]: "Classic"
+        [LANGUAGE.EN]: "Classic",
       },
-      "traditional": {
+      traditional: {
         [LANGUAGE.ES]: "Tradicional",
-        [LANGUAGE.EN]: "Traditional"
+        [LANGUAGE.EN]: "Traditional",
       },
-      "espresso": {
+      espresso: {
         [LANGUAGE.ES]: "Espresso",
-        [LANGUAGE.EN]: "Espresso"
-      }
-    }
+        [LANGUAGE.EN]: "Espresso",
+      },
+    },
   },
   "bebidas-frias-cafe": {
     name: {
       [LANGUAGE.ES]: "La frescura del grano",
-      [LANGUAGE.EN]: "The freshness of the grain"
+      [LANGUAGE.EN]: "The freshness of the grain",
     },
     description: {
-      [LANGUAGE.ES]: "Bebidas frias: Refrescantes combinaciones con café",
-      [LANGUAGE.EN]: "Cold beverages: Refreshing coffee combinations"
+      [LANGUAGE.ES]: "Bebidas frias",
+      [LANGUAGE.EN]: "Cold beverages",
     },
     characteristics: {
-      "refreshing": {
+      refreshing: {
         [LANGUAGE.ES]: "Refrescante",
-        [LANGUAGE.EN]: "Refreshing"
+        [LANGUAGE.EN]: "Refreshing",
       },
-      "cold": {
+      cold: {
         [LANGUAGE.ES]: "Frío",
-        [LANGUAGE.EN]: "Cold"
+        [LANGUAGE.EN]: "Cold",
       },
-      "innovative": {
+      innovative: {
         [LANGUAGE.ES]: "Innovador",
-        [LANGUAGE.EN]: "Innovative"
-      }
-    }
+        [LANGUAGE.EN]: "Innovative",
+      },
+    },
   },
   "bebidas-sin-cafe": {
     name: {
       [LANGUAGE.ES]: "Más allá del grano",
-      [LANGUAGE.EN]: "Beyond the grain"
+      [LANGUAGE.EN]: "Beyond the grain",
     },
     description: {
-      [LANGUAGE.ES]: "Bebidas sin café: Tés, chocolates y jugos naturales",
-      [LANGUAGE.EN]: "Non-coffee beverages: Teas, chocolates and natural juices"
+      [LANGUAGE.ES]: "Bebidas sin café",
+      [LANGUAGE.EN]: "Non-coffee beverages",
     },
     characteristics: {
       "no-caffeine": {
         [LANGUAGE.ES]: "Sin Cafeína",
-        [LANGUAGE.EN]: "No Caffeine"
+        [LANGUAGE.EN]: "No Caffeine",
       },
-      "natural": {
+      natural: {
         [LANGUAGE.ES]: "Natural",
-        [LANGUAGE.EN]: "Natural"
+        [LANGUAGE.EN]: "Natural",
       },
-      "varied": {
+      varied: {
         [LANGUAGE.ES]: "Variado",
-        [LANGUAGE.EN]: "Varied"
-      }
-    }
+        [LANGUAGE.EN]: "Varied",
+      },
+    },
   },
-  "cocteles": {
+  cocteles: {
     name: {
       [LANGUAGE.ES]: "Cócteles con historia",
-      [LANGUAGE.EN]: "Cocktails with history"
+      [LANGUAGE.EN]: "Cocktails with history",
     },
     description: {
       [LANGUAGE.ES]: "Mezclas únicas con y sin alcohol",
-      [LANGUAGE.EN]: "Unique mixes with and without alcohol"
+      [LANGUAGE.EN]: "Unique mixes with and without alcohol",
     },
     characteristics: {
-      "premium": {
+      premium: {
         [LANGUAGE.ES]: "Premium",
-        [LANGUAGE.EN]: "Premium"
+        [LANGUAGE.EN]: "Premium",
       },
-      "unique": {
+      unique: {
         [LANGUAGE.ES]: "Único",
-        [LANGUAGE.EN]: "Unique"
+        [LANGUAGE.EN]: "Unique",
       },
-      "sophisticated": {
+      sophisticated: {
         [LANGUAGE.ES]: "Sofisticado",
-        [LANGUAGE.EN]: "Sophisticated"
-      }
-    }
+        [LANGUAGE.EN]: "Sophisticated",
+      },
+    },
   },
-  "salados": {
+  salados: {
     name: {
       [LANGUAGE.ES]: "Acompañamientos Salazar",
-      [LANGUAGE.EN]: "Salazar accompaniments"
+      [LANGUAGE.EN]: "Salazar accompaniments",
     },
     description: {
-      [LANGUAGE.ES]: "Salados: Empanadas, sándwiches...",
-      [LANGUAGE.EN]: "Savory: Empanadas, sandwiches..."
+      [LANGUAGE.ES]: "Salados",
+      [LANGUAGE.EN]: "Savory",
     },
     characteristics: {
-      "fresh": {
+      fresh: {
         [LANGUAGE.ES]: "Fresco",
-        [LANGUAGE.EN]: "Fresh"
+        [LANGUAGE.EN]: "Fresh",
       },
-      "artisan": {
+      artisan: {
         [LANGUAGE.ES]: "Artesanal",
-        [LANGUAGE.EN]: "Artisan"
+        [LANGUAGE.EN]: "Artisan",
       },
-      "delicious": {
+      delicious: {
         [LANGUAGE.ES]: "Sabroso",
-        [LANGUAGE.EN]: "Delicious"
-      }
-    }
+        [LANGUAGE.EN]: "Delicious",
+      },
+    },
   },
-  "dulces": {
+  dulces: {
     name: {
       [LANGUAGE.ES]: "Manajares Salazar",
-      [LANGUAGE.EN]: "Salazar delicacies"
+      [LANGUAGE.EN]: "Salazar delicacies",
     },
     description: {
-      [LANGUAGE.ES]: "Dulces: Postres, tortas y galletas caseras",
-      [LANGUAGE.EN]: "Sweets: Desserts, cakes and homemade cookies"
+      [LANGUAGE.ES]: "Dulces",
+      [LANGUAGE.EN]: "Sweets",
     },
     characteristics: {
-      "sweet": {
+      sweet: {
         [LANGUAGE.ES]: "Dulce",
-        [LANGUAGE.EN]: "Sweet"
+        [LANGUAGE.EN]: "Sweet",
       },
-      "homemade": {
+      homemade: {
         [LANGUAGE.ES]: "Casero",
-        [LANGUAGE.EN]: "Homemade"
+        [LANGUAGE.EN]: "Homemade",
       },
-      "irresistible": {
+      irresistible: {
         [LANGUAGE.ES]: "Irresistible",
-        [LANGUAGE.EN]: "Irresistible"
-      }
-    }
+        [LANGUAGE.EN]: "Irresistible",
+      },
+    },
   },
-  "piqueos": {
+  piqueos: {
     name: {
       [LANGUAGE.ES]: "Selección de la casa",
-      [LANGUAGE.EN]: "House selection"
+      [LANGUAGE.EN]: "House selection",
     },
     description: {
-      [LANGUAGE.ES]: "Piqueos: Empanadas, sándwiches y croissants",
-      [LANGUAGE.EN]: "Appetizers: Empanadas, sandwiches and croissants"
+      [LANGUAGE.ES]: "Piqueos",
+      [LANGUAGE.EN]: "Appetizers",
     },
     characteristics: {
-      "sharing": {
+      sharing: {
         [LANGUAGE.ES]: "Compartir",
-        [LANGUAGE.EN]: "Sharing"
+        [LANGUAGE.EN]: "Sharing",
       },
-      "varied": {
+      varied: {
         [LANGUAGE.ES]: "Variado",
-        [LANGUAGE.EN]: "Varied"
-      }
-    }
+        [LANGUAGE.EN]: "Varied",
+      },
+    },
   },
-  "talleres": {
+  talleres: {
     name: {
       [LANGUAGE.ES]: "Barista por un día",
-      [LANGUAGE.EN]: "Barista for a day"
+      [LANGUAGE.EN]: "Barista for a day",
     },
     description: {
-      [LANGUAGE.ES]: "Aprende el arte del café con nuestros talleres especializados",
-      [LANGUAGE.EN]: "Learn the art of coffee with our specialized workshops"
+      [LANGUAGE.ES]: "Talleres",
+      [LANGUAGE.EN]: "Workshops",
     },
     characteristics: {
-      "educational": {
+      educational: {
         [LANGUAGE.ES]: "Educativo",
-        [LANGUAGE.EN]: "Educational"
+        [LANGUAGE.EN]: "Educational",
       },
-      "practical": {
+      practical: {
         [LANGUAGE.ES]: "Práctico",
-        [LANGUAGE.EN]: "Practical"
+        [LANGUAGE.EN]: "Practical",
       },
-      "experiential": {
+      experiential: {
         [LANGUAGE.ES]: "Experiencial",
-        [LANGUAGE.EN]: "Experiential"
-      }
-    }
-  }
+        [LANGUAGE.EN]: "Experiential",
+      },
+    },
+  },
 };

@@ -436,75 +436,13 @@ export const menuProducts: Record<string, MenuProducts[]> = {
   ],
   salados: [
     {
-      name: "Empanada de Carne Prime",
-      price: 12,
-      description:
-        "El clásico irresistible, relleno de abundante carne jugosa de res.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
       name: "Croissant de Pollo",
       price: 20,
       description:
         "Croissant de mantequilla y hojaldrado, relleno de pollo desmenuzado con mayonesa casera.",
       tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Empanada Bechamel",
-      price: 12,
-      description:
-        "Rellena de jugoso pollo, champiñones frescos y una suave salsa bechamel.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Tostón con Palta y Pollo",
-      price: 24,
-      description:
-        "Pan campesino con palta y mantequilla bañado en aceite de oliva.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Empanada Napolitana",
-      price: 12,
-      description:
-        "Relleno mediterráneo de tomate, mozzarella, jamón y albahaca.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Maison QhiChé",
-      price: 25,
-      description:
-        "Tarta salada con base crujiente, rellena de vegetales y queso.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Empanada Cheese Burger",
-      price: 14,
-      description:
-        "Empanada rellena de carne, queso y sabor estilo hamburguesa.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Focaccia Capresse",
-      price: 19,
-      description:
-        "Pan focaccia con mantequilla cajamarquina, tomate, mozzarella, albahaca y aceite de oliva.",
-      tags: [],
-      video: "/cafe.mp4",
-    },
-    {
-      name: "Sandwich de Pollo",
-      price: 15,
-      description: "Pechuga de pollo desmenuzada con cremosa mayonesa casera.",
-      tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/acompañamientos salazar/Croissant de pollo_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/croissant con pollo.png",
     },
     {
       name: "Croissant Mixto",
@@ -512,7 +450,37 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Croissant de mantequilla relleno de jamón de pierna y queso cajamarquino.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/acompañamientos salazar/croissant mixto_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/croissant mixto.png",
+    },
+    {
+      name: "Empanada Cheese Burger",
+      price: 14,
+      description:
+        "Empanada rellena de carne, queso y sabor estilo hamburguesa.",
+      tags: [],
+      video:
+        "/carta/acompañamientos salazar/Empanada_chesse_burguer_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/empanada cheese burguer.png",
+    },
+    {
+      name: "Empanada Bechamel",
+      price: 12,
+      description:
+        "Rellena de jugoso pollo, champiñones frescos y una suave salsa bechamel.",
+      tags: [],
+      video: "/carta/acompañamientos salazar/Empanada de carne_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/empanada de pollo_2.png",
+    },
+    {
+      name: "Empanada Napolitana",
+      price: 12,
+      description:
+        "Relleno mediterráneo de tomate, mozzarella, jamón y albahaca.",
+      tags: [],
+      video:
+        "/carta/acompañamientos salazar/empanada Napoletana_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/empanada napoletana_2.png",
     },
     {
       name: "Focaccia Ahumado",
@@ -520,7 +488,44 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description:
         "Pan focaccia con mantequilla cajamarquina, tocino, lomo ahumado, mozzarella y salsa especial.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/acompañamientos salazar/focaccia ahumado_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/focaccia ahumado.png",
+    },
+    {
+      name: "Focaccia Capresse",
+      price: 19,
+      description:
+        "Pan focaccia con mantequilla cajamarquina, tomate, mozzarella, albahaca y aceite de oliva.",
+      tags: [],
+      video: "/carta/acompañamientos salazar/focaccia capresse_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/focaccia capresse.png",
+    },
+    {
+      name: "Maison QhiChé",
+      price: 25,
+      description:
+        "Tarta salada con base crujiente, rellena de vegetales y queso.",
+      tags: [],
+      video: "/carta/acompañamientos salazar/maison quiché_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/maison quiché_1.png",
+    },
+    {
+      name: "Sandwich de Pollo",
+      price: 15,
+      description: "Pechuga de pollo desmenuzada con cremosa mayonesa casera.",
+      tags: [],
+      video: "/carta/acompañamientos salazar/Sanwich con pollo_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/sandwich con pollo.png",
+    },
+    {
+      name: "Tostón con Palta y Pollo",
+      price: 24,
+      description:
+        "Pan campesino con palta y mantequilla bañado en aceite de oliva.",
+      tags: [],
+      video:
+        "/carta/acompañamientos salazar/toston pollo y palta_comprimido.mp4",
+      img: "/carta/acompañamientos salazar/tostón con palta y pollo.png",
     },
   ],
   dulces: [

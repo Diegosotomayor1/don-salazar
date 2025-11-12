@@ -221,7 +221,7 @@ export default function CategoryProducts() {
             >
               <div className="relative">
                 <Image
-                  src="/logo-don-salazar-variant.png"
+                  src="/logo-don-salazar-black.png"
                   alt="Don Salazar Logo"
                   width={100}
                   height={100}

@@ -55,17 +55,17 @@ export default function Categories() {
       ref={containerRef}
     >
       <BackgorundElementsDecoration />
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-3 md:p-6 lg:p-8">
         <motion.div className="w-full max-w-6xl">
           {/* Header Section */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center md:mb-16 mb-8"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.div
-              className="flex items-center justify-center gap-4 mb-8"
+              className="flex items-center justify-center gap-4 mb-4 md:mb-8"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{
@@ -77,7 +77,7 @@ export default function Categories() {
             >
               <div className="relative">
                 <Image
-                  src="/logo-don-salazar-variant.png"
+                  src="/logo-don-salazar-black.png"
                   alt="Don Salazar Logo"
                   width={140}
                   height={140}
@@ -97,18 +97,6 @@ export default function Categories() {
               </div>
             </motion.div>
 
-            <motion.h1
-              className="text-2xl md:text-5xl font-bold mb-6 text-black"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              {tUI("brand.name")}
-              <p className="text-black text-lg font-medium">
-                {tUI("brand.subtitle")}
-              </p>
-            </motion.h1>
-
             <motion.div
               className="w-24 h-1 bg-black mx-auto"
               initial={{ width: 0 }}
@@ -119,7 +107,7 @@ export default function Categories() {
 
           {/* Categories Grid */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -137,7 +125,7 @@ export default function Categories() {
                 whileTap={{ scale: 0.95 }}
               >
                 <div className="relative bg-transparent backdrop-blur-sm md:p-4 xl:p-8 p-2 cursor-pointer overflow-hidden transition-all duration-300 border-2 border-black/70 hover:border-accent hover:shadow-2xl h-full">
-                  <div className="relative z-10 flex flex-col items-center gap-2 md:gap-4 xl:gap-6 h-full">
+                  <div className="relative z-10 flex flex-col justify-center items-center gap-2 md:gap-4 xl:gap-6 h-full">
                     {/* Icon Section */}
                     <motion.div
                       className="flex justify-center "
@@ -158,6 +146,12 @@ export default function Categories() {
                     >
                       {tCategory(category.nameKey)}
                     </motion.h3>
+                    <motion.p
+                      className="text-xs text-black text-center transition-colors duration-300"
+                      layout
+                    >
+                      {tCategory(category.descriptionKey)}
+                    </motion.p>
 
                     {/* Action Button */}
                     <motion.div
