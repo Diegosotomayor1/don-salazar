@@ -10,6 +10,7 @@ import { ArrowLeft, Coffee } from "lucide-react";
 import { Button } from "./ui/button";
 import { UserData } from "@/types";
 import { coffeeTypes, brewingMethods, cupTypes } from "@/constants";
+import Image from "next/image";
 
 export function SummaryStep({
   userData,
@@ -28,7 +29,9 @@ export function SummaryStep({
 
   // Calcular precios
   const basePrice = selectedCoffeeType?.price || 0;
-  const extraCost = selectedBrewingMethod?.extraCost || 0;
+  const extraCostBrewing = selectedBrewingMethod?.extraCost || 0;
+  const extraCostCup = selectedCupType?.extraCost || 0;
+  const extraCost = extraCostBrewing + extraCostCup;
   const totalPrice = basePrice + extraCost;
 
   return (
@@ -66,12 +69,30 @@ export function SummaryStep({
             <div className="space-y-4">
               {/* Tipo de Café */}
               <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <span className="text-2xl">{selectedCoffeeType?.icon}</span>
+                <motion.div
+                  animate={{ rotate: [0, 12, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0,
+                  }}
+                  className="relative flex items-center justify-center"
+                >
+                  <Image
+                    src={selectedCoffeeType?.img || ""}
+                    alt={selectedCoffeeType?.name || ""}
+                    width={40}
+                    height={40}
+                    className="rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
+                </motion.div>
                 <div className="flex-1">
+                  <p className="text-sm text-foreground">Tipo de Café:</p>
                   <p className="font-medium  text-muted-foreground">
                     {selectedCoffeeType?.name}
                   </p>
-                  <p className="text-sm text-foreground">Tipo de Café:</p>
                 </div>
                 <div className="text-primary font-medium text-sm">
                   S/ {basePrice}
@@ -80,40 +101,103 @@ export function SummaryStep({
 
               {/* Método de Preparación */}
               <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <span className="text-2xl">{selectedBrewingMethod?.icon}</span>
+                <motion.div
+                  animate={{ rotate: [0, 12, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                  className="relative flex items-center justify-center"
+                >
+                  <Image
+                    src={selectedBrewingMethod?.img || ""}
+                    alt={selectedBrewingMethod?.name || ""}
+                    width={40}
+                    height={40}
+                    className="rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
+                </motion.div>
                 <div className="flex-1">
-                  <p className="font-medium text-foreground">
-                    {selectedBrewingMethod?.name}
+                  <p className="text-xs text-primary font-medium capitalize">
+                    Método de Preparación
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {selectedBrewingMethod?.type}
                   </p>
-                  <p className="text-xs text-primary font-medium capitalize">
-                    Método de Preparación
+                  <p className="font-medium text-foreground">
+                    {selectedBrewingMethod?.name}
                   </p>
                 </div>
-                {extraCost > 0 && (
+                {extraCostBrewing > 0 && (
                   <div className="text-primary font-medium text-sm">
-                    +S/ {extraCost}
+                    +S/ {extraCostBrewing}
                   </div>
                 )}
               </div>
 
               {/* Tipo de Taza */}
               <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <span className="text-2xl">{selectedCupType?.icon}</span>
+                <motion.div
+                  animate={{ rotate: [0, 12, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
+                  className="relative flex items-center justify-center"
+                >
+                  <Image
+                    src={selectedCupType?.img || ""}
+                    alt={selectedCupType?.name || ""}
+                    width={40}
+                    height={40}
+                    className="rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
+                </motion.div>
                 <div className="flex-1">
+                  <p className="text-sm text-muted-foreground">Tipo de Taza</p>
                   <p className="font-medium text-foreground">
                     {selectedCupType?.name}
                   </p>
-                  <p className="text-sm text-muted-foreground">Tipo de Taza</p>
                 </div>
+                {extraCostCup > 0 && (
+                  <div className="text-primary font-medium text-sm">
+                    +S/ {extraCostCup}
+                  </div>
+                )}
               </div>
 
               {/* Tipo de Preparación */}
               <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
                 <span className="text-2xl">
-                  {userData.preparationType === "barista" ? "👨‍🍳" : "👤"}
+                  {userData.preparationType === "barista" ? (
+                    <motion.div
+                      animate={{ rotate: [0, 12, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1,
+                      }}
+                      className="relative flex items-center justify-center"
+                    >
+                      <Image
+                        src="/barista.svg"
+                        alt="barista"
+                        width={40}
+                        height={40}
+                        className="invert-75 sepia-100"
+                      />
+                      <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
+                    </motion.div>
+                  ) : (
+                    "👤"
+                  )}
                 </span>
                 <div className="flex-1">
                   <p className="font-medium text-foreground">
@@ -143,9 +227,15 @@ export function SummaryStep({
                 <p className="text-sm text-muted-foreground mt-2">
                   {selectedCoffeeType?.description}
                 </p>
-                {extraCost > 0 && (
+                {extraCostBrewing > 0 && (
                   <p className="text-sm text-primary font-medium mt-2">
-                    Costo adicional por método especial: +S/ {extraCost}
+                    Costo adicional por método especial: +S/ {extraCostBrewing}
+                  </p>
+                )}
+                {extraCostCup > 0 && (
+                  <p className="text-sm text-primary font-medium mt-2">
+                    Costo adicional por presentación especial: +S/{" "}
+                    {extraCostCup}
                   </p>
                 )}
               </div>
@@ -162,7 +252,10 @@ export function SummaryStep({
                     </p>
                     {extraCost > 0 && (
                       <p className="text-xs text-muted-foreground">
-                        (Base: S/ {basePrice} + Extra: S/ {extraCost})
+                        (Base: S/ {basePrice}
+                        {extraCostBrewing > 0 &&
+                          ` + Método: S/ ${extraCostBrewing}`}
+                        {extraCostCup > 0 && ` + Taza: S/ ${extraCostCup}`})
                       </p>
                     )}
                   </div>

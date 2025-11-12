@@ -1,9 +1,7 @@
+import { UserData } from "@/types";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  Coffee,
-  MessageCircleQuestionMark,
-} from "lucide-react";
+import { ArrowLeft, CircleQuestionMark, Coffee } from "lucide-react";
+import { Dispatch, SetStateAction } from "react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -12,8 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { UserData } from "@/types";
-import { Dispatch, SetStateAction } from "react";
 
 export function OptionsStep({
   userData,
@@ -66,18 +62,17 @@ export function OptionsStep({
               className="luxury-button w-full p-6 text-lg cursor-pointer"
             >
               <Coffee className="mr-3 h-6 w-6" />
-              Elegir ahora
+              Elegir tu mismo
             </Button>
           </motion.div>
 
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
               onClick={() => handleOptionSelect("quiz")}
-              variant="outline"
-              className="w-full p-6 text-lg rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300"
+              className="luxury-button w-full p-6 text-lg cursor-pointer"
             >
-              <MessageCircleQuestionMark className="mr-3 h-6 w-6" />
-              Cuestionario de recomendación
+              <CircleQuestionMark className="mr-3 h-6 w-6" />
+              Te orientamos
             </Button>
           </motion.div>
 

@@ -898,20 +898,20 @@ export const brewingMethods = [
 
 export const cupTypes = [
   {
-    id: "taza_abierta",
-    name: "Taza abierta",
-    description:
-      "La taza clásica y cómoda. Su boca ancha permite que el café se enfríe un poco más rápido, ideal para beber de forma más casual y sin complicaciones.",
-    icon: "☕",
-    img: "/experiences/abierto.png",
-  },
-  {
     id: "taza_cerrada",
     name: "Taza cerrada",
     description:
       "Su diseño con una boca más estrecha está pensado para capturar y concentrar todos los aromas. Es perfecta para una experiencia aromática completa y mantiene tu bebida caliente.",
     icon: "🫖",
     img: "/experiences/cerrado.png",
+  },
+  {
+    id: "taza_abierta",
+    name: "Taza abierta",
+    description:
+      "La taza clásica y cómoda. Su boca ancha permite que el café se enfríe un poco más rápido, ideal para beber de forma más casual y sin complicaciones.",
+    icon: "☕",
+    img: "/experiences/abierto.png",
   },
   {
     id: "copa",
@@ -923,11 +923,12 @@ export const cupTypes = [
   },
   {
     id: "copa_hielo",
-    name: "Copa con hielo",
+    name: "Alalau",
     description:
       "Ideal para una bebida refrescante. El vidrio no retiene sabores y la forma abierta permite disfrutar del café frío de forma rápida y directa.",
     icon: "🧊",
     img: "/experiences/copa_con_hielo.png",
+    extraCost: 4,
   },
 ];
 

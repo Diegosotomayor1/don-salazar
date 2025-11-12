@@ -48,7 +48,7 @@ export function CoffeeTypeStep({
             Selecciona el grano que más te llame la atención
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="grid grid-cols-3 gap-2 px-4 md:px-6">
           {coffeeTypes.map((coffee, index) => (
             <motion.div
               key={coffee.id}
@@ -60,9 +60,9 @@ export function CoffeeTypeStep({
             >
               <div
                 onClick={() => handleCoffeeTypeSelect(coffee.id)}
-                className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer relative"
+                className="w-full h-full px-2 py-4 md:p-5  rounded-2xl border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer relative"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col items-center gap-4">
                   <motion.div
                     animate={{ rotate: [0, 12, 0] }}
                     transition={{
@@ -71,23 +71,24 @@ export function CoffeeTypeStep({
                       ease: "easeInOut",
                       delay: index * 0.5,
                     }}
-                    className="relative flex items-center justify-center"
+                    className="relative flex flex-col items-center justify-center"
                   >
                     <Image
                       src={coffee.img}
                       alt={coffee.name}
-                      width={50}
-                      height={50}
+                      width={80}
+                      height={80}
                     />
                     <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
                   </motion.div>
                   {/*  <div className="text-3xl">{coffee.icon}</div> */}
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-foreground mb-2">
+                  <div className="flex flex-col">
+                    <h3 className="font-semibold text-md text-foreground mb-2 text-center">
                       {coffee.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {coffee.description}
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed text-center">
+                      {/* {coffee.description} */}
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                   </div>
                 </div>

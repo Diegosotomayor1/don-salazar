@@ -122,24 +122,34 @@ export default function DonSalazarWizard() {
         className="absolute top-0 left-0 w-screen h-screen object-cover -z-10 blur-md opacity-20 md:opacity-30 motion-safe:animate-[pulse_8s_ease-in-out_infinite]"
       />
       <div className="w-full max-w-3xl">
-        <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Image
-              src="/logo-don-salazar-variant.png"
-              alt="Logo"
-              width={100}
-              height={100}
-            />
-          </div>
-          <p className="text-muted-foreground text-lg">
+        {currentStep === "name" && (
+          <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-4 relative">
+              <Image
+                src="/logo-don-salazar-white.png"
+                alt="Logo"
+                width={100}
+                height={100}
+                className=" z-10"
+              />
+              <Image
+                src="/logo-don-salazar-white.png"
+                alt="Logo"
+                width={100}
+                height={100}
+                className="absolute top-0 right-1/2 translate-x-1/2 blur-md animate-pulse"
+              />
+            </div>
+            {/* <p className="text-muted-foreground text-lg">
             Tu experiencia perfecta de café
-          </p>
-        </motion.div>
+          </p> */}
+          </motion.div>
+        )}
 
         <AnimatePresence mode="wait">
           {currentStep === "name" && (

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Coffee } from "lucide-react";
+import { ArrowLeft, Coffee, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -48,7 +48,7 @@ export function CupTypeStep({
             Selecciona cómo quieres disfrutar tu café
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="grid grid-cols-2 gap-2">
           {cupTypes.map((cup, index) => (
             <motion.div
               key={cup.id}
@@ -60,9 +60,9 @@ export function CupTypeStep({
             >
               <div
                 onClick={() => handleCupTypeSelect(cup.id)}
-                className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
+                className="relative w-full p-4 rounded-2xl border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-center flex-col gap-4 text-center">
                   {!cup.img && <div className="text-3xl">{cup.icon}</div>}
                   {cup.img && (
                     <motion.div
@@ -78,8 +78,8 @@ export function CupTypeStep({
                       <Image
                         src={cup.img}
                         alt={cup.name}
-                        width={50}
-                        height={50}
+                        width={80}
+                        height={80}
                       />
                       <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
                     </motion.div>
@@ -90,9 +90,15 @@ export function CupTypeStep({
                       {cup.name}
                     </h3>
                     <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {cup.description}
+                      {/* {cup.description} */}
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                   </div>
+                  {cup?.extraCost && cup.extraCost > 0 && (
+                    <div className="absolute top-2 right-2 flex items-center text-xs text-black font-medium z-10 bg-accent rounded-full px-1.5 py-0.5">
+                      <Plus className="mr-0.5 h-2.5 w-2.5" /> S/ {cup.extraCost}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

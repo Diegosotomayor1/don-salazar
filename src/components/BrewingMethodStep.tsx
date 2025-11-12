@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Filter, Droplets } from "lucide-react";
+import { ArrowLeft, Filter, Droplets, Zap, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -52,7 +52,7 @@ export function BrewingMethodStep({
             Elige entre filtrado o inmersión
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-8 px-4 md:px-6">
           {/* Métodos de Filtrado */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -60,8 +60,19 @@ export function BrewingMethodStep({
               <h3 className="text-lg font-semibold text-foreground">
                 Filtrado
               </h3>
+              <div className="flex items-center gap-2 animate-pulse ml-2">
+                <Zap className="h-4 w-4 text-primary " />
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 rounded-full" />
+                  <div className="w-3 h-3 border-2 rounded-full" />
+                  <div className="w-3 h-3 border-2 rounded-full" />
+                </div>
+              </div>
             </div>
-            <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-2 px-0">
               {filtradoMethods.map((method, index) => (
                 <motion.div
                   key={method.id}
@@ -73,40 +84,39 @@ export function BrewingMethodStep({
                 >
                   <div
                     onClick={() => handleMethodSelect(method.id)}
-                    className="w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
+                    className="relative h-full w-full px-2 py-4 md:p-5 rounded-2xl border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
                   >
-                    <div className="relative flex items-start justify-between">
-                      <div className={`flex items-center gap-3`}>
-                        {/* <div className="text-2xl">{method.icon}</div> */}
-                        <motion.div
-                          animate={{ rotate: [0, 12, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: index * 0.5,
-                          }}
-                          className="relative flex items-center justify-center"
-                        >
-                          <Image
-                            src={method.img}
-                            alt={method.name}
-                            width={50}
-                            height={50}
-                          />
-                          <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
-                        </motion.div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-base text-foreground mb-1">
-                            {method.name}
-                          </h4>
-                          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                            {method.description}
-                          </p>
-                        </div>
+                    <div className="relative h-full flex flex-col items-center text-center gap-4">
+                      <motion.div
+                        animate={{ rotate: [0, 12, 0] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.5,
+                        }}
+                        className="relative flex items-center justify-center"
+                      >
+                        <Image
+                          src={method.img}
+                          alt={method.name}
+                          width={80}
+                          height={80}
+                        />
+                        <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
+                      </motion.div>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-base text-foreground">
+                          {method.name}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                          {/* {method.description} */}
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.
+                        </p>
                       </div>
                       {method.extraCost > 0 && (
-                        <div className="absolute top-2 right-2 flex items-center text-sm text-primary font-medium z-10 bg-accent/20 rounded-full px-2 py-1">
+                        <div className="absolute top-3 right-3 flex items-center text-sm text-primary font-medium z-10 bg-accent/20 rounded-full px-2 py-1">
                           +S/ {method.extraCost}
                         </div>
                       )}
@@ -124,8 +134,19 @@ export function BrewingMethodStep({
               <h3 className="text-lg font-semibold text-foreground">
                 Inmersión
               </h3>
+              <div className="flex items-center gap-2 animate-pulse ml-2">
+                <Zap className="h-4 w-4 text-primary " />
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 bg-primary rounded-full" />
+                  <div className="w-3 h-3 border-2 rounded-full" />
+                </div>
+              </div>
             </div>
-            <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-2 px-0">
               {inmersionMethods.map((method, index) => (
                 <motion.div
                   key={method.id}
@@ -137,10 +158,9 @@ export function BrewingMethodStep({
                 >
                   <div
                     onClick={() => handleMethodSelect(method.id)}
-                    className="relative w-full p-4 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
+                    className="relative h-full w-full px-2 py-4 md:p-5 rounded-2xl border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer"
                   >
-                    <div className="flex items-center gap-3">
-                      {/* <div className="text-2xl">{method.icon}</div> */}
+                    <div className="relative h-full flex flex-col items-center text-center gap-4">
                       <motion.div
                         animate={{ rotate: [0, 12, 0] }}
                         transition={{
@@ -153,24 +173,27 @@ export function BrewingMethodStep({
                         <Image
                           src={method.img}
                           alt={method.name}
-                          width={50}
-                          height={50}
+                          width={80}
+                          height={80}
                         />
                         <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
                       </motion.div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-base text-foreground mb-1">
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-base text-foreground">
                           {method.name}
                         </h4>
                         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                          {method.description}
+                          {/* {method.description} */}
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.
                         </p>
-                        {method.extraCost > 0 && (
-                          <div className="absolute top-2 right-2 flex items-center text-sm text-primary font-medium z-10 bg-accent/20 rounded-full px-2 py-1">
-                            +S/ {method.extraCost}
-                          </div>
-                        )}
                       </div>
+                      {method.extraCost > 0 && (
+                        <div className="absolute -top-5 -right-4 flex items-center text-xs text-black font-medium z-10 bg-accent rounded-full px-1.5 py-0.5">
+                          <Plus className="mr-0.5 h-2.5 w-2.5" /> S/{" "}
+                          {method.extraCost}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
