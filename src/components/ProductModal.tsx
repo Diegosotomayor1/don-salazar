@@ -4,6 +4,43 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ThumbsUp, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
+// Add global styles for video slider
+if (typeof document !== "undefined") {
+  const style = document.createElement("style");
+  style.textContent = `
+    .slider-thumb::-webkit-slider-thumb {
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.2s ease;
+    }
+    .slider-thumb::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.6);
+    }
+    .slider-thumb::-moz-range-thumb {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      cursor: pointer;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      transition: all 0.2s ease;
+    }
+    .slider-thumb::-moz-range-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.6);
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 interface Product {
   name: string;
   price: number;
@@ -23,6 +60,9 @@ export default function ProductModal({
   onClose,
   product,
 }: ProductModalProps) {
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -45,12 +85,89 @@ export default function ProductModal({
     }
   }, [isPlaying]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      if (!isDragging) {
+        const newTime = video.currentTime;
+        console.log("Video time update:", newTime, "Duration:", video.duration);
+        setCurrentTime(newTime);
+      }
+    };
+
+    const handleLoadedMetadata = () => {
+      console.log("Video loaded metadata, duration:", video.duration);
+      setDuration(video.duration);
+    };
+
+    const handleLoadedData = () => {
+      console.log(
+        "Video loaded data, readyState:",
+        video.readyState,
+        "Duration:",
+        video.duration
+      );
+      if (video.duration && video.duration > 0) {
+        setDuration(video.duration);
+      }
+    };
+
+    const handleCanPlay = () => {
+      console.log("Video can play, duration:", video.duration);
+      if (video.duration && video.duration > 0) {
+        setDuration(video.duration);
+      }
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("canplay", handleCanPlay);
+
+    // Force load if not loaded
+    if (video.readyState === 0) {
+      console.log("Forcing video load...");
+      video.load();
+    }
+
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("loadeddata", handleLoadedData);
+      video.removeEventListener("canplay", handleCanPlay);
+    };
+  }, [isDragging, product]);
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(e.target.value);
+    setCurrentTime(newTime);
+    if (videoRef.current) {
+      videoRef.current.currentTime = newTime;
+    }
+  };
+
+  const handleSliderMouseDown = () => {
+    setIsDragging(true);
+  };
+
+  const handleSliderMouseUp = () => {
+    setIsDragging(false);
+  };
+
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
   };
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
+  };
+
+  const formatTime = (time: number): string => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   if (!product) return null;
@@ -136,6 +253,46 @@ export default function ProductModal({
                 )}
               </motion.button>
             </div>
+
+            {/* Video Progress Slider */}
+            {product.video && (
+              <div className="absolute bottom-0 left-0 right-0 z-50">
+                {/* Elegant Progress Container */}
+                <div className="bg-black/90 backdrop-blur-md shadow-2xl">
+                  {/* Progress Bar */}
+                  <div className="relative">
+                    {/* Background Track */}
+                    <div className="w-full h-3 bg-white/30 overflow-hidden">
+                      {/* Progress Fill */}
+                      <motion.div
+                        className="h-full bg-gradient-to-r from-accent via-accent/80 to-accent/60 shadow-lg"
+                        style={{
+                          width: duration
+                            ? `${(currentTime / duration) * 100}%`
+                            : "0%",
+                        }}
+                        transition={{ duration: 0.1, ease: "linear" }}
+                      />
+                    </div>
+
+                    {/* Slider Input */}
+                    <input
+                      type="range"
+                      min="0"
+                      max={duration || 100}
+                      step="0.1"
+                      value={currentTime}
+                      onChange={handleSliderChange}
+                      onMouseDown={handleSliderMouseDown}
+                      onMouseUp={handleSliderMouseUp}
+                      onTouchStart={handleSliderMouseDown}
+                      onTouchEnd={handleSliderMouseUp}
+                      className="absolute inset-0 w-full h-3 opacity-0 cursor-pointer slider-thumb"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Content Overlay - Bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
