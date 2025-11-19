@@ -89,6 +89,15 @@ export function RecommendationsStep({ goBack }: { goBack: () => void }) {
       exit={{ opacity: 0, x: -50 }}
       transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
     >
+      <Button
+        onClick={goBack}
+        variant="outline"
+        className="w-full rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground cursor-pointer"
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Volver al inicio
+      </Button>
+
       <div className="space-y-6">
         <Card className="luxury-card">
           <CardHeader className="text-center">
@@ -267,15 +276,6 @@ export function RecommendationsStep({ goBack }: { goBack: () => void }) {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <Button
-          onClick={goBack}
-          variant="outline"
-          className="w-full rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground cursor-pointer"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Volver al inicio
-        </Button>
       </div>
     </motion.div>
   );

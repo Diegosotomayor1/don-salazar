@@ -5,7 +5,7 @@ export const categoriesTranslations = {
   "cafes-de-siempre": {
     name: {
       [LANGUAGE.ES]: "El calor del grano",
-      [LANGUAGE.EN]: "The warmth of the grain",
+      [LANGUAGE.EN]: "The warmth of the bean",
     },
     description: {
       [LANGUAGE.ES]: "Bebidas calientes",
@@ -29,7 +29,7 @@ export const categoriesTranslations = {
   "bebidas-frias-cafe": {
     name: {
       [LANGUAGE.ES]: "La frescura del grano",
-      [LANGUAGE.EN]: "The freshness of the grain",
+      [LANGUAGE.EN]: "The freshness of the bean",
     },
     description: {
       [LANGUAGE.ES]: "Bebidas frias",
@@ -53,7 +53,7 @@ export const categoriesTranslations = {
   "bebidas-sin-cafe": {
     name: {
       [LANGUAGE.ES]: "Más allá del grano",
-      [LANGUAGE.EN]: "Beyond the grain",
+      [LANGUAGE.EN]: "Beyond the bean",
     },
     description: {
       [LANGUAGE.ES]: "Bebidas sin café",

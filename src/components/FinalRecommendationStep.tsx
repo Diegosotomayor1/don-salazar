@@ -10,6 +10,7 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import { UserData } from "@/types";
+import { piquantPhrases } from "@/constants";
 
 export function FinalRecommendationStep({
   userData,
@@ -44,6 +45,11 @@ export function FinalRecommendationStep({
 
   const { grano, metodo, taza } = finalRecommendation;
 
+  // Obtener la frase pícara para esta combinación
+  const piquantPhrase =
+    (piquantPhrases as any)[grano.id]?.[metodo.id]?.[taza.id] ||
+    "Una experiencia única y personalizada solo para ti.";
+
   const toggleExpanded = (section: "grano" | "metodo" | "taza") => {
     setExpanded((prev) => ({
       ...prev,
@@ -65,6 +71,22 @@ export function FinalRecommendationStep({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
+          {/* Botones de acción */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4 }}
+            className="flex gap-4 py-4 px-2"
+          >
+            <Button
+              onClick={goBack}
+              variant="outline"
+              className="flex-1 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground cursor-pointer"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Volver y elegir
+            </Button>
+          </motion.div>
           <Card className="luxury-card text-center">
             <CardHeader>
               <motion.div
@@ -217,11 +239,37 @@ export function FinalRecommendationStep({
           </motion.div>
         </div>
 
+        {/* Frase Pícara Personalizada */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1 }}
+        >
+          <Card className="luxury-card bg-gradient-to-br from-accent/5 to-accent/10 border-accent/20">
+            <CardContent className="p-6 text-center">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.3, type: "spring", damping: 20 }}
+                className="mb-4"
+              >
+                <Sparkles className="h-8 w-8 text-accent mx-auto" />
+              </motion.div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                Tu Experiencia Personalizada
+              </h3>
+              <p className="text-foreground/90 italic leading-relaxed text-lg">
+                "{piquantPhrase}"
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
         {/* Mensaje final */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 1.4 }}
         >
           <Card className="luxury-card bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-6 text-center">
@@ -234,23 +282,6 @@ export function FinalRecommendationStep({
               </p>
             </CardContent>
           </Card>
-        </motion.div>
-
-        {/* Botones de acción */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4 }}
-          className="flex gap-4"
-        >
-          <Button
-            onClick={goBack}
-            variant="outline"
-            className="flex-1 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground cursor-pointer"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver y elegir
-          </Button>
         </motion.div>
       </div>
     </motion.div>

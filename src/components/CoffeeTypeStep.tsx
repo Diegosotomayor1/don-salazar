@@ -36,6 +36,16 @@ export function CoffeeTypeStep({
       exit={{ opacity: 0, x: -50 }}
       transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
     >
+      <div className="p-2 pt-0">
+        <Button
+          onClick={goBack}
+          variant="ghost"
+          className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Volver
+        </Button>
+      </div>
       <Card className="luxury-card">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
@@ -96,16 +106,6 @@ export function CoffeeTypeStep({
             </motion.div>
           ))}
         </CardContent>
-        <div className="p-6 pt-0">
-          <Button
-            onClick={goBack}
-            variant="ghost"
-            className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver
-          </Button>
-        </div>
       </Card>
     </motion.div>
   );

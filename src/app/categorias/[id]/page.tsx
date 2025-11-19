@@ -36,14 +36,14 @@ const ProductItem = ({
   index,
   product,
   onProductClick,
-  tProduct,
+  language,
 }: {
   index: number;
   product: (typeof menuProducts)["cafes-de-siempre"][number];
   onProductClick: (
     product: (typeof menuProducts)["cafes-de-siempre"][number]
   ) => void;
-  tProduct: (key: string) => string;
+  language: "es" | "en";
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -64,7 +64,18 @@ const ProductItem = ({
     <motion.div
       key={index}
       variants={itemVariants}
-      className={cn("flex items-end relative md:h-96 h-64 cursor-pointer")}
+      className={cn(
+        "flex items-end relative md:h-96 h-64 cursor-pointer",
+        product.name.includes("★") && "shadow-2xl"
+      )}
+      style={
+        product.name.includes("★")
+          ? {
+              boxShadow:
+                "0 0 30px rgba(176, 156, 96, 0.6), 0 0 60px rgba(176, 156, 96, 0.3)",
+            }
+          : undefined
+      }
       whileHover={{
         y: -5,
         transition: { type: "spring", stiffness: 300, damping: 20 },
@@ -76,7 +87,9 @@ const ProductItem = ({
       {product.img ? (
         <Image
           src={product.img}
-          alt={product.name}
+          alt={
+            language === "en" && product.nameEn ? product.nameEn : product.name
+          }
           fill
           className="object-cover"
         />
@@ -97,7 +110,14 @@ const ProductItem = ({
         )}
       >
         {/* Precio */}
-        <div className="absolute top-0 right-0 bg-black border text-white px-3 py-1 font-bold text-sm md:text-lg">
+        <div
+          className={cn(
+            "absolute top-0 right-0 border px-3 py-1 font-bold text-lg",
+            product.name.includes("★")
+              ? "bg-gradient-to-r from-[#efb810] via-[#f9db5c] to-[#ffff94] text-black"
+              : "bg-black text-white"
+          )}
+        >
           S/ {product.price}
         </div>
 
@@ -108,8 +128,19 @@ const ProductItem = ({
 
         {/* Contenido */}
         <div className="flex flex-col gap-2 absolute bottom-0">
-          <h3 className="text-lg md:text-xl font-bold group-hover:text-accent transition-colors duration-300 py-1 px-2 bg-black border text-white ">
-            <span className="">{tProduct(product.name)}</span>
+          <h3
+            className={cn(
+              "text-xl font-bold group-hover:text-accent transition-colors duration-300 py-1 px-2 border text-white",
+              product.name.includes("★")
+                ? "bg-gradient-to-r from-[#efb810] via-[#f9db5c] to-[#ffff94] text-black"
+                : "bg-black"
+            )}
+          >
+            <span className="">
+              {language === "en" && product.nameEn
+                ? product.nameEn
+                : product.name}
+            </span>
           </h3>
 
           {/* <p className="text-gray-600 text-sm leading-relaxed mb-4">
@@ -129,8 +160,7 @@ export default function CategoryProducts() {
     (typeof menuProducts)["cafes-de-siempre"][number] | null
   >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { tCategory, tUI, getProductTranslations, tProduct, language } =
-    useTranslations();
+  const { tCategory, tUI, language } = useTranslations();
 
   const category = coffeeCategories.find((c) => c.id === categoryId);
   const products = menuProducts[categoryId as keyof typeof menuProducts] || [];
@@ -138,17 +168,13 @@ export default function CategoryProducts() {
   const handleProductClick = (
     product: (typeof menuProducts)["cafes-de-siempre"][number]
   ) => {
-    const translations = getProductTranslations(product.name);
     const translatedProduct = {
       ...product,
-      name: translations.name[language || "es"] || product.name,
+      name: language === "en" && product.nameEn ? product.nameEn : product.name,
       description:
-        translations.description[language || "es"] || product.description,
-      tags: product.tags.map((tag) => {
-        const normalizedTag = tag.toLowerCase().replace(/[^a-z]/g, "");
-        const tagTranslations = translations.tags as Record<string, Dictionary>;
-        return tagTranslations[normalizedTag]?.[language || "es"] || tag;
-      }),
+        language === "en" && product.descriptionEn
+          ? product.descriptionEn
+          : product.description,
     };
     setSelectedProduct(translatedProduct);
     setIsModalOpen(true);
@@ -162,7 +188,7 @@ export default function CategoryProducts() {
   if (!category) {
     return (
       <div
-        className="min-h-screen flex items-center justify-center"
+        className="min-h-[100dvh] flex items-center justify-center"
         style={{ backgroundColor: "#ece6cc" }}
       >
         <div className="text-center">
@@ -194,12 +220,12 @@ export default function CategoryProducts() {
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden"
+      className="min-h-[100dvh] relative overflow-hidden"
       style={{ backgroundColor: "#ece6cc" }}
     >
       <BackgorundElementsDecoration />
 
-      <div className="relative z-10 min-h-screen p-6">
+      <div className="relative z-10 min-h-[100dvh] p-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
@@ -271,7 +297,7 @@ export default function CategoryProducts() {
                 index={index}
                 product={product}
                 onProductClick={handleProductClick}
-                tProduct={tProduct}
+                language={language as "es" | "en"}
               />
             ))}
           </motion.div>

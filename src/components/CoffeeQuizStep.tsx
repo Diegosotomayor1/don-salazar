@@ -69,9 +69,15 @@ export function CoffeeQuizStep({
     quizAnswers: QuizAnswer[]
   ): FinalRecommendation => {
     const recommendations = {
-      grano: sistemaRecomendacion.catalogo.granos["el_balanceado"], // default
-      metodo: sistemaRecomendacion.catalogo.metodos["v60"], // default
-      taza: sistemaRecomendacion.catalogo.tazas["taza_abierta"], // default
+      grano: {
+        ...sistemaRecomendacion.catalogo.granos["el_balanceado"],
+        id: "el_balanceado",
+      }, // default
+      metodo: { ...sistemaRecomendacion.catalogo.metodos["v60"], id: "v60" }, // default
+      taza: {
+        ...sistemaRecomendacion.catalogo.tazas["taza_abierta"],
+        id: "taza_abierta",
+      }, // default
     };
 
     // Procesar cada respuesta para construir la recomendación
@@ -79,17 +85,26 @@ export function CoffeeQuizStep({
       const { tipo, clave } = answer.selectedOption.recomienda;
 
       if (tipo === "granos" && sistemaRecomendacion.catalogo.granos[clave]) {
-        recommendations.grano = sistemaRecomendacion.catalogo.granos[clave];
+        recommendations.grano = {
+          ...sistemaRecomendacion.catalogo.granos[clave],
+          id: clave,
+        };
       } else if (
         tipo === "metodos" &&
         sistemaRecomendacion.catalogo.metodos[clave]
       ) {
-        recommendations.metodo = sistemaRecomendacion.catalogo.metodos[clave];
+        recommendations.metodo = {
+          ...sistemaRecomendacion.catalogo.metodos[clave],
+          id: clave,
+        };
       } else if (
         tipo === "tazas" &&
         sistemaRecomendacion.catalogo.tazas[clave]
       ) {
-        recommendations.taza = sistemaRecomendacion.catalogo.tazas[clave];
+        recommendations.taza = {
+          ...sistemaRecomendacion.catalogo.tazas[clave],
+          id: clave,
+        };
       }
     });
 
@@ -103,6 +118,16 @@ export function CoffeeQuizStep({
       exit={{ opacity: 0, x: -50 }}
       transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
     >
+      <div className="flex px-2 py-4 gap-4">
+        <Button
+          onClick={goBack}
+          variant="outline"
+          className="flex-1 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground cursor-pointer"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Volver
+        </Button>
+      </div>
       <div className="space-y-6">
         <CardHeader className="text-center">
           <CardDescription className="text-muted-foreground">
@@ -174,17 +199,6 @@ export function CoffeeQuizStep({
             </Card>
           </motion.div>
         </AnimatePresence>
-
-        <div className="flex gap-4">
-          <Button
-            onClick={goBack}
-            variant="outline"
-            className="flex-1 rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground cursor-pointer"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver
-          </Button>
-        </div>
       </div>
     </motion.div>
   );

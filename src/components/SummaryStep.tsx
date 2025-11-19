@@ -9,23 +9,42 @@ import {
 import { ArrowLeft, Coffee } from "lucide-react";
 import { Button } from "./ui/button";
 import { UserData } from "@/types";
-import { coffeeTypes, brewingMethods, cupTypes } from "@/constants";
+import {
+  coffeeTypes,
+  brewingMethods,
+  cupTypes,
+  piquantPhrases,
+} from "@/constants";
 import Image from "next/image";
 
 export function SummaryStep({
   userData,
   goBack,
+  goToQuiz,
 }: {
   userData: UserData;
   goBack: () => void;
+  goToQuiz?: () => void;
 }) {
-  const selectedCoffeeType = coffeeTypes.find(
-    (c) => c.id === userData.coffeeType
-  );
+  // Si viene del quiz, usar la información del finalRecommendation
+  const coffeeTypeId =
+    userData.finalRecommendation?.grano.id || userData.coffeeType;
+  const brewingMethodId =
+    userData.finalRecommendation?.metodo.id || userData.brewingMethod;
+  const cupTypeId = userData.finalRecommendation?.taza.id || userData.cupType;
+
+  const selectedCoffeeType = coffeeTypes.find((c) => c.id === coffeeTypeId);
   const selectedBrewingMethod = brewingMethods.find(
-    (m) => m.id === userData.brewingMethod
+    (m) => m.id === brewingMethodId
   );
-  const selectedCupType = cupTypes.find((c) => c.id === userData.cupType);
+  const selectedCupType = cupTypes.find((c) => c.id === cupTypeId);
+
+  // Obtener la frase pícara (siempre se muestra, independiente de la selección)
+  const piquantPhrase =
+    (piquantPhrases as any)[coffeeTypeId]?.[brewingMethodId]?.[cupTypeId] ||
+    "Una experiencia única y personalizada solo para ti.";
+
+  console.log({ piquantPhrases, coffeeTypeId, brewingMethodId, cupTypeId });
 
   // Calcular precios
   const basePrice = selectedCoffeeType?.price || 0;
@@ -43,234 +62,138 @@ export function SummaryStep({
     >
       <Card className="luxury-card">
         <CardHeader className="text-center">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring" }}
-          >
-            <div className="p-4 rounded-full gold-border bg-primary/10 w-fit mx-auto mb-4">
-              <Coffee className="h-16 w-16 text-primary" />
-            </div>
-          </motion.div>
           <CardTitle className="text-xl text-foreground">
             <p>Esta es la experiencia</p>{" "}
             <p className="text-2xl font-bold capitalize"> {userData.name} </p>{" "}
-            <p> by Don Salazar </p>
+            <p className="text-sm"> by Don Salazar </p>
           </CardTitle>
-          <CardDescription className="text-muted-foreground">
-            Tu café perfecto según tus preferencias
+          <CardDescription className="border border-accent bg-accent/10 text-accent px-4 py-0.5 w-fit rounded-xl mx-auto text-xs font-semibold">
+            👇 Muestra al barista esto 👇
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="gold-border bg-card/30 p-6 rounded-2xl">
-            <h3 className="font-semibold text-foreground mb-4">
-              Pedido para <span className="capitalize">{userData.name}</span>:
-            </h3>
-            <div className="space-y-4">
-              {/* Tipo de Café */}
-              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <motion.div
-                  animate={{ rotate: [0, 12, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0,
-                  }}
-                  className="relative flex items-center justify-center"
-                >
-                  <Image
-                    src={selectedCoffeeType?.img || ""}
-                    alt={selectedCoffeeType?.name || ""}
-                    width={40}
-                    height={40}
-                    className="rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
-                </motion.div>
-                <div className="flex-1">
-                  <p className="text-sm text-foreground">Tipo de Café:</p>
-                  <p className="font-medium  text-muted-foreground">
-                    {selectedCoffeeType?.name}
-                  </p>
-                </div>
-                <div className="text-primary font-medium text-sm">
-                  S/ {basePrice}
-                </div>
-              </div>
-
-              {/* Método de Preparación */}
-              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <motion.div
-                  animate={{ rotate: [0, 12, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5,
-                  }}
-                  className="relative flex items-center justify-center"
-                >
-                  <Image
-                    src={selectedBrewingMethod?.img || ""}
-                    alt={selectedBrewingMethod?.name || ""}
-                    width={40}
-                    height={40}
-                    className="rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
-                </motion.div>
-                <div className="flex-1">
-                  <p className="text-xs text-primary font-medium capitalize">
-                    Método de Preparación
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {selectedBrewingMethod?.type}
-                  </p>
-                  <p className="font-medium text-foreground">
-                    {selectedBrewingMethod?.name}
-                  </p>
-                </div>
-                {extraCostBrewing > 0 && (
-                  <div className="text-primary font-medium text-sm">
-                    +S/ {extraCostBrewing}
-                  </div>
+        <CardContent className="space-y-4">
+          <div className="flex w-full relative h-40">
+            <motion.div
+              initial={{ rotate: 12, scale: 0, opacity: 0 }}
+              animate={{ rotate: 0, scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
+              className="absolute top-0 left-0 z-0"
+            >
+              <motion.div>
+                <Image
+                  src={selectedCoffeeType?.img || ""}
+                  alt={selectedCoffeeType?.name || ""}
+                  width={150}
+                  height={150}
+                  className="rounded-lg"
+                />
+                {selectedCoffeeType?.price && (
+                  <motion.div className="absolute top-0 left-0 z-10 bg-primary font-bold rounded-xl p-1 py-0 text-black">
+                    <p className="text-sm">S/ {selectedCoffeeType.price}</p>
+                  </motion.div>
                 )}
-              </div>
-
-              {/* Tipo de Taza */}
-              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <motion.div
-                  animate={{ rotate: [0, 12, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1,
-                  }}
-                  className="relative flex items-center justify-center"
-                >
-                  <Image
-                    src={selectedCupType?.img || ""}
-                    alt={selectedCupType?.name || ""}
-                    width={40}
-                    height={40}
-                    className="rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
-                </motion.div>
-                <div className="flex-1">
-                  <p className="text-sm text-muted-foreground">Tipo de Taza</p>
-                  <p className="font-medium text-foreground">
-                    {selectedCupType?.name}
-                  </p>
-                </div>
-                {extraCostCup > 0 && (
-                  <div className="text-primary font-medium text-sm">
-                    +S/ {extraCostCup}
-                  </div>
-                )}
-              </div>
-
-              {/* Tipo de Preparación */}
-              <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl">
-                <span className="text-2xl">
-                  {userData.preparationType === "barista" ? (
-                    <motion.div
-                      animate={{ rotate: [0, 12, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1,
-                      }}
-                      className="relative flex items-center justify-center"
-                    >
-                      <Image
-                        src="/barista.svg"
-                        alt="barista"
-                        width={40}
-                        height={40}
-                        className="invert-75 sepia-100"
-                      />
-                      <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
-                    </motion.div>
-                  ) : (
-                    "👤"
-                  )}
-                </span>
-                <div className="flex-1">
-                  <p className="font-medium text-foreground">
-                    {userData.preparationType === "barista"
-                      ? "Preparado por el barista"
-                      : "Hazlo tú mismo"}
-                  </p>
-                  <p className="text-sm text-muted-foreground">Preparación</p>
-                </div>
-                {userData.preparationType === "self" && (
-                  <div className="text-primary font-medium text-sm">
-                    + Costo adicional
-                  </div>
-                )}
-              </div>
-
-              {/* Resumen Final */}
-              <div className="mt-4 p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border border-primary/20">
-                <h4 className="font-semibold text-foreground mb-2">
-                  ✨ Tu pedido personalizado:
-                </h4>
-                <p className="text-foreground">
-                  <strong>{selectedCoffeeType?.name}</strong> preparado con{" "}
-                  <strong>{selectedBrewingMethod?.name}</strong> servido en{" "}
-                  <strong>{selectedCupType?.name}</strong>
+                <p className="text-xs font-bold bg-primary rounded-xl px-1.5 py-0.5 text-black w-fit absolute bottom-0 left-0 z-10">
+                  {selectedCoffeeType?.name}
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {selectedCoffeeType?.description}
-                </p>
-                {extraCostBrewing > 0 && (
-                  <p className="text-sm text-primary font-medium mt-2">
-                    Costo adicional por método especial: +S/ {extraCostBrewing}
-                  </p>
-                )}
-                {extraCostCup > 0 && (
-                  <p className="text-sm text-primary font-medium mt-2">
-                    Costo adicional por presentación especial: +S/{" "}
-                    {extraCostCup}
-                  </p>
-                )}
-              </div>
+              </motion.div>
+            </motion.div>
 
-              {/* Total */}
-              <div className="mt-4 p-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl border-2 border-primary/30">
-                <div className="flex justify-between items-center">
-                  <h4 className="font-bold text-foreground text-lg">
-                    💰 Total:
-                  </h4>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-primary">
-                      S/ {totalPrice}
+            <motion.div
+              initial={{ rotate: 12, scale: 0, opacity: 0 }}
+              animate={{ rotate: 0, scale: 1, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8, type: "spring" }}
+              className="absolute top-0 left-1/2 -translate-x-1/2 z-10"
+            >
+              <motion.div>
+                <Image
+                  src={selectedBrewingMethod?.img || ""}
+                  alt={selectedBrewingMethod?.name || ""}
+                  width={150}
+                  height={150}
+                  className="rounded-lg"
+                />
+                {!!(
+                  selectedBrewingMethod?.extraCost &&
+                  selectedBrewingMethod?.extraCost > 0
+                ) && (
+                  <motion.div className="absolute top-0 left-0 z-10 bg-primary font-bold rounded-xl p-1 py-0 text-black">
+                    <p className="text-sm">
+                      + S/ {selectedBrewingMethod?.extraCost}
                     </p>
-                    {extraCost > 0 && (
-                      <p className="text-xs text-muted-foreground">
-                        (Base: S/ {basePrice}
-                        {extraCostBrewing > 0 &&
-                          ` + Método: S/ ${extraCostBrewing}`}
-                        {extraCostCup > 0 && ` + Taza: S/ ${extraCostCup}`})
+                  </motion.div>
+                )}
+                <p className="absolute bottom-0 right-1/2 translate-x-1/2 text-xs font-bold bg-primary rounded-xl px-1.5 py-0.5 text-black w-fit z-10">
+                  {selectedBrewingMethod?.name}
+                </p>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ rotate: 12, scale: 0, opacity: 0 }}
+              animate={{ rotate: 0, scale: 1, opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.8, type: "spring" }}
+              className="absolute top-0 right-0 z-0"
+            >
+              <motion.div>
+                <Image
+                  src={selectedCupType?.img || ""}
+                  alt={selectedCupType?.name || ""}
+                  width={150}
+                  height={150}
+                  className="rounded-lg"
+                />
+
+                {selectedCupType?.extraCost &&
+                  selectedCupType?.extraCost > 0 && (
+                    <motion.div className="absolute top-0 left-0 z-10 bg-primary font-bold rounded-xl p-1 py-0 text-black">
+                      <p className="text-sm">
+                        + S/ {selectedCupType.extraCost}
                       </p>
-                    )}
-                  </div>
-                </div>
+                    </motion.div>
+                  )}
+                <p className="text-xs font-bold bg-primary rounded-xl px-1.5 py-0.5 text-black w-fit absolute bottom-0 right-0 z-10">
+                  {selectedCupType?.name}
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Precio Total */}
+          <div className="px-4 py-2 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl border-2 border-primary/30">
+            <div className="flex justify-between items-center">
+              <h4 className="font-bold text-foreground text-lg">Total:</h4>
+              <div className="text-right">
+                <p className="text-2xl font-bold text-primary">
+                  S/ {totalPrice}
+                </p>
+                {extraCost > 0 && (
+                  <p className="text-xs text-muted-foreground">
+                    (Base: S/ {basePrice}
+                    {extraCostBrewing > 0 &&
+                      ` + Método: S/ ${extraCostBrewing}`}
+                    {extraCostCup > 0 && ` + Taza: S/ ${extraCostCup}`})
+                  </p>
+                )}
               </div>
             </div>
           </div>
 
+          {/* Frase Pícara (siempre se muestra) */}
+          <div className="px-4 py-2 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">
+            <p className="text-foreground/90 italic leading-relaxed text-sm">
+              "💫 {piquantPhrase}"
+            </p>
+          </div>
+
           <Button
-            onClick={goBack}
+            onClick={userData.finalRecommendation ? goToQuiz || goBack : goBack}
             variant="outline"
             className="w-full rounded-2xl gold-border bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Cambiar selección
+            {userData.finalRecommendation
+              ? "Volver al cuestionario"
+              : "Cambiar selección"}
           </Button>
         </CardContent>
       </Card>

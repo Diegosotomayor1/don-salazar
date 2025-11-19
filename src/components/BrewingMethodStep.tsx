@@ -43,6 +43,16 @@ export function BrewingMethodStep({
       exit={{ opacity: 0, x: -50 }}
       transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
     >
+      <div className="p-2 pt-0">
+        <Button
+          onClick={goBack}
+          variant="ghost"
+          className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Volver
+        </Button>
+      </div>
       <Card className="luxury-card">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl text-foreground">
@@ -60,14 +70,23 @@ export function BrewingMethodStep({
               <h3 className="text-lg font-semibold text-foreground">
                 Filtrado
               </h3>
-              <div className="flex items-center gap-2 animate-pulse ml-2">
+              <div className="flex items-center gap-2 animate-pulse ml-2 relative">
                 <Zap className="h-4 w-4 text-primary " />
+                <div className="absolute right-0 -top-[12px] text-[9px] italic">
+                  Intensidad
+                </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 border-2 bg-primary rounded-full" />
                   <div className="w-3 h-3 border-2 bg-primary rounded-full" />
                   <div className="w-3 h-3 border-2 bg-primary rounded-full" />
-                  <div className="w-3 h-3 border-2 rounded-full" />
-                  <div className="w-3 h-3 border-2 rounded-full" />
+                  <div className="relative w-3 h-3 border-2 border-primary rounded-full overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-primary rounded-full"
+                      style={{
+                        clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)",
+                      }}
+                    ></div>
+                  </div>
                   <div className="w-3 h-3 border-2 rounded-full" />
                 </div>
               </div>
@@ -134,8 +153,11 @@ export function BrewingMethodStep({
               <h3 className="text-lg font-semibold text-foreground">
                 Inmersión
               </h3>
-              <div className="flex items-center gap-2 animate-pulse ml-2">
+              <div className="flex items-center gap-2 animate-pulse ml-2 relative">
                 <Zap className="h-4 w-4 text-primary " />
+                <div className="absolute right-0 -top-[12px] text-[9px] italic">
+                  Intensidad
+                </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 border-2 bg-primary rounded-full" />
                   <div className="w-3 h-3 border-2 bg-primary rounded-full" />
@@ -201,16 +223,6 @@ export function BrewingMethodStep({
             </div>
           </div>
         </CardContent>
-        <div className="p-6 pt-0">
-          <Button
-            onClick={goBack}
-            variant="ghost"
-            className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver
-          </Button>
-        </div>
       </Card>
     </motion.div>
   );

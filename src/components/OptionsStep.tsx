@@ -62,17 +62,17 @@ export function OptionsStep({
               className="luxury-button w-full p-6 text-lg cursor-pointer"
             >
               <Coffee className="mr-3 h-6 w-6" />
-              Elegir tu mismo
+              Elige tu mismo
             </Button>
           </motion.div>
 
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
               onClick={() => handleOptionSelect("quiz")}
-              className="luxury-button w-full p-6 text-lg cursor-pointer"
+              className="luxury-button flex items-center gap-1 w-full py-6 px-2 text-sm cursor-pointer"
             >
-              <CircleQuestionMark className="mr-3 h-6 w-6" />
-              Te orientamos
+              <CircleQuestionMark className="h-6 w-6" />
+              Responde a la encuesta y elegimos por ti
             </Button>
           </motion.div>
 

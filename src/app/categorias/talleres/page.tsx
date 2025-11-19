@@ -169,12 +169,12 @@ export default function TalleresCategory() {
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden"
+      className="min-h-[100dvh] relative overflow-hidden"
       style={{ backgroundColor: "#ece6cc" }}
     >
       <BackgorundElementsDecoration />
 
-      <div className="relative z-10 min-h-screen p-6">
+      <div className="relative z-10 min-h-[100dvh] p-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div

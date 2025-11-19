@@ -36,6 +36,16 @@ export function CupTypeStep({
       exit={{ opacity: 0, x: -50 }}
       transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
     >
+      <div className="p-2 pt-0">
+        <Button
+          onClick={goBack}
+          variant="ghost"
+          className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Volver
+        </Button>
+      </div>
       <Card className="luxury-card">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
@@ -89,10 +99,9 @@ export function CupTypeStep({
                     <h3 className="font-semibold text-lg text-foreground mb-2">
                       {cup.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {/* {cup.description} */}
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
+                    {/* <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p> */}
                   </div>
                   {cup?.extraCost && cup.extraCost > 0 && (
                     <div className="absolute top-2 right-2 flex items-center text-xs text-black font-medium z-10 bg-accent rounded-full px-1.5 py-0.5">
@@ -104,16 +113,6 @@ export function CupTypeStep({
             </motion.div>
           ))}
         </CardContent>
-        <div className="p-6 pt-0">
-          <Button
-            onClick={goBack}
-            variant="ghost"
-            className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver
-          </Button>
-        </div>
       </Card>
     </motion.div>
   );

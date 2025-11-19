@@ -50,12 +50,12 @@ export default function Categories() {
 
   return (
     <div
-      className="min-h-screen h-full relative overflow-hidden"
+      className="min-h-[100dvh] h-full relative overflow-hidden"
       style={{ backgroundColor: "#ece6cc" }}
       ref={containerRef}
     >
       <BackgorundElementsDecoration />
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-3 md:p-6 lg:p-8">
+      <div className="relative z-10 min-h-[100dvh] flex flex-col items-center justify-center p-3 md:p-6 lg:p-8">
         <motion.div className="w-full max-w-6xl">
           {/* Header Section */}
           <motion.div

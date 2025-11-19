@@ -64,7 +64,7 @@ export default function ProductModal({
   const [duration, setDuration] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -92,30 +92,21 @@ export default function ProductModal({
     const handleTimeUpdate = () => {
       if (!isDragging) {
         const newTime = video.currentTime;
-        console.log("Video time update:", newTime, "Duration:", video.duration);
         setCurrentTime(newTime);
       }
     };
 
     const handleLoadedMetadata = () => {
-      console.log("Video loaded metadata, duration:", video.duration);
       setDuration(video.duration);
     };
 
     const handleLoadedData = () => {
-      console.log(
-        "Video loaded data, readyState:",
-        video.readyState,
-        "Duration:",
-        video.duration
-      );
       if (video.duration && video.duration > 0) {
         setDuration(video.duration);
       }
     };
 
     const handleCanPlay = () => {
-      console.log("Video can play, duration:", video.duration);
       if (video.duration && video.duration > 0) {
         setDuration(video.duration);
       }
@@ -128,7 +119,6 @@ export default function ProductModal({
 
     // Force load if not loaded
     if (video.readyState === 0) {
-      console.log("Forcing video load...");
       video.load();
     }
 
@@ -297,7 +287,7 @@ export default function ProductModal({
             {/* Content Overlay - Bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
               {/* Price Badge - Top Right */}
-              <div className="absolute -top-16 right-4 bg-accent text-white px-3 py-1.5 font-bold text-lg shadow-lg">
+              <div className="absolute -top-16 right-4 bg-black text-white px-3 py-1.5 font-bold text-2xl shadow-lg">
                 S/ {product.price}
               </div>
 
@@ -310,30 +300,6 @@ export default function ProductModal({
                 <p className="text-white/90 text-sm leading-relaxed mb-3 line-clamp-3">
                   {product.description}
                 </p>
-
-                {/* Tags */}
-                {/* {product.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
-                    {product.tags.slice(0, 3).map((tag, tagIndex) => (
-                      <motion.span
-                        key={tagIndex}
-                        className="inline-flex items-center gap-1 px-2 py-1 bg-white/95 border-2 border-black text-black text-xs font-medium"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.1 * tagIndex }}
-                      >
-                        {tag === "Recomendación del barista" && (
-                          <Star className="w-3 h-3" />
-                        )}
-                        {tag === "Alto en cafeína" && (
-                          <Coffee className="w-3 h-3" />
-                        )}
-                        <Tag className="w-3 h-3" />
-                        {tag}
-                      </motion.span>
-                    ))}
-                  </div>
-                )} */}
               </div>
             </div>
           </motion.div>

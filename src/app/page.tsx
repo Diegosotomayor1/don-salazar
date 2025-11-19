@@ -58,8 +58,8 @@ export default function DonSalazarWizard() {
     setCurrentStep("quiz");
   };
 
-  const goToFinalRecommendation = () => {
-    setCurrentStep("finalRecommendation");
+  const goToSummary = () => {
+    setCurrentStep("summary");
   };
 
   const goToComingSoon = () => {
@@ -73,6 +73,12 @@ export default function DonSalazarWizard() {
       currentStep === "finalRecommendation"
     ) {
       setCurrentStep("options");
+      return;
+    }
+
+    // Si está en summary y viene del quiz, volver al quiz
+    if (currentStep === "summary" && userData.finalRecommendation) {
+      setCurrentStep("quiz");
       return;
     }
 
@@ -113,13 +119,13 @@ export default function DonSalazarWizard() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative  ">
+    <div className="min-h-[100dvh] flex items-center justify-center p-4 relative  ">
       <Image
         src="/fondo.jpg"
         alt="Logo"
         width={1000}
         height={1000}
-        className="absolute top-0 left-0 w-screen h-screen object-cover -z-10 blur-md opacity-20 md:opacity-30 motion-safe:animate-[pulse_8s_ease-in-out_infinite]"
+        className="absolute top-0 left-0 w-screen h-[100dvh] object-cover -z-10 blur-md opacity-20 md:opacity-30 motion-safe:animate-[pulse_8s_ease-in-out_infinite]"
       />
       <div className="w-full max-w-3xl">
         {currentStep === "name" && (
@@ -219,7 +225,12 @@ export default function DonSalazarWizard() {
           )}
 
           {currentStep === "summary" && (
-            <SummaryStep key="summary" userData={userData} goBack={goBack} />
+            <SummaryStep
+              key="summary"
+              userData={userData}
+              goBack={goBack}
+              goToQuiz={goToQuiz}
+            />
           )}
 
           {currentStep === "recommendations" && (
@@ -231,7 +242,7 @@ export default function DonSalazarWizard() {
               key="quiz"
               userData={userData}
               setUserData={setUserData}
-              goToFinalRecommendation={goToFinalRecommendation}
+              goToFinalRecommendation={goToSummary}
               goBack={goBack}
             />
           )}

@@ -27,7 +27,7 @@ export function PreparationStep({
 }) {
   const handlePreparationSelect = (preparationType: "barista" | "self") => {
     setUserData({ ...userData, preparationType });
-    
+
     // Si selecciona "self", ir directamente a comingSoon
     if (preparationType === "self") {
       goToComingSoon();
@@ -104,7 +104,7 @@ export function PreparationStep({
                 </div>
                 <div className="flex flex-col items-center text-sm text-primary">
                   + Costo adicional{" "}
-                  <span className="text-[10px]">(Proximamente)</span>
+                  <span className="font-bold">(Proximamente)</span>
                 </div>
               </div>
             </div>

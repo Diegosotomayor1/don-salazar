@@ -48,9 +48,9 @@ export interface CatalogItem {
 }
 
 export interface FinalRecommendation {
-  grano: CatalogItem;
-  metodo: CatalogItem;
-  taza: CatalogItem;
+  grano: CatalogItem & { id: string };
+  metodo: CatalogItem & { id: string };
+  taza: CatalogItem & { id: string };
 }
 
 export interface SistemaRecomendacion {
@@ -83,8 +83,10 @@ export type CoffeeType = {
 export type MenuProducts = {
   id?: string; // Para identificar el producto en traducciones
   name: string;
+  nameEn: string;
   price: number;
   description: string;
+  descriptionEn: string;
   tags: string[];
   video?: string;
   img?: string;
