@@ -41,7 +41,9 @@ export function SummaryStep({
 
   // Obtener la frase pícara (siempre se muestra, independiente de la selección)
   const piquantPhrase =
-    (piquantPhrases as any)[coffeeTypeId]?.[brewingMethodId]?.[cupTypeId] ||
+    (piquantPhrases as Record<string, Record<string, Record<string, string>>>)[
+      coffeeTypeId
+    ]?.[brewingMethodId]?.[cupTypeId] ||
     "Una experiencia única y personalizada solo para ti.";
 
   console.log({ piquantPhrases, coffeeTypeId, brewingMethodId, cupTypeId });
@@ -181,7 +183,7 @@ export function SummaryStep({
           {/* Frase Pícara (siempre se muestra) */}
           <div className="px-4 py-2 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">
             <p className="text-foreground/90 italic leading-relaxed text-sm">
-              "💫 {piquantPhrase}"
+              &quot;💫 {piquantPhrase}&quot;
             </p>
           </div>
 

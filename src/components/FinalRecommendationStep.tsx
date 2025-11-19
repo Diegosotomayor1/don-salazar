@@ -47,7 +47,12 @@ export function FinalRecommendationStep({
 
   // Obtener la frase pícara para esta combinación
   const piquantPhrase =
-    (piquantPhrases as any)[grano.id]?.[metodo.id]?.[taza.id] ||
+    (
+      piquantPhrases as unknown as Record<
+        string,
+        Record<string, Record<string, string>>
+      >
+    )[grano.id]?.[metodo.id]?.[taza.id] ||
     "Una experiencia única y personalizada solo para ti.";
 
   const toggleExpanded = (section: "grano" | "metodo" | "taza") => {
@@ -259,7 +264,7 @@ export function FinalRecommendationStep({
                 Tu Experiencia Personalizada
               </h3>
               <p className="text-foreground/90 italic leading-relaxed text-lg">
-                "{piquantPhrase}"
+                &quot;{piquantPhrase}&quot;
               </p>
             </CardContent>
           </Card>
