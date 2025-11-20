@@ -3,90 +3,99 @@ import { LANGUAGE } from "@/types/dictionary";
 // Traducciones para textos de interfaz de usuario
 export const uiTranslations = {
   // Header y branding
-  "brand": {
+  brand: {
     name: {
       [LANGUAGE.ES]: "Don Salazar",
-      [LANGUAGE.EN]: "Don Salazar"
+      [LANGUAGE.EN]: "Don Salazar",
     },
     subtitle: {
       [LANGUAGE.ES]: "Speciality Coffee",
-      [LANGUAGE.EN]: "Speciality Coffee"
-    }
+      [LANGUAGE.EN]: "Speciality Coffee",
+    },
   },
 
   // Navegación y botones
-  "navigation": {
+  navigation: {
     "view-products": {
       [LANGUAGE.ES]: "Ver productos",
-      [LANGUAGE.EN]: "View products"
+      [LANGUAGE.EN]: "View products",
     },
     "back-to-categories": {
       [LANGUAGE.ES]: "Volver a categorías",
-      [LANGUAGE.EN]: "Back to categories"
+      [LANGUAGE.EN]: "Back to categories",
     },
     "select-category": {
-      [LANGUAGE.ES]: "Selecciona una categoría para explorar nuestros cafés especializados",
-      [LANGUAGE.EN]: "Select a category to explore our specialty coffees"
-    }
+      [LANGUAGE.ES]:
+        "Selecciona una categoría para explorar nuestros cafés especializados",
+      [LANGUAGE.EN]: "Select a category to explore our specialty coffees",
+    },
   },
 
   // Estados y mensajes
-  "states": {
+  states: {
     "category-not-found": {
       [LANGUAGE.ES]: "Categoría no encontrada",
-      [LANGUAGE.EN]: "Category not found"
+      [LANGUAGE.EN]: "Category not found",
     },
-    "loading": {
+    loading: {
       [LANGUAGE.ES]: "Cargando...",
-      [LANGUAGE.EN]: "Loading..."
+      [LANGUAGE.EN]: "Loading...",
     },
     "no-products": {
       [LANGUAGE.ES]: "No hay productos disponibles",
-      [LANGUAGE.EN]: "No products available"
-    }
+      [LANGUAGE.EN]: "No products available",
+    },
   },
 
   // Modal y overlays
-  "modal": {
-    "close": {
+  modal: {
+    close: {
       [LANGUAGE.ES]: "Cerrar",
-      [LANGUAGE.EN]: "Close"
+      [LANGUAGE.EN]: "Close",
     },
     "view-more": {
       [LANGUAGE.ES]: "Ver más",
-      [LANGUAGE.EN]: "View more"
+      [LANGUAGE.EN]: "View more",
     },
     "add-to-cart": {
       [LANGUAGE.ES]: "Agregar al carrito",
-      [LANGUAGE.EN]: "Add to cart"
-    }
+      [LANGUAGE.EN]: "Add to cart",
+    },
   },
 
   // Información general
-  "info": {
+  info: {
     "price-prefix": {
       [LANGUAGE.ES]: "S/",
-      [LANGUAGE.EN]: "S/"
+      [LANGUAGE.EN]: "S/",
     },
-    "currency": {
+    currency: {
       [LANGUAGE.ES]: "Soles",
-      [LANGUAGE.EN]: "Soles"
+      [LANGUAGE.EN]: "Soles",
     },
     "extra-shot": {
       [LANGUAGE.ES]: "+S/4 añade un shot de espresso adicional",
-      [LANGUAGE.EN]: "+S/4 adds an extra espresso shot"
+      [LANGUAGE.EN]: "+S/4 adds an extra espresso shot",
     },
     "extra-ice-cream": {
-      [LANGUAGE.ES]: "+S/8 añade una bola de helado natural de vainilla Madagascar",
-      [LANGUAGE.EN]: "+S/8 adds a scoop of natural Madagascar vanilla ice cream"
-    }
+      [LANGUAGE.ES]:
+        "+S/8 añade una bola de helado natural de vainilla Madagascar",
+      [LANGUAGE.EN]:
+        "+S/8 adds a scoop of natural Madagascar vanilla ice cream",
+    },
   },
 
   // Talleres específicos
-  "workshops": {
+  workshops: {
     "barista-for-day": {
       [LANGUAGE.ES]: "Barista por un día",
-      [LANGUAGE.EN]: "Barista for a day"
-    }
-  }
+      [LANGUAGE.EN]: "Barista for a day",
+    },
+  },
+
+  // Modal description
+  "modal-description": {
+    [LANGUAGE.ES]: "Te gustó el producto? Pídelo con nuestro barista",
+    [LANGUAGE.EN]: "Did you like the product? Order it with our barista",
+  },
 };

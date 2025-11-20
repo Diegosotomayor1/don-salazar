@@ -230,7 +230,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Intense espresso with steamed milk and a touch of caramel with activated charcoal.",
       price: 17,
       tags: [],
-      video: "/carta/el calor del grano/Black_Cappuccino_comprimido.mp4",
+      video: "/carta/el calor del grano/Black cappuccino_comprimido.mp4",
       img: "/carta/el calor del grano/black_cappuccino.png",
     },
   ],
@@ -398,62 +398,28 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Recién exprimido, natural y refrescante.",
       descriptionEn: "Freshly squeezed, natural and refreshing.",
       tags: [],
-      img: "/carta/la frescura del grano/jugo de naranja.png",
+      video: "/carta/mas alla del grano/JUGO DE NARANJA_comprimido.mp4",
+      img: "/carta/mas alla del grano/jugo de naranja.png",
     },
     {
-      name: "Chocolate Caliente",
-      nameEn: "Hot Chocolate",
-      price: 14,
-      description: "Cremoso y reconfortante chocolate caliente.",
-      descriptionEn: "Creamy and comforting hot chocolate.",
+      name: "Agua Evian con Gas",
+      nameEn: "Evian Sparkling Water",
+      price: 13,
+      description: "Agua de 330 ml de manantial con gas.",
+      descriptionEn: "330 ml sparkling spring water.",
       tags: [],
-      img: "/carta/la frescura del grano/chocolate caliente.png",
+      video: "/carta/mas alla del grano/Agua Evian con gas_comprimido.mp4",
+      img: "/carta/mas alla del grano/evián con gas_1.png",
     },
     {
-      name: "Té Artesanal",
-      nameEn: "Artisanal Tea",
-      price: 12,
-      description: "Selección de tés premium de origen.",
-      descriptionEn: "Selection of premium origin teas.",
+      name: "Agua Evian sin Gas",
+      nameEn: "Evian Still Water",
+      price: 13,
+      description: "Agua de 500 ml de manantial sin gas.",
+      descriptionEn: "500 ml still spring water.",
       tags: [],
-      img: "/carta/la frescura del grano/té artesanal.png",
-    },
-    {
-      name: "Limonada Natural",
-      nameEn: "Natural Lemonade",
-      price: 12,
-      description: "Limonada recién preparada con limones naturales.",
-      descriptionEn: "Freshly prepared lemonade with natural lemons.",
-      tags: [],
-      img: "/carta/la frescura del grano/limonada natural.png",
-    },
-    {
-      name: "Agua de Sabor",
-      nameEn: "Flavored Water",
-      price: 10,
-      description: "Agua infusionada con frutas naturales.",
-      descriptionEn: "Water infused with natural fruits.",
-      tags: [],
-      img: "/carta/la frescura del grano/agua de sabor.png",
-    },
-    {
-      name: "Orange Fizz",
-      nameEn: "Orange Fizz",
-      price: 15,
-      description:
-        "Bebida burbujeante de naranja con un toque cítrico y dulce.",
-      descriptionEn: "Bubbly orange drink with a citrusy and sweet touch.",
-      tags: [],
-      img: "/carta/mas alla del grano/orange fizz.png",
-    },
-    {
-      name: "Tropical Fizz",
-      nameEn: "Tropical Fizz",
-      price: 15,
-      description: "Refresco con gas, mezcla de sabores tropicales frutales.",
-      descriptionEn: "Sparkling drink, mix of tropical fruit flavors.",
-      tags: [],
-      img: "/carta/mas alla del grano/tropical fizz.png",
+      video: "/carta/mas alla del grano/agua evián sin gas_comprimido.mp4",
+      img: "/carta/mas alla del grano/agua evian sin gas_1.png",
     },
     {
       name: "Alivio Don Salazar",
@@ -462,6 +428,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "Infusión natural con hierbas que ayudan a la digestión.",
       descriptionEn: "Natural infusion with herbs that aid digestion.",
       tags: [],
+      video: "/carta/mas alla del grano/Alivio Don Salazar_comprimido.mp4",
       img: "/carta/mas alla del grano/alivio don salazar.png",
     },
     {
@@ -473,8 +440,40 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn:
         "Hot infusion of hibiscus flower, with refreshing and slightly acidic flavor.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/mas alla del grano/Te de jamaica_comprimido.mp4",
       img: "/carta/mas alla del grano/amor de jamaica.png",
+    },
+    {
+      name: "Chocolate Caliente",
+      nameEn: "Hot Chocolate",
+      price: 14,
+      description:
+        "Caliente, elaborado con chocolate derretido y leche cremosa.",
+      descriptionEn: "Hot, made with melted chocolate and creamy milk.",
+      tags: [],
+      video: "/carta/mas alla del grano/Chocolate Caliente_comprimido.mp4",
+      img: "/carta/mas alla del grano/chocolate caliente.png",
+    },
+    {
+      name: "Orange Fizz",
+      nameEn: "Orange Fizz",
+      price: 15,
+      description:
+        "Bebida burbujeante de naranja con un toque cítrico y dulce.",
+      descriptionEn: "Bubbly orange drink with a citrusy and sweet touch.",
+      tags: [],
+      video: "/carta/mas alla del grano/Orange fizz_comprimido.mp4",
+      img: "/carta/mas alla del grano/orange fizz.png",
+    },
+    {
+      name: "Tropical Fizz",
+      nameEn: "Tropical Fizz",
+      price: 15,
+      description: "Refresco con gas, mezcla de sabores tropicales frutales.",
+      descriptionEn: "Sparkling drink, mix of tropical fruit flavors.",
+      tags: [],
+      video: "/carta/mas alla del grano/Tropical FIZZ_comprimido.mp4",
+      img: "/carta/mas alla del grano/tropical fizz.png",
     },
     {
       name: "Cerveza Don Salazar",
@@ -486,26 +485,6 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "House craft beer made with our specialty coffee, unique, balanced and refreshing flavor.",
       tags: [],
       video: "/cafe.mp4",
-    },
-    {
-      name: "Agua Evian con Gas",
-      nameEn: "Evian Sparkling Water",
-      price: 13,
-      description: "Agua de 330 ml de manantial con gas.",
-      descriptionEn: "330 ml sparkling spring water.",
-      tags: [],
-      video: "/cafe.mp4",
-      img: "/carta/mas alla del grano/evián con gas_1.png",
-    },
-    {
-      name: "Agua Evian sin Gas",
-      nameEn: "Evian Still Water",
-      price: 13,
-      description: "Agua de 500 ml de manantial sin gas.",
-      descriptionEn: "500 ml still spring water.",
-      tags: [],
-      video: "/cafe.mp4",
-      img: "/carta/mas alla del grano/agua evian sin gas_1.png",
     },
   ],
   salados: [
@@ -1158,8 +1137,10 @@ export const coffeeTypes: CoffeeType[] = [
   {
     id: "el_obata",
     name: "El obatá",
+    shortDescription:
+      "Café con notas a vainilla, proveniente de la parcela Portón de Finca Don Salazar",
     description:
-      "Un café de sabor reconfortante y familiar, con notas claras a chocolate con leche, nueces tostadas y un dulzor a caramelo. Es bajo en acidez y tiene un cuerpo cremoso.",
+      "Viajamos a las tierras de Brasil para introducir el Obatá hace más de doce años. Hoy florece en nuestras tierras de Villa Rica, ofreciendo una taza dulce, sedosa y elegante, con sutiles notas a vainilla.",
     icon: "☕",
     img: "/experiences/obata.png",
     price: 20,
@@ -1167,6 +1148,8 @@ export const coffeeTypes: CoffeeType[] = [
   {
     id: "el_balanceado",
     name: "El balanceado",
+    shortDescription:
+      "Combina la dulzura del chocolate con un toque frutal muy sutil.",
     description:
       "La taza perfecta para quienes buscan equilibrio. Combina la dulzura del chocolate con un toque frutal muy sutil, resultando en una bebida amable y fácil de tomar.",
     icon: "⚖️",
@@ -1176,8 +1159,10 @@ export const coffeeTypes: CoffeeType[] = [
   {
     id: "el_tupi",
     name: "El tupí",
+    shortDescription:
+      "Café con notas a cacao y vino, proveniente de la parcela Artian de Finca Don Salazar",
     description:
-      "Una experiencia vibrante y refrescante. Este café explota con sabores a frutos rojos y cítricos como la mandarina, con una acidez brillante que lo hace muy jugoso en boca.",
+      "Hace más de doce años viajamos a Brasil para traer el Tupí, que hoy florece en nuestra parcela Artian. Lo plantamos como un homenaje al primer proyecto de Don Salazar junto a un amigo y socio, y ahora nos regala una taza intensa y aterciopelada, con notas a cacao y vino que reflejan su carácter y historia",
     icon: "🍊",
     img: "/experiences/tupi.png",
     price: 20,
@@ -1189,8 +1174,7 @@ export const brewingMethods = [
   {
     id: "v60",
     name: "V60",
-    description:
-      "Es un método de filtrado que produce una bebida increíblemente limpia, delicada y ligera, muy parecida a un té, donde podemos apreciar las notas más sutiles y la acidez de tu café.",
+    description: "Consigue una taza limpia y suave, sin amargor.",
     type: "filtrado",
     icon: "⚪",
     img: "/experiences/v60.png",
@@ -1199,8 +1183,7 @@ export const brewingMethods = [
   {
     id: "chemex",
     name: "Chemex",
-    description:
-      "Método de filtrado que produce una taza muy limpia y brillante, con cuerpo medio y excelente claridad de sabores.",
+    description: "Consigue una taza suave y elegante, con notas delicadas.",
     type: "filtrado",
     icon: "🧪",
     img: "/experiences/chemex.png",
@@ -1209,8 +1192,7 @@ export const brewingMethods = [
   {
     id: "origami",
     name: "Origami",
-    description:
-      "Dripper versátil que permite diferentes técnicas de extracción, produciendo tazas complejas y balanceadas.",
+    description: "Consigue una taza dulce y equilibrada, con cuerpo medio.",
     type: "filtrado",
     icon: "📐",
     img: "/experiences/origami.png",
@@ -1220,7 +1202,7 @@ export const brewingMethods = [
     id: "sifon_japones",
     name: "Sifón Japonés",
     description:
-      "Más que un método, es un espectáculo. Usando vacío y presión de vapor, se crea la taza más aromática y compleja de todas, con una claridad excepcional. Es una experiencia única.",
+      "Una fusión entre ciencia y arte. Consigue un café equilibrado, limpio y aromático.",
     type: "inmersion",
     icon: "🔬",
     img: "/experiences/sifon_japones.png",
@@ -1230,8 +1212,7 @@ export const brewingMethods = [
   {
     id: "aeropress",
     name: "Aeropress",
-    description:
-      "Este método combina inmersión y presión. Logra una taza redonda, sedosa y muy rica en sabor, pero sin amargura ni sedimentos, ideal si buscas más cuerpo.",
+    description: "Consigue un café intenso y limpio, con cuerpo firme.",
     type: "inmersion",
     icon: "🔄",
     img: "/experiences/aeropress.png",
@@ -1241,7 +1222,7 @@ export const brewingMethods = [
     id: "press2go",
     name: "Press2go",
     description:
-      "Método de inmersión portátil que produce una taza con cuerpo completo y sabores concentrados, perfecto para llevar.",
+      "Consigue un café intenso y de gran cuerpo, con final envolvente.",
     type: "inmersion",
     icon: "🚀",
     img: "/experiences/press2go.png",

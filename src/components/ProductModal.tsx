@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "@/hooks/useTranslations";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ThumbsUp, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
@@ -66,6 +67,7 @@ export default function ProductModal({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { tUI } = useTranslations();
 
   useEffect(() => {
     if (isOpen && videoRef.current) {
@@ -180,13 +182,12 @@ export default function ProductModal({
             exit={{ opacity: 0 }}
           />
           <div className="flex items-center gap-2 absolute bottom-2 right-2 z-20 p-2 bg-white/95 border-2 border-black text-black text-xs px-4 font-medium">
-            <ThumbsUp className="w-4 h-4" /> Te gustó el producto? Pídelo con
-            nuestro barista
+            <ThumbsUp className="w-4 h-4" /> {tUI("modal-description")}
           </div>
 
           {/* Modal Content - TikTok Style */}
           <motion.div
-            className="relative w-full max-w-md h-[85vh] overflow-hidden shadow-2xl bg-black"
+            className="relative w-full max-w-md h-[85dvh] overflow-hidden shadow-2xl bg-black"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}

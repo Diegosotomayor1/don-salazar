@@ -74,6 +74,7 @@ export type Category = {
 export type CoffeeType = {
   id: string;
   name: string;
+  shortDescription: string;
   description: string;
   icon: string;
   img: string;

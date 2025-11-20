@@ -88,6 +88,7 @@ export function BrewingMethodStep({
                     ></div>
                   </div>
                   <div className="w-3 h-3 border-2 rounded-full" />
+                  <div className="w-3 h-3 border-2 rounded-full" />
                 </div>
               </div>
             </div>
@@ -129,9 +130,7 @@ export function BrewingMethodStep({
                           {method.name}
                         </h4>
                         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                          {/* {method.description} */}
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit.
+                          {method.description}
                         </p>
                       </div>
                       {method.extraCost > 0 && (
@@ -205,9 +204,7 @@ export function BrewingMethodStep({
                           {method.name}
                         </h4>
                         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                          {/* {method.description} */}
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit.
+                          {method.description}
                         </p>
                       </div>
                       {method.extraCost > 0 && (

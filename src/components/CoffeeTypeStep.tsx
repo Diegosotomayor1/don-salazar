@@ -97,8 +97,7 @@ export function CoffeeTypeStep({
                       {coffee.name}
                     </h3>
                     <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed text-center">
-                      {/* {coffee.description} */}
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      {coffee.shortDescription}
                     </p>
                   </div>
                 </div>

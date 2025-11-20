@@ -95,7 +95,7 @@ export default function WorkshopModal({
 
           {/* Modal Content - TikTok Style */}
           <motion.div
-            className="relative w-full max-w-md h-[85vh] overflow-hidden shadow-2xl bg-black"
+            className="relative w-full max-w-md h-[85dvh] overflow-hidden shadow-2xl bg-black"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}

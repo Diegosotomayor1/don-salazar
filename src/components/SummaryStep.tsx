@@ -1,4 +1,14 @@
+import {
+  brewingMethods,
+  coffeeTypes,
+  cupTypes,
+  piquantPhrases,
+} from "@/constants";
+import { UserData } from "@/types";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
@@ -6,16 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { ArrowLeft, Coffee } from "lucide-react";
-import { Button } from "./ui/button";
-import { UserData } from "@/types";
-import {
-  coffeeTypes,
-  brewingMethods,
-  cupTypes,
-  piquantPhrases,
-} from "@/constants";
-import Image from "next/image";
 
 export function SummaryStep({
   userData,
@@ -45,8 +45,6 @@ export function SummaryStep({
       coffeeTypeId
     ]?.[brewingMethodId]?.[cupTypeId] ||
     "Una experiencia única y personalizada solo para ti.";
-
-  console.log({ piquantPhrases, coffeeTypeId, brewingMethodId, cupTypeId });
 
   // Calcular precios
   const basePrice = selectedCoffeeType?.price || 0;
