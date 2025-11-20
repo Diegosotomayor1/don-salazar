@@ -8,10 +8,19 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { UserData } from "@/types";
 import { coffeeTypes } from "@/constants";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "@/hooks/useTranslations";
 
 export function CoffeeTypeStep({
   userData,
@@ -24,6 +33,11 @@ export function CoffeeTypeStep({
   nextStep: () => void;
   goBack: () => void;
 }) {
+  const { language } = useTranslations();
+  const [selectedCoffee, setSelectedCoffee] = useState<
+    (typeof coffeeTypes)[number] | null
+  >(null);
+
   const handleCoffeeTypeSelect = (coffeeTypeId: string) => {
     setUserData({ ...userData, coffeeType: coffeeTypeId });
     nextStep();
@@ -58,7 +72,7 @@ export function CoffeeTypeStep({
             Selecciona el grano que más te llame la atención
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-3 gap-2 px-4 md:px-6">
+        <CardContent className="grid grid-cols-3 gap-2 px-4 md:px-6 h-full">
           {coffeeTypes.map((coffee, index) => (
             <motion.div
               key={coffee.id}
@@ -70,9 +84,9 @@ export function CoffeeTypeStep({
             >
               <div
                 onClick={() => handleCoffeeTypeSelect(coffee.id)}
-                className="w-full h-full px-2 py-4 md:p-5  rounded-2xl border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer relative"
+                className="w-full h-[calc(100%-36px)] px-2 py-4 md:p-5 rounded-2xl border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:text-foreground transition-all duration-300 cursor-pointer relative"
               >
-                <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-4 h-full">
                   <motion.div
                     animate={{ rotate: [0, 12, 0] }}
                     transition={{
@@ -91,8 +105,8 @@ export function CoffeeTypeStep({
                     />
                     <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-70"></div>
                   </motion.div>
-                  {/*  <div className="text-3xl">{coffee.icon}</div> */}
-                  <div className="flex flex-col">
+
+                  <div className="flex flex-col items-center">
                     <h3 className="font-semibold text-md text-foreground mb-2 text-center">
                       {coffee.name}
                     </h3>
@@ -102,10 +116,60 @@ export function CoffeeTypeStep({
                   </div>
                 </div>
               </div>
+
+              {/* "Ver más" button outside the card container */}
+              <Button
+                variant="outline"
+                size="sm"
+                className="mt-2 rounded-full px-4 py-1 text-xs w-full"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedCoffee(coffee);
+                }}
+              >
+                Ver más
+              </Button>
             </motion.div>
           ))}
         </CardContent>
       </Card>
+
+      {/* Dialog for coffee description */}
+      <Dialog
+        open={!!selectedCoffee}
+        onOpenChange={(open) => !open && setSelectedCoffee(null)}
+      >
+        <DialogContent onClose={() => setSelectedCoffee(null)}>
+          <DialogHeader>
+            <div className="flex flex-col items-center gap-4">
+              <motion.div
+                animate={{ rotate: [0, 12, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative"
+              >
+                <Image
+                  src={selectedCoffee?.img || ""}
+                  alt={selectedCoffee?.name || ""}
+                  width={120}
+                  height={120}
+                  className="rounded-lg"
+                />
+                <div className="absolute inset-0 bg-accent/30 blur-lg rounded-lg -z-10 animate-[pulse_2s_ease-in-out_infinite] scale-110"></div>
+              </motion.div>
+              <DialogTitle className="text-center text-xl">
+                {selectedCoffee?.name}
+              </DialogTitle>
+            </div>
+            <DialogDescription className="text-center text-sm leading-relaxed mt-2">
+              {selectedCoffee?.description}
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </motion.div>
   );
 }

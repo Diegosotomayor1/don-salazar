@@ -29,12 +29,22 @@ export function OptionsStep({
   const handleOptionSelect = (
     option: "choose" | "recommendations" | "quiz"
   ) => {
-    setUserData({ ...userData, selectedOption: option });
     if (option === "choose") {
+      // Reset selection data when switching to manual selection
+      setUserData({
+        ...userData,
+        selectedOption: option,
+        coffeeType: "",
+        brewingMethod: "",
+        cupType: "",
+        finalRecommendation: undefined,
+      });
       nextStep();
     } else if (option === "recommendations") {
+      setUserData({ ...userData, selectedOption: option });
       goToRecommendations();
     } else if (option === "quiz") {
+      setUserData({ ...userData, selectedOption: option });
       goToQuiz();
     }
   };

@@ -360,7 +360,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Coffee with lemon, gelatin, Ginger Ale and a bubbly touch of cold brew.",
       tags: [],
       video:
-        "/carta/la frescura del grano/Sparkling_Coffee_Clásico_comprimido.mp4",
+        "/carta/la frescura del grano/Sparkling_Coffee_Clasico_comprimido.mp4",
       img: "/carta/la frescura del grano/sparkling clásico.png",
     },
     {
