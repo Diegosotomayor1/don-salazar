@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { workshops } from "@/constants";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
 import WorkshopModal from "@/components/WorkshopModal";
@@ -58,6 +58,8 @@ interface Workshop {
   duration: string;
   type: string;
   whatsappLink: string;
+  img?: string;
+  video?: string;
 }
 
 const WorkshopItem = ({
@@ -73,22 +75,6 @@ const WorkshopItem = ({
     workshopId: string
   ) => Record<string, unknown> | undefined;
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isPlaying) {
-      video.play().catch(console.error);
-      setIsPlaying(true);
-    } else {
-      video.pause();
-      setIsPlaying(false);
-    }
-  }, [isPlaying]);
-
   return (
     <motion.div
       key={index}
@@ -98,17 +84,13 @@ const WorkshopItem = ({
         y: -5,
         transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
-      onMouseEnter={() => setIsPlaying(true)}
-      onMouseLeave={() => setIsPlaying(false)}
       onClick={() => onWorkshopClick(workshop)}
     >
-      <video
-        ref={videoRef}
-        src="/cafe.mp4"
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      <Image
+        src={workshop.img || "/logo-don-salazar-black.png"}
+        alt={workshop.name}
+        width={400}
+        height={400}
         className="h-full w-full object-cover object-center"
       />
       <div

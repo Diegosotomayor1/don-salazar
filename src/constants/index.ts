@@ -1296,6 +1296,8 @@ export const workshops = [
     },
     duration: "2 horas",
     type: "Teórico y práctico",
+    img: "/talleres/coffe-for-dummies.png",
+    video: "/talleres/coffee _for_dumies_carta_comprimido.webm",
     whatsappLink: "https://wa.link/mvt90k",
   },
   {
@@ -1325,6 +1327,8 @@ export const workshops = [
     },
     duration: "2 horas",
     type: "Teórico y práctico",
+    img: "/talleres/taller-de-arte-latte.png",
+    video: "/talleres/arte_latte_carta_comprimido.webm",
     whatsappLink: "https://wa.link/wgjwng",
   },
   {
@@ -1354,6 +1358,8 @@ export const workshops = [
     },
     duration: "2 horas",
     type: "Teórico y práctico",
+    img: "/talleres/taller-de-metodos.png",
+    video: "/talleres/métodos_carta_comprimido.webm",
     whatsappLink: "https://wa.link/3rh5dv",
   },
 ];

@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import {
   CheckCircle2,
   Clock,
@@ -11,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Workshop {
   id: string;
@@ -28,6 +28,8 @@ interface Workshop {
   duration: string;
   type: string;
   whatsappLink: string;
+  img?: string;
+  video?: string;
 }
 
 interface WorkshopModalProps {
@@ -41,16 +43,21 @@ export default function WorkshopModal({
   onClose,
   workshop,
 }: WorkshopModalProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen && videoRef.current) {
       videoRef.current.currentTime = 0;
       setIsPlaying(true);
-      setIsExpanded(false); // Reset to compact view when opening
+      setIsExpanded(false);
+      setIsVideoLoaded(false);
+      setIsLoading(true);
     }
   }, [isOpen, workshop]);
 
@@ -58,12 +65,52 @@ export default function WorkshopModal({
     const video = videoRef.current;
     if (!video) return;
 
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true);
+      setIsLoading(false);
+      // Small delay to ensure modal is fully rendered
+      setTimeout(() => {
+        if (isPlaying && video) {
+          video.play().catch((error) => {
+            console.error("Error playing video:", error);
+          });
+        }
+      }, 100);
+    };
+
+    const handleLoadedData = () => {
+      setIsVideoLoaded(true);
+      setIsLoading(false);
+    };
+
+    const handleError = (e: Event) => {
+      console.error("Video error:", e, workshop?.video);
+      setIsLoading(false);
+    };
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("error", handleError);
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("loadeddata", handleLoadedData);
+      video.removeEventListener("error", handleError);
+    };
+  }, [isPlaying, workshop?.video]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !isVideoLoaded) return;
+
     if (isPlaying) {
-      video.play().catch(console.error);
+      video.play().catch((error) => {
+        console.error("Error in play effect:", error);
+      });
     } else {
       video.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, isVideoLoaded]);
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
@@ -100,19 +147,31 @@ export default function WorkshopModal({
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+              e.stopPropagation()
+            }
           >
             {/* Full Screen Video */}
             <video
               ref={videoRef}
-              src="/cafe.mp4"
+              src={workshop.video || "/cafe.mp4"}
               muted={isMuted}
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               className="w-full h-full object-cover cursor-pointer"
               onClick={togglePlay}
             />
+
+            {/* Loading Overlay */}
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <p className="text-white text-sm">Cargando video...</p>
+                </div>
+              </div>
+            )}
 
             {/* Close Button */}
             <button
@@ -156,20 +215,13 @@ export default function WorkshopModal({
             {/* Content Overlay - Bottom - Scrollable */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/95 to-transparent max-h-[70%] overflow-y-auto">
               <div className="p-6">
-                {/* Icon */}
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center">
-                    <span className="text-4xl">{workshop.icon}</span>
-                  </div>
-                </div>
-
                 {/* Workshop Name */}
                 <h2 className="text-2xl font-bold text-white mb-2 text-center">
                   {workshop.name}
                 </h2>
 
                 {/* Subtitle */}
-                <p className="text-accent text-sm italic mb-4 text-center">
+                <p className="text-black font-semibold text-sm italic mb-4 text-center bg-accent/70 rounded-lg w-fit mx-auto px-2">
                   {workshop.subtitle}
                 </p>
 
@@ -177,32 +229,6 @@ export default function WorkshopModal({
                 <p className="text-white/90 text-sm leading-relaxed mb-4">
                   {workshop.description}
                 </p>
-
-                {/* Pricing */}
-                <div className="bg-accent/10 rounded-lg p-4 mb-4 border border-accent/30">
-                  <div className="grid grid-cols-2 gap-3 text-center">
-                    <div>
-                      <p className="text-white/70 text-xs mb-1">1 cupo</p>
-                      <p className="text-white font-bold text-xl">
-                        S/ {workshop.pricing.single}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-white/70 text-xs mb-1">2 cupos</p>
-                      <p className="text-white font-bold text-xl">
-                        S/ {workshop.pricing.double}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-3 pt-3 border-t border-white/20 flex items-center justify-center gap-4 text-white/80 text-xs">
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {workshop.duration}
-                    </span>
-                    <span>•</span>
-                    <span>{workshop.type}</span>
-                  </div>
-                </div>
 
                 {/* Expanded Content */}
                 <AnimatePresence>
@@ -213,6 +239,33 @@ export default function WorkshopModal({
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                     >
+                      {/* Pricing */}
+                      <div className="bg-accent/10 rounded-lg p-4 mb-4 border border-accent/30">
+                        <div className="grid grid-cols-2 gap-3 text-center">
+                          <div>
+                            <p className="text-white/70 text-xs mb-1">1 cupo</p>
+                            <p className="text-white font-bold text-xl">
+                              S/ {workshop.pricing.single}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-white/70 text-xs mb-1">
+                              2 cupos
+                            </p>
+                            <p className="text-white font-bold text-xl">
+                              S/ {workshop.pricing.double}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-white/20 flex items-center justify-center gap-4 text-white/80 text-xs">
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {workshop.duration}
+                          </span>
+                          <span>•</span>
+                          <span>{workshop.type}</span>
+                        </div>
+                      </div>
                       {/* Characteristics */}
                       <div className="mb-4">
                         <h3 className="text-white font-semibold text-sm mb-2 flex items-center gap-2">
