@@ -1,7 +1,14 @@
 import { UserData } from "@/types";
 import { motion } from "framer-motion";
-import { ArrowLeft, CircleQuestionMark, Coffee } from "lucide-react";
-import { Dispatch, SetStateAction } from "react";
+import {
+  ArrowLeft,
+  CircleQuestionMark,
+  Coffee,
+  Flame,
+  Apple,
+  Snowflake,
+} from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -10,6 +17,13 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 export function OptionsStep({
   userData,
@@ -26,6 +40,7 @@ export function OptionsStep({
   goToQuiz: () => void;
   goBack: () => void;
 }) {
+  const [open, setOpen] = useState(false);
   const handleOptionSelect = (
     option: "choose" | "recommendations" | "quiz"
   ) => {
@@ -78,13 +93,102 @@ export function OptionsStep({
 
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
-              onClick={() => handleOptionSelect("quiz")}
+              onClick={() => setOpen(true)}
               className="luxury-button flex items-center gap-1 w-full py-6 px-2 text-sm cursor-pointer"
             >
               <CircleQuestionMark className="h-6 w-6" />
               Responde a la encuesta y elegimos por ti
             </Button>
           </motion.div>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogContent className="max-w-lg" onClose={() => setOpen(false)}>
+              <DialogHeader className="text-center">
+                <DialogTitle className="text-xl text-foreground flex items-center justify-center gap-2">
+                  <Coffee className="w-6 h-6 text-accent" />
+                  Encuesta de Experiencia de Café
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-6 mt-4">
+                <p className="text-center text-muted-foreground leading-relaxed">
+                  Para ayudarte a descubrir tu café ideal, cuéntale a nuestro
+                  barista tus 3 preferencias:
+                </p>
+
+                <div className="space-y-4">
+                  <motion.div
+                    className="flex items-start gap-3 p-3 rounded-lg bg-accent/5 border border-accent/20"
+                    whileHover={{
+                      scale: 1.02,
+                      backgroundColor: "rgba(176, 156, 96, 0.1)",
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Flame className="w-4 h-4 text-accent" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">
+                        Intensidad que buscas
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        suave, medio o fuerte
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-start gap-3 p-3 rounded-lg bg-accent/5 border border-accent/20"
+                    whileHover={{
+                      scale: 1.02,
+                      backgroundColor: "rgba(176, 156, 96, 0.1)",
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Apple className="w-4 h-4 text-accent" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">
+                        Sabor que buscas
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        floral, frutal, cacao
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-start gap-3 p-3 rounded-lg bg-accent/5 border border-accent/20"
+                    whileHover={{
+                      scale: 1.02,
+                      backgroundColor: "rgba(176, 156, 96, 0.1)",
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Snowflake className="w-4 h-4 text-accent" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">
+                        Temperatura de tu café
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        caliente o con hielo
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <div className="text-center pt-4 border-t border-accent/20">
+                  <p className="text-sm text-muted-foreground italic">
+                    Con esta información, nuestro barista te guiará hacia la
+                    experiencia perfecta.
+                  </p>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <Button
             onClick={goBack}
