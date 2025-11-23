@@ -2,7 +2,9 @@ import {
   Category,
   CoffeeType,
   MenuProducts,
+  SEDES,
   SistemaRecomendacion,
+  TYPE_CARD,
 } from "@/types";
 
 export const coffeeCategories: Category[] = [
@@ -163,6 +165,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/el calor del grano/mocaccino_comprimido.mp4",
       img: "/carta/el calor del grano/mocaccino.png",
+      bestSelling: true,
     },
     {
       name: "Flat White",
@@ -183,6 +186,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/el calor del grano/Stumpy_Nueva_Carta_comprimido.mp4",
       img: "/carta/el calor del grano/stumpy.png",
+      bestSelling: true,
     },
     {
       name: "White Cappuccino",
@@ -222,8 +226,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       img: "/carta/el calor del grano/green cappuccino.png",
     },
     {
-      name: "Black Cappuccino ★",
-      nameEn: "Black Cappuccino ★",
+      name: "Black Cappuccino",
+      nameEn: "Black Cappuccino",
       description:
         "Espresso intenso con leche vaporizada y con un toque caramel con carbón activado. ",
       descriptionEn:
@@ -232,6 +236,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/el calor del grano/Black cappuccino_comprimido.mp4",
       img: "/carta/el calor del grano/black_cappuccino.png",
+      bestSelling: true,
     },
   ],
   "bebidas-frias-cafe": [
@@ -317,6 +322,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       video:
         "/carta/la frescura del grano/Iced_Black_Cappuccino_comprimido.mp4",
       img: "/carta/la frescura del grano/iced black cappuccino.png",
+      bestSelling: true,
     },
     {
       name: "Cold Brew",
@@ -339,6 +345,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/la frescura del grano/Frappe_Don_Salazar_comprimido.mp4",
       img: "/carta/la frescura del grano/frappe don salazar.png",
+      bestSelling: true,
     },
     {
       name: "Frappe de Oreo",
@@ -375,6 +382,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       video:
         "/carta/la frescura del grano/Sparkling_Maracumango_comprimido.mp4",
       img: "/carta/la frescura del grano/sparkling coffee maracumango.png",
+      bestSelling: true,
     },
     {
       name: "Sparkling Dragon Coffee",
@@ -453,6 +461,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/mas alla del grano/Chocolate Caliente_comprimido.mp4",
       img: "/carta/mas alla del grano/chocolate caliente.png",
+      bestSelling: true,
     },
     {
       name: "Orange Fizz",
@@ -476,8 +485,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       img: "/carta/mas alla del grano/tropical fizz.png",
     },
     {
-      name: "Cerveza Don Salazar",
-      nameEn: "Don Salazar Beer",
+      name: "Cerveza Sol de la finca",
+      nameEn: "Sol de la finca Beer",
       price: 25,
       description:
         "Cerveza artesanal de la casa elaborada con nuestro café de especialidad, sabor único, equilibrado y refrescante.",
@@ -485,6 +494,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "House craft beer made with our specialty coffee, unique, balanced and refreshing flavor.",
       tags: [],
       video: "/cafe.mp4",
+      bestSelling: true,
     },
   ],
   salados: [
@@ -561,6 +571,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/acompañamientos salazar/focaccia ahumado_comprimido.mp4",
       img: "/carta/acompañamientos salazar/focaccia ahumado.png",
+      bestSelling: true,
     },
     {
       name: "Focaccia Capresse",
@@ -573,6 +584,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/acompañamientos salazar/focaccia capresse_comprimido.mp4",
       img: "/carta/acompañamientos salazar/focaccia capresse.png",
+      bestSelling: true,
     },
     {
       name: "Maison QhiChé",
@@ -595,6 +607,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/acompañamientos salazar/Sanwich con pollo_comprimido.mp4",
       img: "/carta/acompañamientos salazar/sandwich con pollo.png",
+      bestSelling: true,
     },
     {
       name: "Tostón con Palta y Pollo",
@@ -608,6 +621,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       video:
         "/carta/acompañamientos salazar/toston pollo y palta_comprimido.mp4",
       img: "/carta/acompañamientos salazar/tostón con palta y pollo.png",
+      bestSelling: true,
     },
   ],
   piqueos: [
@@ -632,6 +646,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: ["Selección de la Casa"],
       video: "/carta/seleccion de la casa/Pizza del don_comprimido.mp4",
       img: "/carta/seleccion de la casa/pizza del don.png",
+      bestSelling: true,
     },
     {
       name: "5 Mini Churros con Queso y Jamón",
@@ -654,6 +669,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: ["Selección de la Casa"],
       video: "/carta/seleccion de la casa/tabla de queso_comprimido.mp4",
       img: "/carta/seleccion de la casa/tabla de queso.png",
+      bestSelling: true,
     },
     {
       name: "Tabla de Jamones",
@@ -665,127 +681,6 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: ["Selección de la Casa"],
       video: "/carta/seleccion de la casa/tabla de jamones_comprimido.mp4",
       img: "/carta/seleccion de la casa/tabla de jamones.png",
-    },
-    {
-      name: "Croissant de Pollo",
-      nameEn: "Chicken Croissant",
-      price: 20,
-      description:
-        "Croissant de mantequilla y hojaldrado, relleno de pollo desmenuzado con mayonesa casera.",
-      descriptionEn:
-        "Buttery and flaky croissant filled with shredded chicken and homemade mayonnaise.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/Croissant de pollo_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/croissant con pollo.png",
-    },
-    {
-      name: "Croissant Mixto",
-      nameEn: "Mixed Croissant",
-      price: 17,
-      description:
-        "Croissant de mantequilla relleno de jamón de pierna y queso cajamarquino.",
-      descriptionEn:
-        "Butter croissant filled with leg ham and Cajamarca cheese.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/croissant mixto_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/croissant mixto.png",
-    },
-    {
-      name: "Empanada Cheese Burger",
-      nameEn: "Cheese Burger Empanada",
-      price: 14,
-      description:
-        "Empanada rellena de carne, queso y sabor estilo hamburguesa.",
-      descriptionEn:
-        "Empanada filled with meat, cheese and hamburger-style flavor.",
-      tags: [],
-      video:
-        "/carta/acompañamientos salazar/Empanada_chesse_burguer_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/empanada cheese burguer.png",
-    },
-    {
-      name: "Empanada Bechamel",
-      nameEn: "Bechamel Empanada",
-      price: 12,
-      description:
-        "Rellena de jugoso pollo, champiñones frescos y una suave salsa bechamel.",
-      descriptionEn:
-        "Filled with juicy chicken, fresh mushrooms and a smooth bechamel sauce.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/Empanada de carne_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/empanada de pollo_2.png",
-    },
-    {
-      name: "Empanada Napolitana",
-      nameEn: "Neapolitan Empanada",
-      price: 12,
-      description:
-        "Relleno mediterráneo de tomate, mozzarella, jamón y albahaca.",
-      descriptionEn:
-        "Mediterranean filling of tomato, mozzarella, ham and basil.",
-      tags: [],
-      video:
-        "/carta/acompañamientos salazar/Empanada napolitana_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/empanada napolitana.png",
-    },
-    {
-      name: "Focaccia Ahumado",
-      nameEn: "Smoked Focaccia",
-      price: 25,
-      description:
-        "Pan focaccia con mantequilla cajamarquina, tocino, lomo ahumado, mozzarella y salsa especial.",
-      descriptionEn:
-        "Focaccia bread with Cajamarca butter, bacon, smoked loin, mozzarella and special sauce.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/focaccia ahumado_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/focaccia ahumado.png",
-    },
-    {
-      name: "Focaccia Capresse",
-      nameEn: "Capresse Focaccia",
-      price: 19,
-      description:
-        "Pan focaccia con mantequilla cajamarquina, tomate, mozzarella, albahaca y aceite de oliva.",
-      descriptionEn:
-        "Focaccia bread with Cajamarca butter, tomato, mozzarella, basil and olive oil.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/focaccia capresse_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/focaccia capresse.png",
-    },
-    {
-      name: "Maison QhiChé",
-      nameEn: "Maison QhiChé",
-      price: 25,
-      description:
-        "Tarta salada con base crujiente, rellena de vegetales y queso.",
-      descriptionEn:
-        "Savory tart with crispy base, filled with vegetables and cheese.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/maison quiché_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/maison quiché_1.png",
-    },
-    {
-      name: "Sandwich de Pollo",
-      nameEn: "Chicken Sandwich",
-      price: 15,
-      description: "Pechuga de pollo desmenuzada con cremosa mayonesa casera.",
-      descriptionEn: "Shredded chicken breast with creamy homemade mayonnaise.",
-      tags: [],
-      video: "/carta/acompañamientos salazar/Sanwich con pollo_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/sandwich con pollo.png",
-    },
-    {
-      name: "Tostón con Palta y Pollo",
-      nameEn: "Toasted Bread with Avocado and Chicken",
-      price: 24,
-      description:
-        "Pan campesino con palta y mantequilla bañado en aceite de oliva.",
-      descriptionEn:
-        "Country bread with avocado and butter drizzled with olive oil.",
-      tags: [],
-      video:
-        "/carta/acompañamientos salazar/toston pollo y palta_comprimido.mp4",
-      img: "/carta/acompañamientos salazar/tostón con palta y pollo.png",
     },
   ],
   dulces: [
@@ -862,6 +757,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/manjares salazar/torta de chocolate_comprimido.mp4",
       img: "/carta/manjares salazar/torta_chocolate_2.png",
+      bestSelling: true,
     },
     {
       name: "Queque Artesanal",
@@ -874,14 +770,15 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       img: "/carta/manjares salazar/queque de maracuyá_1.png",
     },
     {
-      name: "Affogato",
-      nameEn: "Affogato",
+      name: "Affogato Don Salazar",
+      nameEn: "Affogato Don Salazar",
       price: 18,
       description: "Helado de vainilla Madagascar con un shot de espresso.",
       descriptionEn: "Madagascar vanilla ice cream with a shot of espresso.",
       tags: [],
       video: "/carta/manjares salazar/Affogato_comprimido.mp4",
       img: "/carta/manjares salazar/affogato.png",
+      bestSelling: true,
     },
     {
       name: "Carrot Cake",
@@ -892,6 +789,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/manjares salazar/carrot cake_comprimido.mp4",
       img: "/carta/manjares salazar/carrot cake1.png",
+      bestSelling: true,
     },
     {
       name: "Cheesecake Maracumango",
@@ -964,6 +862,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/cafe.mp4",
       img: "/carta/cocteles con historia/espresso martini.png",
+      bestSelling: true,
     },
     {
       name: "White Russian",
@@ -990,8 +889,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       img: "/carta/cocteles con historia/la incondicinal.png",
     },
     {
-      name: "Don Espresso Martini ★",
-      nameEn: "Don Espresso Martini ★",
+      name: "Don Espresso Martini",
+      nameEn: "Don Espresso Martini",
       price: 38,
       description:
         "Nuestra versión premium del clásico con doble espresso y granos de café gourmet.",
@@ -1000,8 +899,72 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/cafe.mp4",
       img: "/carta/cocteles con historia/don kofi sour.png",
+      bestSelling: true,
     },
   ],
+};
+
+export const getTypeCardFromSede = (sede: SEDES): TYPE_CARD | undefined => {
+  const sedesMap: Record<TYPE_CARD, SEDES[]> = {
+    LUXURY: [SEDES.SAN_MIGUEL, SEDES.MIRAFLORES, SEDES.SAN_ISIDRO],
+    PREMIUM: [
+      SEDES.HIGUERETA,
+      SEDES.JOCKEY_PLAZA,
+      SEDES.SALAVERRY,
+      SEDES.PUNTA_MAR,
+      SEDES.UNIVERSIDAD_DEL_PACIFICO,
+    ],
+    PREMIUM_FONTANA: [SEDES.FONTANA],
+  };
+
+  for (const [typeCard, sedes] of Object.entries(sedesMap)) {
+    if (sedes.includes(sede)) {
+      return typeCard as TYPE_CARD;
+    }
+  }
+  return undefined;
+};
+
+export const productsOrCategoryExcluded: Record<
+  Partial<TYPE_CARD>,
+  {
+    category: string[];
+    products: Array<{
+      category: string;
+      excluded: string[];
+    }>;
+  }
+> = {
+  PREMIUM: {
+    category: ["piqueos"],
+    products: [
+      {
+        category: "salados",
+        excluded: [
+          "Tostón con Palta y Pollo",
+          "Maison QhiChé",
+          "Focaccia Capresse",
+        ],
+      },
+    ],
+  },
+  LUXURY: {
+    category: [],
+    products: [],
+  },
+  PREMIUM_FONTANA: {
+    category: ["piqueos", "cocteles"],
+    products: [
+      {
+        category: "salados",
+        excluded: [
+          "Tostón con Palta y Pollo",
+          "Maison QhiChé",
+          "Focaccia Capresse",
+        ],
+      },
+    ],
+  },
 };
 
 export const sistemaRecomendacion: SistemaRecomendacion = {
@@ -1369,169 +1332,160 @@ export const piquantPhrases = {
   el_obata: {
     v60: {
       taza_cerrada:
-        "Suave como una caricia prohibida... Este café cremoso te seduce lentamente, dejando un dulzor que provoca adicción y te hace cerrar los ojos de placer.",
+        "Caricia cremosa que te besa dulcemente, provocando antojo de placeres prohibidos.",
       taza_abierta:
-        "Tierno pero juguetón... Como un beso robado que te deja con ganas de más. Su dulzor cremoso invita a encuentros repetidos y placenteros.",
-      copa: "Misterioso y tentador... Como una mirada que promete secretos deliciosos. Sus notas tostadas se revelan en una danza visual que te hipnotiza.",
+        "Beso juguetón que invita a más encuentros cremosos y placenteros.",
+      copa: "Misterio cremoso que revela secretos dulces en una danza tentadora.",
       copa_hielo:
-        "Refrescante travieso... Un beso helado que te provoca con dulzor. Fresco, cremoso y tan adictivo que querrás repetirlo una y otra vez.",
+        "Beso helado cremoso que provoca travesuras frescas y adictivas.",
     },
     chemex: {
       taza_cerrada:
-        "Persistente como un perfume inolvidable... Se queda en tu paladar como un amante apasionado. Concentrado, aromático y completamente seductor.",
+        "Perfume cremoso inolvidable que seduce como un amante apasionado.",
       taza_abierta:
-        "Clásico con chispa... Como un amor que siempre vuelve por más. Equilibrado, confiable y tan delicioso que se vuelve irresistible.",
-      copa: "Transparente y honesto... Revela cada secreto en su pureza cristalina. Limpio, elegante y con un toque de misterio que te cautiva.",
-      copa_hielo:
-        "Ligero como una brisa erótica... Se desvanece dejando solo el recuerdo de su dulzor efímero. Refrescante y tan sutil que provoca antojo.",
+        "Amor cremoso que vuelve por más, irresistible y delicioso.",
+      copa: "Pureza cremosa que revela cada secreto en tentación cristalina.",
+      copa_hielo: "Brisa erótica cremosa que deja recuerdos dulces y efímeros.",
     },
     origami: {
       taza_cerrada:
-        "Intrincado y fascinante... Como un juego de seducción complejo. Versátil, creativo y tan delicioso que te hace querer explorar cada rincón.",
+        "Juego cremoso de seducción que invita a explorar cada rincón dulce.",
       taza_abierta:
-        "Práctico pero apasionado... Como una aventura improvisada que termina en éxtasis. Balanceado, cómodo y completamente satisfactorio.",
-      copa: "Artístico y sofisticado... Una obra maestra visual que seduce los sentidos. Complejo, elegante y con un toque de travesura visual.",
+        "Aventura improvisada cremosa que termina en éxtasis placentero.",
+      copa: "Obra maestra visual cremosa que seduce con travesura elegante.",
       copa_hielo:
-        "Ingenioso y provocador... Una invención que juega con tus expectativas. Fresco, creativo y tan adictivo que se vuelve imprescindible.",
+        "Invención cremosa que juega con expectativas frescas y adictivas.",
     },
     sifon_japones: {
       taza_cerrada:
-        "Espectacular y envolvente... Como un show privado que te deja sin aliento. Aromático, dramático y completamente cautivador.",
+        "Show cremoso privado que deja sin aliento con aromas seductores.",
       taza_abierta:
-        "Impresionante pero accesible... Como una estrella que baja a tu nivel. Complejo, cómodo y tan memorable que querrás repetirlo.",
-      copa: "Visualmente seductor... Un truco de magia que revela placeres ocultos. Espectacular, fascinante y con un toque teatral irresistible.",
+        "Estrella cremosa cercana que comparte brillos dulces y memorables.",
+      copa: "Truco mágico cremoso que revela placeres ocultos e irresistibles.",
       copa_hielo:
-        "Dramático y refrescante... Una escena apasionada que acelera el corazón. Fresco, intenso y tan emocionante que te deja temblando.",
+        "Escena apasionada cremosa que acelera el corazón con frescura.",
     },
     aeropress: {
       taza_cerrada:
-        "Intenso y suave... Como una pasión contenida que explota de placer. Sedoso, cremoso y tan rico que se vuelve adictivo.",
+        "Pasión contenida cremosa que explota en placeres ricos y adictivos.",
       taza_abierta:
-        "Directo y satisfactorio... Como un encuentro espontáneo perfecto. Concentrado, placentero y completamente gratificante.",
-      copa: "Pura y elegante... Como un secreto compartido en intimidad. Clara, suave y con una honestidad que seduce profundamente.",
+        "Encuentro espontáneo cremoso perfecto que colma gratificaciones.",
+      copa: "Secreto compartido cremoso en intimidad suave y honesta.",
       copa_hielo:
-        "Suave y provocadora... Una caricia helada que despierta sentidos. Contrastante, fresca y tan placentera que provoca repetición.",
+        "Caricia helada cremosa que despierta sentidos contrastantes.",
     },
     press2go: {
       taza_cerrada:
-        "Portátil y apasionado... Como un amor que te acompaña everywhere. Concentrado, intenso y siempre listo para sorprender.",
-      taza_abierta:
-        "Conveniente y delicioso... Como un encuentro casual que se vuelve habitual. Práctico, placentero y completamente adictivo.",
-      copa: "Viajero y sofisticado... Una aventura elegante que viaja contigo. Complejo, nómada y con un toque de misterio itinerante.",
-      copa_hielo:
-        "Nómada y refrescante... Una escapada espontánea llena de placer. Fresco, práctico y tan delicioso que se vuelve esencial.",
+        "Amor portátil cremoso que acompaña con intensidades sorprendentes.",
+      taza_abierta: "Encuentro casual cremoso que se vuelve hábito placentero.",
+      copa: "Aventura elegante cremosa que viaja con misterios itinerantes.",
+      copa_hielo: "Escapada espontánea cremosa llena de placeres frescos.",
     },
   },
   el_balanceado: {
     v60: {
       taza_cerrada:
-        "Delicado y equilibrado... Como un flirteo sutil que seduce lentamente. Armonioso, amable y tan perfecto que te hace cerrar los ojos.",
+        "Flirteo sutil equilibrado que seduce lentamente con armonía perfecta.",
       taza_abierta:
-        "Equilibrado y accesible... Como una conversación que fluye naturalmente. Sutil, cómodo y completamente satisfactorio.",
-      copa: "Transparente y honesto... Revela su alma en claridad cristalina. Elegante, sincero y con una belleza que cautiva la vista.",
-      copa_hielo:
-        "Ligero y juguetón... Una brisa que provoca cosquillas placenteras. Fresco, armonioso y tan delicado que se vuelve imprescindible.",
+        "Conversación natural equilibrada que fluye en satisfacciones cómodas.",
+      copa: "Claridad cristalina equilibrada que revela almas cautivadoras.",
+      copa_hielo: "Brisa juguetona equilibrada que provoca cosquillas frescas.",
     },
     chemex: {
       taza_cerrada:
-        "Limpio y persistente... Como un perfume que se queda grabado. Brillante, aromático y tan memorable que perdura en la memoria.",
-      taza_abierta:
-        "Clásico y confiable... Como un compañero que siempre está ahí. Equilibrado, consistente y completamente reconfortante.",
-      copa: "Puro y elegante... Una verdad hermosa en presentación sofisticada. Clara, sofisticada y con una honestidad que seduce.",
+        "Perfume grabado equilibrado que perdura en memorias aromáticas.",
+      taza_abierta: "Compañero confiable equilibrado siempre reconfortante.",
+      copa: "Verdad hermosa equilibrada en presentación sofisticada y seductora.",
       copa_hielo:
-        "Efímero y delicioso... Se desvanece dejando solo satisfacción pura. Fresco, ligero y tan placentero que provoca nostalgia.",
+        "Satisfacción pura equilibrada que deja nostalgias placenteras.",
     },
     origami: {
       taza_cerrada:
-        "Intrincado y fascinante... Como un rompecabezas emocional complejo. Versátil, creativo y tan intrigante que invita a la exploración.",
+        "Rompecabezas emocional equilibrado que invita a exploraciones intrigantes.",
       taza_abierta:
-        "Creativo y práctico... Una aventura cotidiana llena de sorpresas. Balanceado, cómodo y completamente innovador.",
-      copa: "Artístico y sofisticado... Una sinfonía visual que seduce los ojos. Complejo, elegante y con una belleza que hipnotiza.",
+        "Aventura cotidiana equilibrada llena de sorpresas innovadoras.",
+      copa: "Sinfonía visual equilibrada que seduce con hipnosis elegante.",
       copa_hielo:
-        "Ingenioso y refrescante... Una invención que juega inteligentemente. Fresco, creativo y tan delicioso que se vuelve arte.",
+        "Invención inteligente equilibrada que juega con arte fresco.",
     },
     sifon_japones: {
       taza_cerrada:
-        "Espectacular y envolvente... Como un abrazo apasionado que acelera el pulso. Aromático, dramático y completamente cautivador.",
+        "Abrazo apasionado equilibrado que acelera pulsos cautivadores.",
       taza_abierta:
-        "Impresionante pero accesible... Como una estrella que comparte su brillo. Intenso, cómodo y tan memorable que se vuelve habitual.",
-      copa: "Visual y seductor... Un truco revelado que maravilla los sentidos. Espectacular, fascinante y con un toque irresistible.",
-      copa_hielo:
-        "Dramático y refrescante... Una escena que acelera el corazón. Fresco, intenso y tan emocionante que deja huella.",
+        "Estrella compartida equilibrada que brilla en hábitos memorables.",
+      copa: "Truco revelado equilibrado que maravilla sentidos irresistibles.",
+      copa_hielo: "Escena cardíaca equilibrada que deja huellas emocionantes.",
     },
     aeropress: {
       taza_cerrada:
-        "Intenso pero equilibrado... Como una pasión medida que satisface completamente. Sedoso, armonioso y tan rico que se vuelve esencial.",
+        "Pasión medida equilibrada que satisface riquezas esenciales.",
       taza_abierta:
-        "Directo y satisfactorio... Como un encuentro perfecto que colma expectativas. Concentrado, placentero y completamente gratificante.",
-      copa: "Pura y elegante... Una promesa cumplida en claridad visual. Clara, suave y con una honestidad que seduce profundamente.",
+        "Encuentro perfecto equilibrado que colma expectativas gratificantes.",
+      copa: "Promesa cumplida equilibrada en claridad visual seductora.",
       copa_hielo:
-        "Suave y refrescante... Una caricia equilibrada que despierta. Contrastante, fresca y tan placentera que provoca deseo.",
+        "Caricia equilibrada fresca que despierta deseos contrastantes.",
     },
     press2go: {
       taza_cerrada:
-        "Portátil y apasionado... Como un amor que te acompaña en aventuras. Equilibrado, intenso y siempre listo para complacer.",
+        "Amor aventurero equilibrado que acompaña con intensidades placenteras.",
       taza_abierta:
-        "Conveniente y delicioso... Como un compañero ideal en cualquier momento. Práctico, placentero y completamente confiable.",
-      copa: "Viajero y sofisticado... Una aventura equilibrada que viaja contigo. Complejo, elegante y con un toque de misterio nómada.",
-      copa_hielo:
-        "Nómada y refrescante... Una escapada perfecta llena de armonía. Fresco, práctico y tan delicioso que se vuelve imprescindible.",
+        "Compañero ideal equilibrado confiable en cualquier momento.",
+      copa: "Aventura equilibrada elegante que viaja con misterios nómadas.",
+      copa_hielo: "Escapada perfecta equilibrada llena de armonías deliciosas.",
     },
   },
   el_tupi: {
     v60: {
       taza_cerrada:
-        "Vibrante y apasionado... Como un beso cítrico que despierta los sentidos. Jugoso, brillante y tan energético que acelera el pulso.",
+        "Beso cítrico vibrante que despierta sentidos apasionados y jugosos.",
       taza_abierta:
-        "Refrescante y accesible... Como una aventura emocionante que fluye. Cítrico, cómodo y completamente revitalizante.",
-      copa: "Transparente y provocador... Revela frutos rojos en tentación visual. Elegante, jugoso y con una acidez que seduce irresistiblemente.",
+        "Aventura emocionante cítrica que fluye en revitalizaciones cómodas.",
+      copa: "Tentación visual cítrica que revela frutos rojos seductores.",
       copa_hielo:
-        "Ligero y efímero... Una brisa cítrica que provoca cosquillas. Fresco, vibrante y tan delicioso que deja antojo permanente.",
+        "Brisa cítrica ligera que provoca cosquillas efímeras y vibrantes.",
     },
     chemex: {
       taza_cerrada:
-        "Limpio y persistente... Como un perfume cítrico inolvidable. Brillante, aromático y tan vibrante que perdura en el recuerdo.",
+        "Perfume cítrico inolvidable que brilla en recuerdos aromáticos.",
       taza_abierta:
-        "Clásico y refrescante... Como un amor que despierta energías. Cítrico, confiable y completamente revitalizante cada mañana.",
-      copa: "Puro y elegante... Una fruta prohibida en sofisticación. Clara, vibrante y con una belleza cítrica que cautiva completamente.",
+        "Amor energético cítrico que despierta vitalidades confiables.",
+      copa: "Fruta prohibida cítrica en sofisticación cautivadora y clara.",
       copa_hielo:
-        "Efímero y delicioso... Se desvanece dejando energía pura. Fresco, ligero y tan placentero que provoca euforia.",
+        "Energía pura cítrica que deja euforias placenteras y frescas.",
     },
     origami: {
       taza_cerrada:
-        "Intrincado y fascinante... Como un mapa de emociones cítricas. Versátil, creativo y tan intrigante que invita a la exploración sensorial.",
+        "Mapa emocional cítrico que invita a exploraciones sensoriales intrigantes.",
       taza_abierta:
-        "Creativo y práctico... Una aventura cítrica llena de vitalidad. Vibrante, cómodo y completamente innovador y revitalizante.",
-      copa: "Artístico y sofisticado... Una sinfonía de colores frutales. Complejo, elegante y con una belleza cítrica que hipnotiza los sentidos.",
+        "Vitalidad creativa cítrica llena de innovaciones revitalizantes.",
+      copa: "Sinfonía frutal cítrica que hipnotiza con bellezas elegantes.",
       copa_hielo:
-        "Ingenioso y refrescante... Una invención que juega con vitalidad. Fresco, creativo y tan delicioso que se vuelve obra de arte cítrica.",
+        "Invención vital cítrica que juega con arte fresco y delicioso.",
     },
     sifon_japones: {
       taza_cerrada:
-        "Espectacular y envolvente... Como una pasión cítrica que acelera todo. Aromático, dramático y completamente energizante y cautivador.",
+        "Pasión cítrica espectacular que acelera cautivadores energizantes.",
       taza_abierta:
-        "Impresionante pero accesible... Como una estrella vibrante cercana. Intenso, cómodo y tan memorable que se vuelve adictivo.",
-      copa: "Visual y seductor... Un truco frutal que maravilla los sentidos. Espectacular, fascinante y con una acidez irresistible.",
+        "Estrella vibrante cercana que comparte intensidades adictivas.",
+      copa: "Truco frutal maravilloso que seduce con acidez irresistible.",
       copa_hielo:
-        "Dramático y refrescante... Una escena apasionada cítrica. Fresco, intenso y tan emocionante que deja vibrando de energía.",
+        "Escena apasionada cítrica que deja vibrando de energías frescas.",
     },
     aeropress: {
       taza_cerrada:
-        "Intenso y jugoso... Como una pasión cítrica contenida. Sedoso, vibrante y tan rico que se vuelve esencial para despertar.",
-      taza_abierta:
-        "Directo y satisfactorio... Como un encuentro cítrico perfecto. Concentrado, placentero y completamente revitalizante.",
-      copa: "Pura y elegante... Una promesa jugosa en claridad. Clara, suave y con frutos rojos que seducen profundamente.",
+        "Pasión contenida cítrica jugosa esencial para despertar sentidos.",
+      taza_abierta: "Encuentro perfecto cítrico concentrado y revitalizante.",
+      copa: "Promesa jugosa clara que seduce con frutos rojos profundos.",
       copa_hielo:
-        "Suave y provocadora... Una caricia cítrica helada. Contrastante, fresca y tan placentera que provoca deseo de más.",
+        "Caricia helada cítrica contrastante que provoca deseos placenteros.",
     },
     press2go: {
-      taza_cerrada:
-        "Portátil y apasionado... Como un amor cítrico que viaja. Vibrante, intenso y siempre listo para energizar donde sea.",
+      taza_cerrada: "Amor cítrico portátil que energiza aventuras intensas.",
       taza_abierta:
-        "Conveniente y delicioso... Como un compañero emocionante. Práctico, cítrico y completamente revitalizante en cualquier momento.",
-      copa: "Viajero y sofisticado... Una aventura frutal elegante. Complejo, nómada y con un toque de misterio cítrico itinerante.",
+        "Compañero emocionante práctico en revitalizaciones cítricas.",
+      copa: "Aventura frutal elegante que viaja con misterios itinerantes.",
       copa_hielo:
-        "Nómada y refrescante... Una escapada apasionada cítrica. Fresco, práctico y tan delicioso que se vuelve esencial para viajar.",
+        "Escapada apasionada cítrica fresca esencial para viajes deliciosos.",
     },
   },
 };

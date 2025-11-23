@@ -47,7 +47,7 @@ export function BrewingMethodStep({
         <Button
           onClick={goBack}
           variant="ghost"
-          className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10"
+          className="w-full text-muted-foreground hover:text-foreground hover:bg-primary/10 border border-primary/50"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Volver

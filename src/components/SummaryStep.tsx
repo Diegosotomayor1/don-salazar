@@ -6,7 +6,7 @@ import {
 } from "@/constants";
 import { UserData } from "@/types";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Share2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import {
@@ -183,6 +183,10 @@ export function SummaryStep({
             <p className="text-foreground/90 italic leading-relaxed text-sm">
               &quot;💫 {piquantPhrase}&quot;
             </p>
+          </div>
+          <div className="flex items-center justify-center text-xs text-center text-muted-foreground">
+            <Share2 className="mr-2 h-4 w-4" /> Comparte por Instagram o
+            Whatsapp
           </div>
 
           <Button

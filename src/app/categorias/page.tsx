@@ -3,6 +3,7 @@
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
 import { coffeeCategories } from "@/constants";
 import { useTranslations } from "@/hooks/useTranslations";
+import { useFilteredProducts } from "@/hooks/useFilteredProducts";
 import { motion } from "framer-motion";
 import { ArrowRight, Coffee, Sparkles } from "lucide-react";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export default function Categories() {
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { tCategory, tUI } = useTranslations();
+  const { categories: filteredCategories } = useFilteredProducts();
 
   const handleCategorySelect = (categoryId: string) => {
     router.push(`/categorias/${categoryId}`);
@@ -112,7 +114,7 @@ export default function Categories() {
             initial="hidden"
             animate="visible"
           >
-            {coffeeCategories.map((category) => (
+            {filteredCategories.map((category) => (
               <motion.div
                 key={category.id}
                 variants={itemVariants}

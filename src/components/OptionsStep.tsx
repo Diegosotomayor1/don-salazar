@@ -1,11 +1,11 @@
 import { UserData } from "@/types";
 import { motion } from "framer-motion";
 import {
+  Apple,
   ArrowLeft,
   CircleQuestionMark,
   Coffee,
   Flame,
-  Apple,
   Snowflake,
 } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -17,13 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
 export function OptionsStep({
   userData,

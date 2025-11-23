@@ -91,4 +91,23 @@ export type MenuProducts = {
   tags: string[];
   video?: string;
   img?: string;
+  bestSelling?: boolean;
 };
+
+export enum TYPE_CARD {
+  LUXURY = "LUXURY",
+  PREMIUM = "PREMIUM",
+  PREMIUM_FONTANA = "PREMIUM_FONTANA",
+}
+
+export enum SEDES {
+  SAN_MIGUEL = "San Miguel",
+  FONTANA = "Fontana",
+  SAN_ISIDRO = "San Isidro",
+  MIRAFLORES = "Miraflores",
+  UNIVERSIDAD_DEL_PACIFICO = "Universidad del Pacífico",
+  HIGUERETA = "Higuereta",
+  JOCKEY_PLAZA = "Jockey Plaza",
+  SALAVERRY = "Salaverry",
+  PUNTA_MAR = "Punta Mar",
+}

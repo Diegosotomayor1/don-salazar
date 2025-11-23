@@ -1,17 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { ArrowLeft, Coffee, Play } from "lucide-react";
-import { coffeeCategories, menuProducts } from "@/constants";
-import { useParams, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { useState, useRef, useEffect } from "react";
-import { cn } from "@/lib/utils";
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
 import ProductModal from "@/components/ProductModal";
+import { Button } from "@/components/ui/button";
+import { useFilteredProducts } from "@/hooks/useFilteredProducts";
 import { useTranslations } from "@/hooks/useTranslations";
-import { Dictionary } from "@/types/dictionary";
+import { MenuProducts } from "@/types";
+import { motion } from "framer-motion";
+import { ArrowLeft, Coffee, Play } from "lucide-react";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const itemVariants = {
   hidden: {
@@ -39,10 +39,8 @@ const ProductItem = ({
   language,
 }: {
   index: number;
-  product: (typeof menuProducts)["cafes-de-siempre"][number];
-  onProductClick: (
-    product: (typeof menuProducts)["cafes-de-siempre"][number]
-  ) => void;
+  product: MenuProducts;
+  onProductClick: (product: MenuProducts) => void;
   language: "es" | "en";
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -156,18 +154,18 @@ export default function CategoryProducts() {
   const params = useParams();
   const router = useRouter();
   const categoryId = params.id as string;
-  const [selectedProduct, setSelectedProduct] = useState<
-    (typeof menuProducts)["cafes-de-siempre"][number] | null
-  >(null);
+  const [selectedProduct, setSelectedProduct] = useState<MenuProducts | null>(
+    null
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { tCategory, tUI, language } = useTranslations();
+  const { categories: filteredCategories, products: allFilteredProducts } =
+    useFilteredProducts();
 
-  const category = coffeeCategories.find((c) => c.id === categoryId);
-  const products = menuProducts[categoryId as keyof typeof menuProducts] || [];
+  const category = filteredCategories.find((c) => c.id === categoryId);
+  const products = category?.products || [];
 
-  const handleProductClick = (
-    product: (typeof menuProducts)["cafes-de-siempre"][number]
-  ) => {
+  const handleProductClick = (product: MenuProducts) => {
     const translatedProduct = {
       ...product,
       name: language === "en" && product.nameEn ? product.nameEn : product.name,
