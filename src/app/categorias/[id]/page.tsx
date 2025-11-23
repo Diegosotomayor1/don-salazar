@@ -64,10 +64,10 @@ const ProductItem = ({
       variants={itemVariants}
       className={cn(
         "flex items-end relative md:h-96 h-64 cursor-pointer",
-        product.name.includes("★") && "shadow-2xl"
+        product.bestSelling && "shadow-2xl"
       )}
       style={
-        product.name.includes("★")
+        product.bestSelling
           ? {
               boxShadow:
                 "0 0 30px rgba(176, 156, 96, 0.6), 0 0 60px rgba(176, 156, 96, 0.3)",
@@ -111,7 +111,7 @@ const ProductItem = ({
         <div
           className={cn(
             "absolute top-0 right-0 border px-3 py-1 font-bold text-lg",
-            product.name.includes("★")
+            product.bestSelling
               ? "bg-gradient-to-r from-[#efb810] via-[#f9db5c] to-[#ffff94] text-black"
               : "bg-black text-white"
           )}
@@ -129,7 +129,7 @@ const ProductItem = ({
           <h3
             className={cn(
               "text-xl font-bold group-hover:text-accent transition-colors duration-300 py-1 px-2 border text-white",
-              product.name.includes("★")
+              product.bestSelling
                 ? "bg-gradient-to-r from-[#efb810] via-[#f9db5c] to-[#ffff94] text-black"
                 : "bg-black"
             )}

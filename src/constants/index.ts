@@ -311,8 +311,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       img: "/carta/la frescura del grano/iced green cappuccino.png",
     },
     {
-      name: "Iced Black Cappuccino ★",
-      nameEn: "Iced Black Cappuccino ★",
+      name: "Iced Black Cappuccino",
+      nameEn: "Iced Black Cappuccino",
       price: 19,
       description:
         "Shot de espresso con leche fresca, con un toque caramel con carbón activado y abundante hielo.",
@@ -902,27 +902,6 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       bestSelling: true,
     },
   ],
-};
-
-export const getTypeCardFromSede = (sede: SEDES): TYPE_CARD | undefined => {
-  const sedesMap: Record<TYPE_CARD, SEDES[]> = {
-    LUXURY: [SEDES.SAN_MIGUEL, SEDES.MIRAFLORES, SEDES.SAN_ISIDRO],
-    PREMIUM: [
-      SEDES.HIGUERETA,
-      SEDES.JOCKEY_PLAZA,
-      SEDES.SALAVERRY,
-      SEDES.PUNTA_MAR,
-      SEDES.UNIVERSIDAD_DEL_PACIFICO,
-    ],
-    PREMIUM_FONTANA: [SEDES.FONTANA],
-  };
-
-  for (const [typeCard, sedes] of Object.entries(sedesMap)) {
-    if (sedes.includes(sede)) {
-      return typeCard as TYPE_CARD;
-    }
-  }
-  return undefined;
 };
 
 export const productsOrCategoryExcluded: Record<
