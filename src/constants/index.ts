@@ -247,7 +247,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       description: "El clásico americano en una versión refrescante con hielo.",
       descriptionEn: "The classic americano in a refreshing iced version.",
       tags: [],
-      video: "/carta/la frescura del grano/Americano_Frio_comprimido.mp4",
+      video: "/carta/la frescura del grano/Americano_frio_comprimido.mp4",
       img: "/carta/la frescura del grano/americano frio_1.png",
     },
     {
@@ -821,60 +821,57 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       nameEn: "The Blue Bikini Girl",
       price: 28,
       description:
-        "Cóctel refrescante de pisco, curacao azul, naranja, limón, Ginger Ale y cold brew.",
+        "La que no podrás olvidar. Burbujeante bebida con pisco, curacao azul, naranja y cold drip.	",
       descriptionEn:
-        "Refreshing cocktail with pisco, blue curacao, orange, lemon, Ginger Ale and cold brew.",
+        "The one you won't forget. fizzy drink with pisco, blue curacao, orange and cold drip.",
       tags: [],
-      video: "/cafe.mp4",
+      video:
+        "/carta/cocteles con historia/La chica del bikini azul_comprimido.webm",
       img: "/carta/cocteles con historia/la chica del bikini azul.png",
     },
     {
-      name: "Pisco Sour de Café",
-      nameEn: "Coffee Pisco Sour",
+      name: "Pisco Sour",
+      nameEn: "Pisco Sour",
       price: 30,
-      description:
-        "Clásico pisco sour peruano con un toque de nuestro café de especialidad.",
-      descriptionEn:
-        "Classic Peruvian pisco sour with a touch of our specialty coffee.",
+      description: "El clásico de clásicos.",
+      descriptionEn: "The classic of classics.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/cocteles con historia/Pisco sour_comprimido.webm",
       img: "/carta/cocteles con historia/Pisco sour.jpg",
     },
     {
-      name: "Espresso Martini",
-      nameEn: "Espresso Martini",
+      name: "DON KOFI SOUR",
+      nameEn: "DON KOFI SOUR",
       price: 32,
-      description:
-        "Vodka, licor de café, espresso fresco y un toque de sirope. Elegante y energizante.",
-      descriptionEn:
-        "Vodka, coffee liqueur, fresh espresso and a touch of syrup. Elegant and energizing.",
+      description: "El tradicional pisco sour al estilo Don Salazar.",
+      descriptionEn: "The traditional pisco sour in the style of Don Salazar.",
       tags: [],
-      video: "/cafe.mp4",
-      img: "/carta/cocteles con historia/espresso martini.png",
+      video: "/carta/cocteles con historia/DON KOFFI SOUR_comprimido.webm",
+      img: "/carta/cocteles con historia/don kofi sour.png",
       bestSelling: true,
     },
     {
-      name: "White Russian",
-      nameEn: "White Russian",
+      name: "Sex on the farm",
+      nameEn: "Sex on the farm",
       price: 28,
       description:
-        "Vodka, licor de café y crema. Clásico, cremoso y delicioso.",
+        "No es en la playa, es en la finca. Burbujeante bebida con pisco, frutos rojos y cold drip.	",
       descriptionEn:
-        "Vodka, coffee liqueur and cream. Classic, creamy and delicious.",
+        "Not on the beach, it's on the farm. fizzy drink with pisco, red fruits and cold drip.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/cocteles con historia/sex on the farm_comprimido.webm",
       img: "/carta/cocteles con historia/sex on the farm.png",
     },
     {
-      name: "Irish Coffee",
-      nameEn: "Irish Coffee",
-      price: 26,
+      name: "La incondicional",
+      nameEn: "The incondicional",
+      price: 28,
       description:
-        "Whiskey irlandés, café caliente, azúcar y crema batida. La tradición irlandesa.",
+        "La que no supe amar. Burbujeante bebida con pisco, maracumango y cold drip.",
       descriptionEn:
-        "Irish whiskey, hot coffee, sugar and whipped cream. The Irish tradition.",
+        "The one I couldn't love. fizzy drink with pisco, passion fruit and cold drip.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/cocteles con historia/La incondicional_comprimido.webm",
       img: "/carta/cocteles con historia/la incondicinal.png",
     },
     {
@@ -886,8 +883,9 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn:
         "Our premium version of the classic with double espresso and gourmet coffee beans.",
       tags: [],
-      video: "/cafe.mp4",
-      img: "/carta/cocteles con historia/don kofi sour.png",
+      video:
+        "/carta/cocteles con historia/Don espresso martiniii_comprimido.webm",
+      img: "/carta/cocteles con historia/espresso martini.png",
       bestSelling: true,
     },
   ],

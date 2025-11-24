@@ -73,6 +73,14 @@ export default function ProductModal({
     if (isOpen && videoRef.current) {
       videoRef.current.currentTime = 0;
       setIsPlaying(true);
+    } else if (!isOpen) {
+      // Reset state when modal closes
+      setIsPlaying(false);
+      setCurrentTime(0);
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
     }
   }, [isOpen, product]);
 
