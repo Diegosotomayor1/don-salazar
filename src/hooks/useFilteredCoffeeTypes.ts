@@ -22,15 +22,13 @@ export const useFilteredCoffeeTypes = () => {
     // Filter based on type card
     switch (typeCard) {
       case "LUXURY":
-        // LUXURY locations get all coffee types
-        return coffeeTypes;
+        return coffeeTypes.filter(
+          (coffee) => coffee.id === "el_tupi" || coffee.id === "el_balanceado"
+        );
 
       case "PREMIUM":
       case "PREMIUM_FONTANA":
-        // PREMIUM and PREMIUM_FONTANA only get balanceado and obatá
-        return coffeeTypes.filter(
-          (coffee) => coffee.id === "el_balanceado" || coffee.id === "el_obata"
-        );
+        return coffeeTypes;
 
       default:
         return coffeeTypes;

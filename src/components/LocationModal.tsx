@@ -50,7 +50,7 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
 
           {/* Modal Content */}
           <motion.div
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-black/90 border-2 border-accent shadow-2xl backdrop-blur-md"
+            className="relative w-full max-w-2xl max-h-[80dvh] overflow-y-auto bg-black/90 border-2 border-accent shadow-2xl backdrop-blur-md"
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
