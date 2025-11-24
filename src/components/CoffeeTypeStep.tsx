@@ -17,7 +17,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { UserData } from "@/types";
-import { coffeeTypes } from "@/constants";
+import { useFilteredCoffeeTypes } from "@/hooks/useFilteredCoffeeTypes";
 import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "@/hooks/useTranslations";
@@ -34,8 +34,9 @@ export function CoffeeTypeStep({
   goBack: () => void;
 }) {
   const { language } = useTranslations();
+  const filteredCoffeeTypes = useFilteredCoffeeTypes();
   const [selectedCoffee, setSelectedCoffee] = useState<
-    (typeof coffeeTypes)[number] | null
+    (typeof filteredCoffeeTypes)[number] | null
   >(null);
 
   const handleCoffeeTypeSelect = (coffeeTypeId: string) => {
@@ -73,7 +74,7 @@ export function CoffeeTypeStep({
           </CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-3 gap-2 px-4 md:px-6 h-full">
-          {coffeeTypes.map((coffee, index) => (
+          {filteredCoffeeTypes.map((coffee, index) => (
             <motion.div
               key={coffee.id}
               initial={{ opacity: 0, y: 20 }}

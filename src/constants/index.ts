@@ -757,6 +757,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/manjares salazar/torta de chocolate_comprimido.mp4",
       img: "/carta/manjares salazar/torta_chocolate_2.png",
+      bestSelling: true,
     },
     {
       name: "Affogato Don Salazar",
@@ -801,6 +802,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       tags: [],
       video: "/carta/manjares salazar/carrot cake_comprimido.mp4",
       img: "/carta/manjares salazar/carrot cake1.png",
+      bestSelling: true,
     },
     {
       name: "Waffles de la Finca",
@@ -912,6 +914,14 @@ export const productsOrCategoryExcluded: Record<
           "Focaccia Capresse",
         ],
       },
+      {
+        category: "dulces",
+        excluded: [
+          "Cheesecake Maracumango",
+          "Cheesecake Frutos Rojos",
+          "Waffles de la Finca",
+        ],
+      },
     ],
   },
   LUXURY: {
@@ -927,6 +937,14 @@ export const productsOrCategoryExcluded: Record<
           "Tostón con Palta y Pollo",
           "Maison QhiChé",
           "Focaccia Capresse",
+        ],
+      },
+      {
+        category: "dulces",
+        excluded: [
+          "Cheesecake Maracumango",
+          "Cheesecake Frutos Rojos",
+          "Waffles de la Finca",
         ],
       },
     ],

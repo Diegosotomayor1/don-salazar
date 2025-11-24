@@ -11,13 +11,17 @@ import { RecommendationsStep } from "@/components/RecommendationsStep";
 import { SummaryStep } from "@/components/SummaryStep";
 import { CoffeeQuizStep } from "@/components/CoffeeQuizStep";
 import { FinalRecommendationStep } from "@/components/FinalRecommendationStep";
+import LocationModal from "@/components/LocationModal";
 import { Step, UserData } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSede } from "@/hooks/useSede";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function DonSalazarWizard() {
   const [currentStep, setCurrentStep] = useState<Step>("name");
+  const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+  const { sede } = useSede();
   const [userData, setUserData] = useState<UserData>({
     name: "",
     preparationType: null,
@@ -26,6 +30,13 @@ export default function DonSalazarWizard() {
     brewingMethod: "",
     cupType: "",
   });
+
+  // Show location modal if no sede is selected
+  useEffect(() => {
+    if (!sede) {
+      setIsLocationModalOpen(true);
+    }
+  }, [sede]);
 
   const getNextStep = (currentStep: Step): Step => {
     const stepFlow: Record<Step, Step> = {
@@ -151,6 +162,19 @@ export default function DonSalazarWizard() {
                 className="absolute top-0 right-1/2 translate-x-1/2 blur-md animate-pulse"
               />
             </div>
+            {/* Location indicator */}
+            {sede && (
+              <div className="flex items-center justify-center gap-2 text-white/80 text-sm">
+                <span>📍</span>
+                <span>Local: {sede}</span>
+                <button
+                  onClick={() => setIsLocationModalOpen(true)}
+                  className="text-accent hover:text-accent/80 underline ml-2"
+                >
+                  (cambiar)
+                </button>
+              </div>
+            )}
             {/* <p className="text-muted-foreground text-lg">
             Tu experiencia perfecta de café
           </p> */}
@@ -256,6 +280,12 @@ export default function DonSalazarWizard() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Location Modal */}
+      <LocationModal
+        isOpen={isLocationModalOpen}
+        onClose={() => setIsLocationModalOpen(false)}
+      />
     </div>
   );
 }
