@@ -73,7 +73,12 @@ export function CoffeeTypeStep({
             Selecciona el grano que más te llame la atención
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-3 gap-2 px-4 md:px-6 h-full">
+        <CardContent
+          className={`grid grid-cols-${Math.min(
+            filteredCoffeeTypes.length,
+            3
+          )} gap-2 px-4 md:px-6 h-full`}
+        >
           {filteredCoffeeTypes.map((coffee, index) => (
             <motion.div
               key={coffee.id}

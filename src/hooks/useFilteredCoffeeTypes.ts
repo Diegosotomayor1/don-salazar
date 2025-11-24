@@ -23,12 +23,15 @@ export const useFilteredCoffeeTypes = () => {
     switch (typeCard) {
       case "LUXURY":
         return coffeeTypes.filter(
-          (coffee) => coffee.id === "el_tupi" || coffee.id === "el_balanceado"
+          (coffee) =>
+            coffee.id === "el_balanceado" ||
+            coffee.id === "el_obata" ||
+            coffee.id === "el_tupi"
         );
 
       case "PREMIUM":
       case "PREMIUM_FONTANA":
-        return coffeeTypes;
+        return coffeeTypes.filter((coffee) => coffee.id === "el_obata");
 
       default:
         return coffeeTypes;

@@ -1094,7 +1094,7 @@ export const coffeeTypes: CoffeeType[] = [
   },
   {
     id: "el_balanceado",
-    name: "El balanceado",
+    name: "El favorito de Noel",
     shortDescription:
       "Combina la dulzura del chocolate con un toque frutal muy sutil.",
     description:
