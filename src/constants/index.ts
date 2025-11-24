@@ -667,20 +667,9 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn:
         "Herb cheese cubes, pizza ham, salami and candied red fruits.",
       tags: ["Selección de la Casa"],
-      video: "/carta/seleccion de la casa/tabla de queso_comprimido.mp4",
-      img: "/carta/seleccion de la casa/tabla de queso.png",
+      video: "/carta/seleccion de la casa/tabla de quesos_comprimido.mp4",
+      img: "/carta/seleccion de la casa/tabla de quesos.png",
       bestSelling: true,
-    },
-    {
-      name: "Tabla de Jamones",
-      nameEn: "Cured Meat Board",
-      price: 38,
-      description:
-        "Selección de jamones curados artesanales con acompañamientos.",
-      descriptionEn: "Selection of artisanal cured meats with accompaniments.",
-      tags: ["Selección de la Casa"],
-      video: "/carta/seleccion de la casa/tabla de jamones_comprimido.mp4",
-      img: "/carta/seleccion de la casa/tabla de jamones.png",
     },
   ],
   dulces: [
