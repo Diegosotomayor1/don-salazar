@@ -493,7 +493,8 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn:
         "House craft beer made with our specialty coffee, unique, balanced and refreshing flavor.",
       tags: [],
-      video: "/cafe.mp4",
+      video: "/carta/mas alla del grano/cerveza negra.webm",
+      img: "/carta/mas alla del grano/cerveza negra.png",
       bestSelling: true,
     },
   ],
