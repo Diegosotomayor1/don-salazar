@@ -17,7 +17,21 @@ export function ComingSoonStep({ goBack }: { goBack: () => void }) {
       exit={{ opacity: 0, x: -50 }}
       transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
     >
+      <Button
+        onClick={goBack}
+        variant="ghost"
+        className="w-full mt-2 text-muted-foreground hover:text-foreground hover:bg-primary/10 border border-accent/20 mb-4"
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Volver
+      </Button>
       <Card className="luxury-card">
+        {/* Botón de volver */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        ></motion.div>
         <CardHeader className="text-center space-y-3">
           <motion.div
             initial={{ scale: 0 }}
@@ -120,22 +134,6 @@ export function ComingSoonStep({ goBack }: { goBack: () => void }) {
                 </p>
               </div>
             </div>
-          </motion.div>
-
-          {/* Botón de volver */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <Button
-              onClick={goBack}
-              variant="ghost"
-              className="w-full mt-2 text-muted-foreground hover:text-foreground hover:bg-primary/10"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Volver
-            </Button>
           </motion.div>
         </CardContent>
       </Card>
