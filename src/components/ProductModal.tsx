@@ -170,8 +170,6 @@ export default function ProductModal({
 
   if (!product) return null;
 
-  console.log("Loading overlay state:", showLoadingOverlay);
-
   return (
     <AnimatePresence>
       {isOpen && (

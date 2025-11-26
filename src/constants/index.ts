@@ -234,7 +234,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Intense espresso with steamed milk and a touch of caramel with activated charcoal.",
       price: 18,
       tags: [],
-      video: "/carta/el calor del grano/black cappuccino_comprimido.mp4",
+      video: "/carta/el calor del grano/black cappuccino_comprimido.webm",
       img: "/carta/el calor del grano/black_cappuccino.png",
       bestSelling: true,
     },
@@ -294,7 +294,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn:
         "Espresso shot with fresh milk, strawberry flavor and plenty of ice.",
       tags: [],
-      video: "/carta/la frescura del grano/Iced_Pink_Cappuccino_comprimido.mp4",
+      video: "/carta/la frescura del grano/pink cappuccino_comprimido.webm",
       img: "/carta/la frescura del grano/iced pink cappuccino.png",
     },
     {
@@ -544,6 +544,16 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Rellena de jugoso pollo, champiñones frescos y una suave salsa bechamel.",
       descriptionEn:
         "Filled with juicy chicken, fresh mushrooms and a smooth bechamel sauce.",
+      tags: [],
+      video: "/carta/acompañamientos salazar/empanada bechamel_comprimido.webm",
+      img: "/carta/acompañamientos salazar/empanada bechamel.png",
+    },
+    {
+      name: "Empanada de carne prime",
+      nameEn: "Beef Empanada",
+      price: 12,
+      description: "El clásico irresistible rellena de carne jugosa de res.",
+      descriptionEn: "The classic irresistible filled with juicy beef.",
       tags: [],
       video: "/carta/acompañamientos salazar/Empanada de carne_comprimido.mp4",
       img: "/carta/acompañamientos salazar/empanada de pollo_2.png",
