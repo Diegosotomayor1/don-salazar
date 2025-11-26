@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import { Provider } from "jotai";
+import { CacheManager } from "@/components/CacheManager";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${raleway.variable} antialiased`}>
-        <Provider>{children}</Provider>
+        <Provider>
+          <CacheManager />
+          {children}
+        </Provider>
       </body>
     </html>
   );
