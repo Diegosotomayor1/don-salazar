@@ -210,8 +210,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Intense espresso with steamed milk and exquisite strawberry flavor.",
       price: 16,
       tags: [],
-      video:
-        "/carta/el calor del grano/Pink_Cappuccino_nueva_carta_comprimido.mp4",
+      video: "/carta/el calor del grano/pink cappuccino_comprimido.webm",
       img: "/carta/el calor del grano/pink cappuccino.png",
     },
     {
@@ -294,7 +293,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn:
         "Espresso shot with fresh milk, strawberry flavor and plenty of ice.",
       tags: [],
-      video: "/carta/la frescura del grano/pink cappuccino_comprimido.webm",
+      video: "/carta/la frescura del grano/iced pink latte_comprimido.webm",
       img: "/carta/la frescura del grano/iced pink cappuccino.png",
     },
     {
