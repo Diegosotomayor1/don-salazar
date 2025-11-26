@@ -92,7 +92,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       id: "espresso-doble",
       name: "Espresso Doble",
       nameEn: "Double Espresso",
-      price: 12,
+      price: 11,
       description: "Doble shot de sabor intenso y aroma envolvente. ",
       descriptionEn: "Double shot of intense flavor and enveloping aroma.",
       tags: ["Alto en cafeína"],
@@ -232,7 +232,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Espresso intenso con leche vaporizada y con un toque caramel con carbón activado. ",
       descriptionEn:
         "Intense espresso with steamed milk and a touch of caramel with activated charcoal.",
-      price: 17,
+      price: 18,
       tags: [],
       video: "/carta/el calor del grano/black cappuccino_comprimido.mp4",
       img: "/carta/el calor del grano/black_cappuccino.png",
@@ -313,7 +313,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Iced Black Cappuccino",
       nameEn: "Iced Black Cappuccino",
-      price: 19,
+      price: 20,
       description:
         "Shot de espresso con leche fresca, con un toque caramel con carbón activado y abundante hielo.",
       descriptionEn:
@@ -432,7 +432,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Alivio Don Salazar",
       nameEn: "Don Salazar Relief",
-      price: 14,
+      price: 12,
       description: "Infusión natural con hierbas que ayudan a la digestión.",
       descriptionEn: "Natural infusion with herbs that aid digestion.",
       tags: [],
@@ -442,7 +442,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Amor de Jamaica",
       nameEn: "Love of Jamaica",
-      price: 14,
+      price: 12,
       description:
         "Infusión caliente de flor de jamaica, con sabor refrescante y ligeramente ácido.",
       descriptionEn:
@@ -454,7 +454,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Chocolate Caliente",
       nameEn: "Hot Chocolate",
-      price: 14,
+      price: 15,
       description:
         "Caliente, elaborado con chocolate derretido y leche cremosa.",
       descriptionEn: "Hot, made with melted chocolate and creamy milk.",
@@ -564,7 +564,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Focaccia Ahumado",
       nameEn: "Smoked Focaccia",
-      price: 25,
+      price: 30,
       description:
         "Pan focaccia con mantequilla cajamarquina, tocino, lomo ahumado, mozzarella y salsa especial.",
       descriptionEn:
@@ -577,7 +577,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Focaccia Capresse",
       nameEn: "Capresse Focaccia",
-      price: 19,
+      price: 24,
       description:
         "Pan focaccia con mantequilla cajamarquina, tomate, mozzarella, albahaca y aceite de oliva.",
       descriptionEn:
@@ -590,7 +590,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Maison QhiChé",
       nameEn: "Maison QhiChé",
-      price: 25,
+      price: 28,
       description:
         "Tarta salada con base crujiente, rellena de vegetales y queso.",
       descriptionEn:
@@ -639,7 +639,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Pizza del Don",
       nameEn: "Don's Pizza",
-      price: 25,
+      price: 28,
       description:
         "Base de croissant hojaldrado con queso fundido, pollo, tomate, albahaca y salsa de yogurt para un toque cremoso y equilibrado.",
       descriptionEn:
@@ -752,7 +752,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Torta de Chocolate",
       nameEn: "Chocolate Cake",
-      price: 9,
+      price: 18,
       description: "Chocolate intenso.",
       descriptionEn: "Intense chocolate.",
       tags: [],
@@ -763,7 +763,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Affogato Don Salazar",
       nameEn: "Affogato Don Salazar",
-      price: 9,
+      price: 18,
       description: "Helado de vainilla sobre un espresso Don Salazar.",
       descriptionEn: "Vanilla ice cream over a Don Salazar espresso.",
       tags: [],
@@ -774,7 +774,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Cheesecake Maracumango",
       nameEn: "Maracumango Cheesecake",
-      price: 12,
+      price: 18,
       description:
         "Cheesecake cremoso con cobertura de maracuyá y mango fresco.",
       descriptionEn:
@@ -787,7 +787,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Cheesecake Frutos Rojos",
       nameEn: "Red Fruits Cheesecake",
-      price: 12,
+      price: 18,
       description: "Cheesecake cremoso con salsa de frutos rojos.",
       descriptionEn: "Creamy cheesecake with red fruits sauce.",
       tags: [],
@@ -797,7 +797,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Carrot Cake",
       nameEn: "Carrot Cake",
-      price: 12,
+      price: 19,
       description: "Bizcocho de zanahoria con frosting de queso crema.",
       descriptionEn: "Carrot cake with cream cheese frosting.",
       tags: [],
@@ -808,7 +808,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
     {
       name: "Waffles de la Finca",
       nameEn: "Waffles of the Farm",
-      price: 12,
+      price: 24,
       description:
         "Waffles con arándanos frescos, crema batida y miel de maple.",
       descriptionEn:
