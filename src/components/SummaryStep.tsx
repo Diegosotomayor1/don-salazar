@@ -42,8 +42,8 @@ export function SummaryStep({
   // Obtener la frase pícara (siempre se muestra, independiente de la selección)
   const piquantPhrase =
     (piquantPhrases as Record<string, Record<string, Record<string, string>>>)[
-      coffeeTypeId
-    ]?.[brewingMethodId]?.[cupTypeId] ||
+      coffeeTypeId!
+    ]?.[brewingMethodId!]?.[cupTypeId!] ||
     "Una experiencia única y personalizada solo para ti.";
 
   // Calcular precios
