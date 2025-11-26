@@ -1101,7 +1101,7 @@ export const coffeeTypes: CoffeeType[] = [
     description:
       "La taza perfecta para quienes buscan equilibrio. Combina la dulzura del chocolate con un toque frutal muy sutil, resultando en una bebida amable y fácil de tomar.",
     icon: "⚖️",
-    img: "/experiences/balanceado.png",
+    img: "/experiences/favorito_de_noel.png",
     price: 20,
   },
   {

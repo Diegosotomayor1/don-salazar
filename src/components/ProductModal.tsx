@@ -66,16 +66,22 @@ export default function ProductModal({
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { tUI } = useTranslations();
 
   useEffect(() => {
     if (isOpen && videoRef.current) {
       videoRef.current.currentTime = 0;
+      setIsVideoLoading(true);
+      setShowLoadingOverlay(true);
       setIsPlaying(true);
     } else if (!isOpen) {
       // Reset state when modal closes
       setIsPlaying(false);
+      setIsVideoLoading(true);
+      setShowLoadingOverlay(false);
       setCurrentTime(0);
       if (videoRef.current) {
         videoRef.current.pause();
@@ -95,50 +101,42 @@ export default function ProductModal({
     }
   }, [isPlaying]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+  const handleVideoLoadStart = () => {
+    console.log("Video load start");
+    setIsVideoLoading(true);
+    setShowLoadingOverlay(true);
+  };
 
-    const handleTimeUpdate = () => {
-      if (!isDragging) {
-        const newTime = video.currentTime;
-        setCurrentTime(newTime);
-      }
-    };
+  const handleVideoCanPlay = () => {
+    console.log("Video can play");
+    setIsVideoLoading(false);
+    setShowLoadingOverlay(false);
+  };
 
-    const handleLoadedMetadata = () => {
-      setDuration(video.duration);
-    };
+  const handleVideoPlaying = () => {
+    console.log("Video playing");
+    setIsVideoLoading(false);
+    setShowLoadingOverlay(false);
+  };
 
-    const handleLoadedData = () => {
-      if (video.duration && video.duration > 0) {
-        setDuration(video.duration);
-      }
-    };
+  const handleVideoError = () => {
+    console.log("Video error");
+    setIsVideoLoading(false);
+    setShowLoadingOverlay(false);
+  };
 
-    const handleCanPlay = () => {
-      if (video.duration && video.duration > 0) {
-        setDuration(video.duration);
-      }
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    video.addEventListener("loadeddata", handleLoadedData);
-    video.addEventListener("canplay", handleCanPlay);
-
-    // Force load if not loaded
-    if (video.readyState === 0) {
-      video.load();
+  const handleTimeUpdate = () => {
+    if (!isDragging && videoRef.current) {
+      const newTime = videoRef.current.currentTime;
+      setCurrentTime(newTime);
     }
+  };
 
-    return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      video.removeEventListener("loadeddata", handleLoadedData);
-      video.removeEventListener("canplay", handleCanPlay);
-    };
-  }, [isDragging, product]);
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
+    }
+  };
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTime = parseFloat(e.target.value);
@@ -171,6 +169,8 @@ export default function ProductModal({
   };
 
   if (!product) return null;
+
+  console.log("Loading overlay state:", showLoadingOverlay);
 
   return (
     <AnimatePresence>
@@ -212,7 +212,61 @@ export default function ProductModal({
               preload="metadata"
               className="w-full h-full object-cover cursor-pointer object-center"
               onClick={togglePlay}
+              onLoadStart={handleVideoLoadStart}
+              onCanPlay={handleVideoCanPlay}
+              onPlaying={handleVideoPlaying}
+              onError={handleVideoError}
+              onTimeUpdate={handleTimeUpdate}
+              onLoadedMetadata={handleLoadedMetadata}
             />
+
+            {/* Loading Overlay */}
+            {showLoadingOverlay && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-30">
+                <motion.div
+                  className="relative"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Luxury Spinner */}
+                  <div className="relative w-16 h-16">
+                    <motion.div
+                      className="absolute inset-0 border-4 border-transparent border-t-accent border-r-accent rounded-full"
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute inset-2 border-2 border-transparent border-b-accent/60 border-l-accent/60 rounded-full"
+                      animate={{ rotate: -360 }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                    {/* Center dot */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-2 h-2 bg-accent rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Loading text */}
+                  <motion.p
+                    className="text-white/80 text-sm mt-4 text-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {tUI("modal.loading")}
+                  </motion.p>
+                </motion.div>
+              </div>
+            )}
 
             {/* Close Button */}
             <button

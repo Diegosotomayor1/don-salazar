@@ -65,6 +65,10 @@ export const uiTranslations = {
       [LANGUAGE.ES]: "Selecciona tu sede",
       [LANGUAGE.EN]: "Choose your location",
     },
+    loading: {
+      [LANGUAGE.ES]: "Cargando...",
+      [LANGUAGE.EN]: "Loading...",
+    },
   },
 
   // Información general

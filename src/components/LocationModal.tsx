@@ -110,10 +110,10 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
                   <strong className="text-accent">
                     Locales Premium y Premium Fontana:
                   </strong>{" "}
-                  Disponibles solo cafés Balanceado y Obatá.
+                  Disponibles solo café Obatá.
                   <br />
-                  <strong className="text-accent">Locales Luxury:</strong> Todos
-                  los tipos de café disponibles.
+                  <strong className="text-accent">Locales Luxury:</strong> 3
+                  tipos de café disponibles.
                 </p>
               </div>
             </div>
