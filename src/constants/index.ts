@@ -234,7 +234,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
         "Intense espresso with steamed milk and a touch of caramel with activated charcoal.",
       price: 17,
       tags: [],
-      video: "/carta/el calor del grano/Black cappuccino_comprimido.mp4",
+      video: "/carta/el calor del grano/black cappuccino_comprimido.mp4",
       img: "/carta/el calor del grano/black_cappuccino.png",
       bestSelling: true,
     },

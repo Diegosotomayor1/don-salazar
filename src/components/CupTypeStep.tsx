@@ -12,6 +12,7 @@ import { UserData } from "@/types";
 import { cupTypes } from "@/constants";
 import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
+import { useFilteredCupTypes } from "@/hooks/useFilteredCupTypes";
 
 export function CupTypeStep({
   userData,
@@ -24,6 +25,8 @@ export function CupTypeStep({
   nextStep: () => void;
   goBack: () => void;
 }) {
+  const filteredCupTypes = useFilteredCupTypes(userData.brewingMethod);
+
   const handleCupTypeSelect = (cupTypeId: string) => {
     setUserData({ ...userData, cupType: cupTypeId });
     nextStep();
@@ -59,7 +62,7 @@ export function CupTypeStep({
           </CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-2">
-          {cupTypes.map((cup, index) => (
+          {filteredCupTypes.map((cup, index) => (
             <motion.div
               key={cup.id}
               initial={{ opacity: 0, y: 20 }}

@@ -25,7 +25,24 @@ export function BrewingMethodStep({
   goBack: () => void;
 }) {
   const handleMethodSelect = (methodId: string) => {
-    setUserData({ ...userData, brewingMethod: methodId });
+    const selectedMethod = brewingMethods.find(
+      (method) => method.id === methodId
+    );
+
+    // If switching to immersion method and user has copa_hielo selected, clear cupType
+    if (
+      selectedMethod?.type === "inmersion" &&
+      userData.cupType === "copa_hielo"
+    ) {
+      setUserData({
+        ...userData,
+        brewingMethod: methodId,
+        cupType: null,
+      });
+    } else {
+      setUserData({ ...userData, brewingMethod: methodId });
+    }
+
     nextStep();
   };
 

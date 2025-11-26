@@ -15,9 +15,9 @@ export interface UserData {
   name: string;
   preparationType: "barista" | "self" | null;
   selectedOption: "choose" | "recommendations" | "quiz" | null;
-  coffeeType: string;
-  brewingMethod: string;
-  cupType: string;
+  coffeeType: string | null;
+  brewingMethod: string | null;
+  cupType: string | null;
   quizAnswers?: QuizAnswer[];
   finalRecommendation?: FinalRecommendation;
 }

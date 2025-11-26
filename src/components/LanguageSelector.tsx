@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LANGUAGE } from "@/types/dictionary";
 import { SEDES } from "@/types";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useTranslations } from "@/hooks/useTranslations";
 import { useSede } from "@/hooks/useSede";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -11,6 +12,7 @@ import { useState } from "react";
 
 export const LanguageSelector = () => {
   const { language, changeLanguage } = useLanguage();
+  const { tUI } = useTranslations();
   const { sede, changeSede } = useSede();
   const [currentStep, setCurrentStep] = useState<"language" | "sede">(
     "language"
@@ -95,9 +97,8 @@ export const LanguageSelector = () => {
               >
                 <div className="mb-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-3">
-                    Selecciona tu sede
+                    {tUI("modal.select-location")}
                   </h2>
-                  <p className="text-gray-600 text-lg">Choose your location</p>
                 </div>
 
                 <div className="space-y-3 max-h-80 overflow-y-auto">
@@ -111,16 +112,6 @@ export const LanguageSelector = () => {
                       📍 {sedeOption}
                     </Button>
                   ))}
-                </div>
-
-                <div className="mt-6">
-                  <Button
-                    onClick={() => setCurrentStep("language")}
-                    variant="ghost"
-                    className="text-accent hover:text-accent/80 text-sm"
-                  >
-                    ← Cambiar idioma
-                  </Button>
                 </div>
               </motion.div>
             )}

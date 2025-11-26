@@ -61,6 +61,10 @@ export const uiTranslations = {
       [LANGUAGE.ES]: "Agregar al carrito",
       [LANGUAGE.EN]: "Add to cart",
     },
+    "select-location": {
+      [LANGUAGE.ES]: "Selecciona tu sede",
+      [LANGUAGE.EN]: "Choose your location",
+    },
   },
 
   // Información general
