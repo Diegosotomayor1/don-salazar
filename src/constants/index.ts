@@ -849,7 +849,7 @@ export const menuProducts: Record<string, MenuProducts[]> = {
       descriptionEn: "The classic of classics.",
       tags: [],
       video: "/carta/cocteles con historia/Pisco sour_comprimido.webm",
-      img: "/carta/cocteles con historia/Pisco sour.jpg",
+      img: "/carta/cocteles con historia/pisco_sour.jpg",
     },
     {
       name: "DON KOFI SOUR",
