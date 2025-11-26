@@ -189,5 +189,15 @@ export const categoriesTranslations = {
         [LANGUAGE.EN]: "Experiential",
       },
     },
+    whatsapp: {
+      title: {
+        [LANGUAGE.ES]: "¿Interesado en nuestros cursos?",
+        [LANGUAGE.EN]: "Interested in our courses?",
+      },
+      button: {
+        [LANGUAGE.ES]: "Contactar por WhatsApp",
+        [LANGUAGE.EN]: "Contact via WhatsApp",
+      },
+    },
   },
 };

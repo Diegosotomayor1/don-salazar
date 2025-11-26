@@ -69,6 +69,14 @@ export const uiTranslations = {
       [LANGUAGE.ES]: "Cargando...",
       [LANGUAGE.EN]: "Loading...",
     },
+    "workshops-title": {
+      [LANGUAGE.ES]: "¿Interesado en nuestros cursos?",
+      [LANGUAGE.EN]: "Interested in our courses?",
+    },
+    "workshops-whatsapp": {
+      [LANGUAGE.ES]: "Contactar por WhatsApp",
+      [LANGUAGE.EN]: "Contact via WhatsApp",
+    },
   },
 
   // Información general
