@@ -40,7 +40,7 @@ export default function DonSalazarWizard() {
 
   const getNextStep = (currentStep: Step): Step => {
     const stepFlow: Record<Step, Step> = {
-      name: "preparation",
+      name: "coffeeType",
       preparation: "options",
       comingSoon: "comingSoon",
       options: "coffeeType",
@@ -114,7 +114,7 @@ export default function DonSalazarWizard() {
     }
 
     if (currentStep === "coffeeType") {
-      setCurrentStep("options");
+      setCurrentStep("name");
       return;
     }
 
