@@ -9,10 +9,10 @@ import { MenuProducts } from "@/types";
 import { motion } from "framer-motion";
 import { ArrowLeft, Coffee, Play } from "lucide-react";
 import Image from "next/image";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { getCatalogSearchSuffix } from "@/utils/catalogQueryParams";
+import { getCurrentCatalogSearchSuffix } from "@/utils/catalogQueryParams";
 
 const itemVariants = {
   hidden: {
@@ -154,7 +154,6 @@ const ProductItem = ({
 export default function CategoryProducts() {
   const params = useParams();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const categoryId = params.id as string;
   const [selectedProduct, setSelectedProduct] = useState<MenuProducts | null>(
     null
@@ -162,7 +161,6 @@ export default function CategoryProducts() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { tCategory, tUI, language } = useTranslations();
   const { categories: filteredCategories } = useFilteredProducts();
-  const searchSuffix = getCatalogSearchSuffix(searchParams.toString());
 
   const category = filteredCategories.find((c) => c.id === categoryId);
   const products = category?.products || [];
@@ -195,8 +193,10 @@ export default function CategoryProducts() {
           <h1 className="text-2xl font-bold text-black mb-4">
             {tUI("states.category-not-found")}
           </h1>
-            <Button
-            onClick={() => router.push(`/categorias${searchSuffix}`)}
+          <Button
+            onClick={() =>
+              router.push(`/categorias${getCurrentCatalogSearchSuffix()}`)
+            }
             className="bg-accent text-white rounded-none"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -274,7 +274,9 @@ export default function CategoryProducts() {
               transition={{ duration: 0.6, delay: 1 }}
             >
               <Button
-                onClick={() => router.push(`/categorias${searchSuffix}`)}
+                onClick={() =>
+                  router.push(`/categorias${getCurrentCatalogSearchSuffix()}`)
+                }
                 variant="outline"
                 className="rounded-none border-2 border-black text-black bg-transparent hover:border-accent hover:bg-accent/10 transition-all duration-300"
               >
