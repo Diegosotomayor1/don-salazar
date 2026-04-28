@@ -6,20 +6,18 @@ import { useFilteredProducts } from "@/hooks/useFilteredProducts";
 import { motion } from "framer-motion";
 import { ArrowRight, Coffee, Sparkles } from "lucide-react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import { getCatalogSearchSuffix } from "@/utils/catalogQueryParams";
+import { getCurrentCatalogSearchSuffix } from "@/utils/catalogQueryParams";
 
 export default function Categories() {
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { tCategory, tUI } = useTranslations();
   const { categories: filteredCategories } = useFilteredProducts();
-  const searchSuffix = getCatalogSearchSuffix(searchParams.toString());
 
   const handleCategorySelect = (categoryId: string) => {
-    router.push(`/categorias/${categoryId}${searchSuffix}`);
+    router.push(`/categorias/${categoryId}${getCurrentCatalogSearchSuffix()}`);
   };
 
   const containerVariants = {
