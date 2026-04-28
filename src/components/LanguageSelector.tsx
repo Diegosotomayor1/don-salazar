@@ -8,15 +8,46 @@ import { useTranslations } from "@/hooks/useTranslations";
 import { useSede } from "@/hooks/useSede";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import {
+  getLanguageFromParam,
+  getSedeFromLocalParam,
+} from "@/utils/catalogQueryParams";
 
 export const LanguageSelector = () => {
   const { language, changeLanguage } = useLanguage();
   const { tUI } = useTranslations();
   const { sede, changeSede } = useSede();
+  const searchParams = useSearchParams();
+  const queryLanguage = getLanguageFromParam(searchParams.get("language"));
+  const querySede = getSedeFromLocalParam(searchParams.get("local"));
+  const effectiveLanguage = language ?? queryLanguage;
+  const effectiveSede = sede ?? querySede;
   const [currentStep, setCurrentStep] = useState<"language" | "sede">(
     "language"
   );
+
+  useEffect(() => {
+    if (queryLanguage && queryLanguage !== language) {
+      changeLanguage(queryLanguage);
+    }
+
+    if (querySede && querySede !== sede) {
+      changeSede(querySede);
+    }
+  }, [changeLanguage, changeSede, language, queryLanguage, querySede, sede]);
+
+  useEffect(() => {
+    if (!effectiveLanguage) {
+      setCurrentStep("language");
+      return;
+    }
+
+    if (!effectiveSede) {
+      setCurrentStep("sede");
+    }
+  }, [effectiveLanguage, effectiveSede]);
 
   const handleLanguageSelect = (selectedLanguage: LANGUAGE) => {
     changeLanguage(selectedLanguage);
@@ -27,7 +58,7 @@ export const LanguageSelector = () => {
     changeSede(selectedSede);
   };
 
-  const isVisible = !language || !sede;
+  const isVisible = !effectiveLanguage || !effectiveSede;
 
   return (
     <AnimatePresence>
@@ -56,7 +87,7 @@ export const LanguageSelector = () => {
             </div>
 
             {/* Language Step */}
-            {(!language || currentStep === "language") && (
+            {(!effectiveLanguage || currentStep === "language") && (
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -89,7 +120,7 @@ export const LanguageSelector = () => {
             )}
 
             {/* Sede Step */}
-            {language && (!sede || currentStep === "sede") && (
+            {effectiveLanguage && (!effectiveSede || currentStep === "sede") && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}

@@ -1,23 +1,25 @@
 "use client";
 
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
-import { coffeeCategories } from "@/constants";
 import { useTranslations } from "@/hooks/useTranslations";
 import { useFilteredProducts } from "@/hooks/useFilteredProducts";
 import { motion } from "framer-motion";
 import { ArrowRight, Coffee, Sparkles } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useRef } from "react";
+import { getCatalogSearchSuffix } from "@/utils/catalogQueryParams";
 
 export default function Categories() {
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { tCategory, tUI } = useTranslations();
   const { categories: filteredCategories } = useFilteredProducts();
+  const searchSuffix = getCatalogSearchSuffix(searchParams.toString());
 
   const handleCategorySelect = (categoryId: string) => {
-    router.push(`/categorias/${categoryId}`);
+    router.push(`/categorias/${categoryId}${searchSuffix}`);
   };
 
   const containerVariants = {

@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { workshops } from "@/constants";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import BackgorundElementsDecoration from "@/components/BackgorundElementsDecoration";
 import WorkshopModal from "@/components/WorkshopModal";
 import { useTranslations } from "@/hooks/useTranslations";
+import { getCatalogSearchSuffix } from "@/utils/catalogQueryParams";
 
 const itemVariants = {
   hidden: {
@@ -122,12 +123,13 @@ const WorkshopItem = ({
 
 export default function TalleresCategory() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { tUI, getWorkshopTranslations, getCategoryTranslations } =
-    useTranslations();
+  const { tUI, getWorkshopTranslations } = useTranslations();
+  const searchSuffix = getCatalogSearchSuffix(searchParams.toString());
 
   const handleWorkshopClick = (workshop: Workshop) => {
     setSelectedWorkshop(workshop);
@@ -205,7 +207,7 @@ export default function TalleresCategory() {
               transition={{ duration: 0.6, delay: 1 }}
             >
               <Button
-                onClick={() => router.push("/categorias")}
+                onClick={() => router.push(`/categorias${searchSuffix}`)}
                 variant="outline"
                 className="rounded-none border-2 border-black text-black bg-transparent hover:border-accent hover:bg-accent/10 transition-all duration-300"
               >
