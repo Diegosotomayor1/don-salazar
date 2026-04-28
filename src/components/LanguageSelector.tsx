@@ -9,19 +9,16 @@ import { useSede } from "@/hooks/useSede";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import {
-  getLanguageFromParam,
-  getSedeFromLocalParam,
+  getCurrentCatalogQueryValues,
 } from "@/utils/catalogQueryParams";
 
 export const LanguageSelector = () => {
   const { language, changeLanguage } = useLanguage();
   const { tUI } = useTranslations();
   const { sede, changeSede } = useSede();
-  const searchParams = useSearchParams();
-  const queryLanguage = getLanguageFromParam(searchParams.get("language"));
-  const querySede = getSedeFromLocalParam(searchParams.get("local"));
+  const { language: queryLanguage, sede: querySede } =
+    getCurrentCatalogQueryValues();
   const effectiveLanguage = language ?? queryLanguage;
   const effectiveSede = sede ?? querySede;
   const [currentStep, setCurrentStep] = useState<"language" | "sede">(

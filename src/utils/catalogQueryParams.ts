@@ -40,3 +40,27 @@ export const getSedeFromLocalParam = (
 export const getCatalogSearchSuffix = (search: string): string => {
   return search ? `?${search}` : "";
 };
+
+export const getCurrentCatalogSearchSuffix = (): string => {
+  if (typeof window === "undefined") {
+    return "";
+  }
+
+  return getCatalogSearchSuffix(window.location.search.replace(/^\?/, ""));
+};
+
+export const getCurrentCatalogQueryValues = (): {
+  language?: LANGUAGE;
+  sede?: SEDES;
+} => {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  const searchParams = new URLSearchParams(window.location.search);
+
+  return {
+    language: getLanguageFromParam(searchParams.get("language")),
+    sede: getSedeFromLocalParam(searchParams.get("local")),
+  };
+};
